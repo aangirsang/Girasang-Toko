@@ -1,0 +1,526 @@
+2017-04-03 20:32:27,613 [main] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1588809: startup date [Mon Apr 03 20:32:27 ICT 2017]; root of context hierarchy
+2017-04-03 20:32:27,659 [main] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from class path resource [applicationContext.xml]
+2017-04-03 20:32:28,173 [main] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 20:32:28,290 [main] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 20:32:28,435 [main] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 20:32:28,443 [main] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 20:32:28,449 [main] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 20:32:28,453 [main] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 20:32:28,472 [main] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 20:32:28,533 [main] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 20:32:28,564 [main] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 20:32:31,526 [main] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 20:32:31,796 [main] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 20:32:31,801 [main] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 20:32:32,266 [main] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1bc9f97] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 20:32:32,270 [main] INFO (Configuration.java:2073) ­ HHH000043: Configuring from resource: hibernate.cfg.xml
+2017-04-03 20:32:32,270 [main] INFO (Configuration.java:2092) ­ HHH000040: Configuration resource: hibernate.cfg.xml
+2017-04-03 20:32:32,280 [main] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 20:32:32,288 [main] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 20:32:32,591 [main] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 20:32:32,609 [main] INFO (SchemaExport.java:343) ­ HHH000227: Running hbm2ddl schema export
+2017-04-03 20:32:32,631 [main] ERROR (SchemaExport.java:425) ­ HHH000389: Unsuccessful: alter table TR_PELUNASAN_HUTANG drop constraint FK_1m1pxcisj5vhnqakd7wtl70v2 if exists
+2017-04-03 20:32:32,631 [main] ERROR (SchemaExport.java:426) ­ Table "TR_PELUNASAN_HUTANG" not found; SQL statement:
+
+    alter table TR_PELUNASAN_HUTANG 
+        drop constraint FK_1m1pxcisj5vhnqakd7wtl70v2 if exists [42102-176]
+2017-04-03 20:32:32,632 [main] ERROR (SchemaExport.java:425) ­ HHH000389: Unsuccessful: alter table TR_PULNASAN_HUTANG_DETAIL drop constraint FK_s3qavh7tsxjxdjs9sktjt4i4w if exists
+2017-04-03 20:32:32,632 [main] ERROR (SchemaExport.java:426) ­ Table "TR_PULNASAN_HUTANG_DETAIL" not found; SQL statement:
+
+    alter table TR_PULNASAN_HUTANG_DETAIL 
+        drop constraint FK_s3qavh7tsxjxdjs9sktjt4i4w if exists [42102-176]
+2017-04-03 20:32:32,632 [main] ERROR (SchemaExport.java:425) ­ HHH000389: Unsuccessful: alter table TR_PULNASAN_HUTANG_DETAIL drop constraint FK_adb4m9jop5yjfp2ljsjgdvmy4 if exists
+2017-04-03 20:32:32,632 [main] ERROR (SchemaExport.java:426) ­ Table "TR_PULNASAN_HUTANG_DETAIL" not found; SQL statement:
+
+    alter table TR_PULNASAN_HUTANG_DETAIL 
+        drop constraint FK_adb4m9jop5yjfp2ljsjgdvmy4 if exists [42102-176]
+2017-04-03 20:32:32,655 [main] INFO (SchemaExport.java:405) ­ HHH000230: Schema export complete
+2017-04-03 20:32:32,655 [main] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 20:32:32,656 [main] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 20:32:32,657 [main] INFO (SchemaExport.java:343) ­ HHH000227: Running hbm2ddl schema export
+2017-04-03 20:32:32,743 [main] INFO (SchemaExport.java:405) ­ HHH000230: Schema export complete
+2017-04-03 20:32:33,055 [Thread-3] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@1588809: startup date [Mon Apr 03 20:32:27 ICT 2017]; root of context hierarchy
+2017-04-03 20:32:54,894 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@64b0fb: startup date [Mon Apr 03 20:32:54 ICT 2017]; root of context hierarchy
+2017-04-03 20:32:54,940 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 20:32:55,352 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 20:32:55,443 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 20:32:55,581 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 20:32:55,590 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 20:32:55,592 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 20:32:55,595 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 20:32:55,611 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 20:32:55,633 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 20:32:55,661 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 20:32:56,226 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 20:32:56,546 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 20:32:56,551 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 20:32:57,037 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@728492] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 20:33:14,494 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@64b0fb: startup date [Mon Apr 03 20:32:54 ICT 2017]; root of context hierarchy
+2017-04-03 20:47:13,657 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 20:47:13 ICT 2017]; root of context hierarchy
+2017-04-03 20:47:13,705 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 20:47:14,144 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 20:47:14,243 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 20:47:14,398 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 20:47:14,408 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 20:47:14,411 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 20:47:14,414 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 20:47:14,438 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 20:47:14,460 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 20:47:14,490 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 20:47:16,673 [AWT-EventQueue-0] WARN (JdbcServicesImpl.java:204) ­ HHH000342: Could not obtain connection to query metadata : Database may be already in use: "Locked by another process". Possible solutions: close all other connection(s); use the server mode [90020-176]
+2017-04-03 20:47:16,690 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 20:47:16,702 [AWT-EventQueue-0] INFO (LobCreatorBuilder.java:88) ­ HHH000422: Disabling contextual LOB creation as connection was null
+2017-04-03 20:47:16,863 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 20:47:16,871 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 20:47:17,230 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1b18dd8] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 20:47:19,463 [AWT-EventQueue-0] WARN (SqlExceptionHelper.java:144) ­ SQL Error: 90020, SQLState: 90020
+2017-04-03 20:47:19,465 [AWT-EventQueue-0] ERROR (SqlExceptionHelper.java:146) ­ Database may be already in use: "Locked by another process". Possible solutions: close all other connection(s); use the server mode [90020-176]
+2017-04-03 20:47:21,252 [Thread-3] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 20:47:13 ICT 2017]; root of context hierarchy
+2017-04-03 20:47:33,844 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 20:47:33 ICT 2017]; root of context hierarchy
+2017-04-03 20:47:33,891 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 20:47:34,319 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 20:47:34,412 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 20:47:34,558 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 20:47:34,570 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 20:47:34,573 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 20:47:34,575 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 20:47:34,593 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 20:47:34,614 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 20:47:34,645 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 20:47:35,055 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 20:47:35,364 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 20:47:35,373 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 20:47:35,748 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@6bdb78] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 20:48:55,771 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 20:47:33 ICT 2017]; root of context hierarchy
+2017-04-03 21:08:15,402 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 21:08:15 ICT 2017]; root of context hierarchy
+2017-04-03 21:08:15,440 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 21:08:15,846 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 21:08:16,002 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 21:08:16,163 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 21:08:16,173 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 21:08:16,176 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 21:08:16,178 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 21:08:16,197 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 21:08:16,220 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 21:08:16,253 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 21:08:16,705 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 21:08:17,406 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 21:08:17,414 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 21:08:17,822 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@f6867f] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 21:10:08,164 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 21:08:15 ICT 2017]; root of context hierarchy
+2017-04-03 21:11:06,930 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@64b0fb: startup date [Mon Apr 03 21:11:06 ICT 2017]; root of context hierarchy
+2017-04-03 21:11:06,976 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 21:11:07,428 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 21:11:07,527 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 21:11:07,681 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 21:11:07,693 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 21:11:07,696 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 21:11:07,699 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 21:11:07,716 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 21:11:07,740 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 21:11:07,770 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 21:11:08,206 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 21:11:08,755 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 21:11:08,762 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 21:11:09,144 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@a101d7] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 21:11:59,065 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@64b0fb: startup date [Mon Apr 03 21:11:06 ICT 2017]; root of context hierarchy
+2017-04-03 21:20:53,183 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@ee2ca3: startup date [Mon Apr 03 21:20:53 ICT 2017]; root of context hierarchy
+2017-04-03 21:20:53,233 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 21:20:53,793 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 21:20:53,934 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 21:20:54,136 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 21:20:54,188 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 21:20:54,191 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 21:20:54,194 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 21:20:54,215 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 21:20:54,239 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 21:20:54,280 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 21:20:54,704 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 21:20:55,390 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 21:20:55,397 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 21:20:55,805 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1594fd7] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 21:21:17,307 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@ee2ca3: startup date [Mon Apr 03 21:20:53 ICT 2017]; root of context hierarchy
+2017-04-03 22:04:07,717 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@845f85: startup date [Mon Apr 03 22:04:07 ICT 2017]; root of context hierarchy
+2017-04-03 22:04:07,762 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 22:04:08,216 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 22:04:08,321 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 22:04:08,472 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 22:04:08,481 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 22:04:08,484 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 22:04:08,486 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 22:04:08,504 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 22:04:08,526 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 22:04:08,556 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 22:04:08,976 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 22:04:09,332 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 22:04:09,337 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 22:04:09,701 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1b44e2c] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 22:06:32,695 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@845f85: startup date [Mon Apr 03 22:04:07 ICT 2017]; root of context hierarchy
+2017-04-03 22:06:36,177 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@26d812: startup date [Mon Apr 03 22:06:36 ICT 2017]; root of context hierarchy
+2017-04-03 22:06:36,215 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 22:06:36,615 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 22:06:36,844 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 22:06:36,997 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 22:06:37,006 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 22:06:37,009 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 22:06:37,011 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 22:06:37,030 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 22:06:37,053 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 22:06:37,088 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 22:06:37,888 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 22:06:38,338 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 22:06:38,344 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 22:06:38,890 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@8e4d2] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 22:09:15,813 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 22:09:15 ICT 2017]; root of context hierarchy
+2017-04-03 22:09:15,868 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 22:09:16,350 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 22:09:16,457 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 22:09:16,600 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 22:09:16,609 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 22:09:16,611 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 22:09:16,612 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 22:09:16,630 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 22:09:16,652 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 22:09:16,682 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 22:09:17,254 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 22:09:17,668 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 22:09:17,672 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 22:09:17,731 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@26d812: startup date [Mon Apr 03 22:06:36 ICT 2017]; root of context hierarchy
+2017-04-03 22:09:18,043 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1d59578] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 22:12:23,932 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@18fd79c: startup date [Mon Apr 03 22:12:23 ICT 2017]; root of context hierarchy
+2017-04-03 22:12:23,973 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 22:12:24,416 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 22:12:24,517 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 22:12:24,653 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 22:12:24,661 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 22:12:24,663 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 22:12:24,665 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 22:12:24,682 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 22:12:24,703 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 22:12:24,731 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 22:12:25,293 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 22:12:25,757 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 22:12:25,760 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 22:12:26,132 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1d118fd] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 22:12:28,161 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 22:09:15 ICT 2017]; root of context hierarchy
+2017-04-03 22:14:19,896 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@18fd79c: startup date [Mon Apr 03 22:12:23 ICT 2017]; root of context hierarchy
+2017-04-03 22:14:25,118 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@18fd79c: startup date [Mon Apr 03 22:14:25 ICT 2017]; root of context hierarchy
+2017-04-03 22:14:25,158 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 22:14:25,563 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 22:14:25,654 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 22:14:25,785 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 22:14:25,792 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 22:14:25,794 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 22:14:25,796 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 22:14:25,812 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 22:14:25,832 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 22:14:25,860 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 22:14:27,067 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 22:14:27,457 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 22:14:27,463 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 22:14:27,834 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1d118fd] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 22:15:16,711 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@18fd79c: startup date [Mon Apr 03 22:14:25 ICT 2017]; root of context hierarchy
+2017-04-03 22:18:13,428 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 22:18:13 ICT 2017]; root of context hierarchy
+2017-04-03 22:18:13,470 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 22:18:13,874 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 22:18:14,081 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 22:18:14,244 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 22:18:14,254 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 22:18:14,257 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 22:18:14,260 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 22:18:14,279 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 22:18:14,301 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 22:18:14,334 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 22:18:14,814 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 22:18:15,373 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 22:18:15,379 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 22:18:15,750 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@f6867f] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 22:18:42,136 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 22:18:13 ICT 2017]; root of context hierarchy
+2017-04-03 22:23:35,899 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@ee2ca3: startup date [Mon Apr 03 22:23:35 ICT 2017]; root of context hierarchy
+2017-04-03 22:23:35,952 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 22:23:36,409 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 22:23:36,505 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 22:23:36,676 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 22:23:36,685 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 22:23:36,687 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 22:23:36,690 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 22:23:36,707 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 22:23:36,728 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 22:23:36,760 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 22:23:37,154 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 22:23:37,476 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 22:23:37,481 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 22:23:37,847 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1dc7914] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 22:24:03,078 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@ee2ca3: startup date [Mon Apr 03 22:23:35 ICT 2017]; root of context hierarchy
+2017-04-03 22:24:37,918 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 22:24:37 ICT 2017]; root of context hierarchy
+2017-04-03 22:24:37,963 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 22:24:38,417 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 22:24:38,510 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 22:24:38,666 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 22:24:38,676 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 22:24:38,679 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 22:24:38,682 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 22:24:38,700 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 22:24:38,722 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 22:24:38,752 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 22:24:39,146 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 22:24:39,479 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 22:24:39,484 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 22:24:39,857 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@f6867f] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 22:25:06,446 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 22:24:37 ICT 2017]; root of context hierarchy
+2017-04-03 22:25:10,183 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1712cf9: startup date [Mon Apr 03 22:25:10 ICT 2017]; root of context hierarchy
+2017-04-03 22:25:10,222 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 22:25:10,634 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 22:25:10,728 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 22:25:10,859 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 22:25:10,867 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 22:25:10,868 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 22:25:10,870 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 22:25:10,887 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 22:25:10,906 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 22:25:10,934 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 22:25:11,523 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 22:25:12,193 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 22:25:12,199 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 22:25:12,653 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@effae5] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 22:25:29,701 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@1712cf9: startup date [Mon Apr 03 22:25:10 ICT 2017]; root of context hierarchy
+2017-04-03 22:26:25,833 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@ee2ca3: startup date [Mon Apr 03 22:26:25 ICT 2017]; root of context hierarchy
+2017-04-03 22:26:25,876 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 22:26:26,294 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 22:26:26,391 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 22:26:26,640 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 22:26:26,649 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 22:26:26,652 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 22:26:26,655 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 22:26:26,673 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 22:26:26,695 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 22:26:26,727 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 22:26:27,496 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 22:26:28,453 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 22:26:28,458 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 22:26:28,844 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1dc7914] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 22:27:00,301 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@ee2ca3: startup date [Mon Apr 03 22:26:25 ICT 2017]; root of context hierarchy
+2017-04-03 22:27:43,875 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@18fd79c: startup date [Mon Apr 03 22:27:43 ICT 2017]; root of context hierarchy
+2017-04-03 22:27:43,917 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 22:27:44,337 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 22:27:44,695 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 22:27:44,835 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 22:27:44,843 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 22:27:44,844 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 22:27:44,846 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 22:27:44,863 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 22:27:44,884 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 22:27:44,911 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 22:27:45,562 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 22:27:45,956 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 22:27:45,961 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 22:27:46,329 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1d118fd] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 22:28:03,594 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@18fd79c: startup date [Mon Apr 03 22:27:43 ICT 2017]; root of context hierarchy
+2017-04-03 22:28:49,666 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 22:28:49 ICT 2017]; root of context hierarchy
+2017-04-03 22:28:49,707 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 22:28:50,107 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 22:28:50,592 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 22:28:50,873 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 22:28:50,883 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 22:28:50,886 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 22:28:50,888 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 22:28:50,906 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 22:28:50,928 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 22:28:50,960 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 22:28:51,366 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 22:28:51,666 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 22:28:51,672 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 22:28:52,040 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1d59578] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 22:29:26,653 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 22:28:49 ICT 2017]; root of context hierarchy
+2017-04-03 22:35:32,949 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 22:35:32 ICT 2017]; root of context hierarchy
+2017-04-03 22:35:33,000 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 22:35:33,457 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 22:35:33,551 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 22:35:33,719 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 22:35:33,728 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 22:35:33,732 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 22:35:33,735 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 22:35:33,753 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 22:35:33,775 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 22:35:33,807 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 22:35:34,226 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 22:35:34,567 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 22:35:34,573 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 22:35:34,952 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1d59578] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 22:36:05,537 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 22:35:32 ICT 2017]; root of context hierarchy
+2017-04-03 22:40:07,003 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 22:40:07 ICT 2017]; root of context hierarchy
+2017-04-03 22:40:07,044 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 22:40:07,445 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 22:40:07,534 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 22:40:07,663 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 22:40:07,670 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 22:40:07,672 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 22:40:07,673 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 22:40:07,690 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 22:40:07,710 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 22:40:07,737 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 22:40:08,743 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 22:40:09,042 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 22:40:09,048 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 22:40:09,415 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1d59578] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 22:40:38,951 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 22:40:07 ICT 2017]; root of context hierarchy
+2017-04-03 22:40:50,119 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@26d812: startup date [Mon Apr 03 22:40:50 ICT 2017]; root of context hierarchy
+2017-04-03 22:40:50,160 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 22:40:50,611 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 22:40:50,710 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 22:40:50,862 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 22:40:50,871 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 22:40:50,874 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 22:40:50,877 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 22:40:50,897 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 22:40:50,920 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 22:40:50,950 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 22:40:51,496 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 22:40:51,789 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 22:40:51,794 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 22:40:52,160 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@8e4d2] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 22:42:16,180 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@26d812: startup date [Mon Apr 03 22:40:50 ICT 2017]; root of context hierarchy
+2017-04-03 22:42:41,494 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@845f85: startup date [Mon Apr 03 22:42:41 ICT 2017]; root of context hierarchy
+2017-04-03 22:42:41,535 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 22:42:41,942 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 22:42:42,037 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 22:42:42,332 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 22:42:42,343 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 22:42:42,345 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 22:42:42,348 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 22:42:42,368 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 22:42:42,390 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 22:42:42,420 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 22:42:43,185 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 22:42:43,583 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 22:42:43,591 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 22:42:43,958 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1b44e2c] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 22:43:11,097 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@845f85: startup date [Mon Apr 03 22:42:41 ICT 2017]; root of context hierarchy
+2017-04-03 22:43:27,263 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 22:43:27 ICT 2017]; root of context hierarchy
+2017-04-03 22:43:27,305 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 22:43:27,713 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 22:43:27,806 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 22:43:27,936 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 22:43:27,944 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 22:43:27,946 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 22:43:27,947 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 22:43:27,964 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 22:43:27,983 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 22:43:28,011 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 22:43:29,230 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 22:43:29,554 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 22:43:29,559 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 22:43:29,925 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@f6867f] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 22:44:15,245 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 22:43:27 ICT 2017]; root of context hierarchy
+2017-04-03 22:44:57,946 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@d3b3fc: startup date [Mon Apr 03 22:44:57 ICT 2017]; root of context hierarchy
+2017-04-03 22:44:57,986 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 22:44:58,392 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 22:44:58,486 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 22:44:58,769 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 22:44:58,778 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 22:44:58,780 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 22:44:58,783 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 22:44:58,801 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 22:44:58,823 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 22:44:58,854 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 22:44:59,480 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 22:44:59,789 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 22:44:59,795 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 22:45:00,155 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@a27be] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 22:46:22,303 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@d3b3fc: startup date [Mon Apr 03 22:44:57 ICT 2017]; root of context hierarchy
+2017-04-03 22:47:04,729 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 22:47:04 ICT 2017]; root of context hierarchy
+2017-04-03 22:47:04,768 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 22:47:05,170 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 22:47:05,381 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 22:47:05,803 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 22:47:05,811 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 22:47:05,813 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 22:47:05,814 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 22:47:05,830 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 22:47:05,850 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 22:47:05,878 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 22:47:06,301 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 22:47:06,703 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 22:47:06,708 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 22:47:07,071 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1d59578] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 22:56:26,192 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 22:47:04 ICT 2017]; root of context hierarchy
+2017-04-03 22:56:30,440 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@64b0fb: startup date [Mon Apr 03 22:56:30 ICT 2017]; root of context hierarchy
+2017-04-03 22:56:30,482 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 22:56:30,925 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 22:56:31,021 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 22:56:31,177 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 22:56:31,187 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 22:56:31,190 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 22:56:31,192 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 22:56:31,209 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 22:56:31,231 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 22:56:31,262 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 22:56:31,654 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 22:56:31,983 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 22:56:31,989 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 22:56:32,349 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@7dd6b4] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 22:59:57,696 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@64b0fb: startup date [Mon Apr 03 22:56:30 ICT 2017]; root of context hierarchy
+2017-04-03 23:07:15,238 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@4324d4: startup date [Mon Apr 03 23:07:15 ICT 2017]; root of context hierarchy
+2017-04-03 23:07:15,288 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 23:07:15,735 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 23:07:15,829 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 23:07:15,992 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 23:07:16,002 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 23:07:16,005 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 23:07:16,008 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 23:07:16,026 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 23:07:16,050 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 23:07:16,080 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 23:07:16,468 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 23:07:16,789 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 23:07:16,794 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 23:07:17,160 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@17ef8da] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 23:08:46,038 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@4324d4: startup date [Mon Apr 03 23:07:15 ICT 2017]; root of context hierarchy
+2017-04-03 23:18:10,889 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 23:18:10 ICT 2017]; root of context hierarchy
+2017-04-03 23:18:10,927 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 23:18:11,334 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 23:18:11,780 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 23:18:11,941 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 23:18:11,951 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 23:18:11,954 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 23:18:11,958 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 23:18:11,978 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 23:18:12,001 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 23:18:12,031 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 23:18:12,875 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 23:18:13,195 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 23:18:13,201 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 23:18:13,564 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1d59578] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 23:20:58,990 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@d3576e: startup date [Mon Apr 03 23:18:10 ICT 2017]; root of context hierarchy
+2017-04-03 23:23:09,669 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@65d13f: startup date [Mon Apr 03 23:23:09 ICT 2017]; root of context hierarchy
+2017-04-03 23:23:09,708 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 23:23:10,114 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 23:23:10,277 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 23:23:10,481 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 23:23:10,489 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 23:23:10,491 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 23:23:10,492 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 23:23:10,509 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 23:23:10,529 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 23:23:10,557 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 23:23:11,546 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 23:23:11,889 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 23:23:11,894 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 23:23:12,351 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1ceb710] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 23:23:54,422 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@65d13f: startup date [Mon Apr 03 23:23:09 ICT 2017]; root of context hierarchy
+2017-04-03 23:23:57,237 [AWT-EventQueue-0] INFO (AbstractApplicationContext.java:513) ­ Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@845f85: startup date [Mon Apr 03 23:23:57 ICT 2017]; root of context hierarchy
+2017-04-03 23:23:57,277 [AWT-EventQueue-0] INFO (XmlBeanDefinitionReader.java:316) ­ Loading XML bean definitions from URL [file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/applicationContext.xml]
+2017-04-03 23:23:57,689 [AWT-EventQueue-0] INFO (PropertiesLoaderSupport.java:172) ­ Loading properties file from class path resource [database.properties]
+2017-04-03 23:23:57,818 [AWT-EventQueue-0] INFO (DriverManagerDataSource.java:133) ­ Loaded JDBC driver: org.h2.Driver
+2017-04-03 23:23:58,171 [AWT-EventQueue-0] INFO (JavaReflectionManager.java:66) ­ HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2017-04-03 23:23:58,179 [AWT-EventQueue-0] INFO (Version.java:54) ­ HHH000412: Hibernate Core {4.3.1.Final}
+2017-04-03 23:23:58,180 [AWT-EventQueue-0] INFO (Environment.java:239) ­ HHH000206: hibernate.properties not found
+2017-04-03 23:23:58,182 [AWT-EventQueue-0] INFO (Environment.java:346) ­ HHH000021: Bytecode provider name : javassist
+2017-04-03 23:23:58,198 [AWT-EventQueue-0] INFO (Configuration.java:2109) ­ HHH000044: Configuring from URL: file:/C:/Users/ITSUSAHBRO/Downloads/Girsang%20Toko/Girsang%20Toko/build/classes/hibernate.cfg.xml
+2017-04-03 23:23:58,218 [AWT-EventQueue-0] WARN (DTDEntityResolver.java:75) ­ HHH000223: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+2017-04-03 23:23:58,246 [AWT-EventQueue-0] INFO (Configuration.java:2214) ­ HHH000041: Configured SessionFactory: null
+2017-04-03 23:23:58,768 [AWT-EventQueue-0] INFO (Dialect.java:145) ­ HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-04-03 23:23:59,342 [AWT-EventQueue-0] INFO (TransactionFactoryInitiator.java:62) ­ HHH000399: Using default transaction strategy (direct JDBC transactions)
+2017-04-03 23:23:59,348 [AWT-EventQueue-0] INFO (ASTQueryTranslatorFactory.java:47) ­ HHH000397: Using ASTQueryTranslatorFactory
+2017-04-03 23:23:59,799 [AWT-EventQueue-0] INFO (HibernateTransactionManager.java:341) ­ Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1811dc5] of Hibernate SessionFactory for HibernateTransactionManager
+2017-04-03 23:28:12,587 [Thread-4] INFO (AbstractApplicationContext.java:873) ­ Closing org.springframework.context.support.ClassPathXmlApplicationContext@845f85: startup date [Mon Apr 03 23:23:57 ICT 2017]; root of context hierarchy
