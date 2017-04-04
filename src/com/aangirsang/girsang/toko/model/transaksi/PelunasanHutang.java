@@ -115,6 +115,7 @@ public class PelunasanHutang implements Serializable{
             }
         }
     }
+    
     public void addPembelianDetails(PelunasanHutangDetail detail){
         if(pelunasanHutangDetails==null){
             pelunasanHutangDetails = new ArrayList<PelunasanHutangDetail>();

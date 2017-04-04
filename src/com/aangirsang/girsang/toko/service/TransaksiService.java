@@ -34,8 +34,11 @@ public interface TransaksiService {
     public List<PembelianDetail> cariBarang(Barang barang);
     
     public void simpan(PelunasanHutang p);
+    public void hapus(PelunasanHutang p);
     public PelunasanHutang cariId(String id);
     public List<PelunasanHutang> semua();
+    public List<PelunasanHutang> cariSupplier(Supplier s);
     public List<PelunasanHutangDetail> cariDetail(PelunasanHutang p);
+    public List<PelunasanHutangDetail> cariPembelian(Pembelian pembelian);
     
 }

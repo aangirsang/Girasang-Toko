@@ -7,6 +7,7 @@ package com.aangirsang.girsang.toko.dao.transaksi;
 
 import com.aangirsang.girsang.toko.dao.BaseDaoHibernate;
 import com.aangirsang.girsang.toko.model.master.Barang;
+import com.aangirsang.girsang.toko.model.master.Supplier;
 import com.aangirsang.girsang.toko.model.transaksi.Kredit;
 import com.aangirsang.girsang.toko.model.transaksi.PelunasanHutang;
 import com.aangirsang.girsang.toko.model.transaksi.PelunasanHutangDetail;
@@ -38,6 +39,11 @@ public class PelunasanHutangDao extends BaseDaoHibernate<PelunasanHutang>{
     public List<PelunasanHutang> semua() {
         return sessionFactory.getCurrentSession().createQuery("from PelunasanHutang p order by p.noRef desc").list();
     }
+    public List<PelunasanHutang> cariSupplier(Supplier s) {
+        return sessionFactory.getCurrentSession().createQuery("from PelunasanHutang p where p.supplier=:s order by p.id asc")
+                .setParameter("s", s)
+                .list();
+    }
     public List<PelunasanHutangDetail> cariDetail(PelunasanHutang pelunasanHutang) {
         return sessionFactory.getCurrentSession().createQuery("from PelunasanHutangDetail p where p.pelunasanHutang=:pelunasanHutang order by p.id asc")
                 .setParameter("pelunasanHutang", pelunasanHutang)
@@ -46,5 +52,11 @@ public class PelunasanHutangDao extends BaseDaoHibernate<PelunasanHutang>{
     public PelunasanHutangDetail cariIDPelunasanHutangDetail(String id) {
         return (PelunasanHutangDetail) sessionFactory.getCurrentSession().createQuery("from PelunasanHutangDetail p where p.id=:id order by p.id asc")
                 .setParameter("id", id);
+    }
+    public List<PelunasanHutangDetail> cariPembelian(Pembelian pembelian){
+        return sessionFactory.getCurrentSession().createQuery(
+                "from PelunasanHutangDetail p where p.pembelian=:pembelian order by p.id asc")
+                .setParameter("pembelian", pembelian)
+                .list();
     }
 }

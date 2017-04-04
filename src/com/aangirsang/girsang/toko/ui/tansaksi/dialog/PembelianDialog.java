@@ -71,7 +71,6 @@ public class PembelianDialog extends javax.swing.JDialog {
         TextComponentUtils.setCurrency(txtTotal);
         TextComponentUtils.setCurrency(txtBayar);
         TextComponentUtils.setCurrency(txtSisa);
-        this.setUpSportColumn(tblPembelianDetail, tblPembelianDetail.getColumnModel().getColumn(1));
     }
     public Pembelian showDialog(Pembelian p, Supplier s, String Title) {
             pembelian = new Pembelian();
@@ -211,6 +210,7 @@ public class PembelianDialog extends javax.swing.JDialog {
         txtNamaSupplier.setText(s.getNamaSupplier());
         txtNoFaktur.setText(p.getNoFaktur());
         jcbKredit.setSelected(p.getKredit());
+        txtBayar.setText(TextComponentUtils.formatNumber(p.getDaftarKredit().getJumlahBayar()));
         if(p.getKredit()==true){
             jdcTglTempo.setDate(p.getDaftarKredit().getTanggalTempo());
         }
@@ -222,6 +222,7 @@ public class PembelianDialog extends javax.swing.JDialog {
         ukuranTabelBarang();
         kalkulasiTotal();
         kalkulasiJumlahBarang(pembelianDetails);
+        kalkulasiPembayaran();
 }
     private void loadFormToDomain() {
         pembelianDetail.setPembelian(pembelian);
@@ -434,23 +435,6 @@ public class PembelianDialog extends javax.swing.JDialog {
             kalkulasiTotal();
         }
 
-    }
-    public void setUpSportColumn(JTable table, TableColumn sportColumn) {
-        //Set up the editor for the sport cells.
-        JComboBox cboSatuan = new JComboBox();
-        cboSatuan.addItem("Botol");
-        cboSatuan.addItem("Box");
-        cboSatuan.addItem("Buah");
-        cboSatuan.addItem("Dusin");
-        cboSatuan.addItem("Pack");
-        cboSatuan.addItem("PCS");
-        cboSatuan.addItem("Toples");
-        sportColumn.setCellEditor(new DefaultCellEditor(cboSatuan));
-
-        //Set up tool tips for the sport cells.
-        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
-        renderer.setToolTipText("Click for combo box");
-        sportColumn.setCellRenderer(renderer);
     }
 
     @SuppressWarnings("unchecked")

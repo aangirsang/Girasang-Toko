@@ -76,9 +76,6 @@ public class TransaksiServiceImpl implements TransaksiService {
             int i = 1;
             for (PembelianDetail detail : p.getPembelianDetails()) {
                 detail.setId(p.getNoRef() + i++);
-                
-                System.out.println(detail.getId());
-                System.out.println(p.getNoRef());
             }
         } else {
             int i = 1;
@@ -97,11 +94,10 @@ public class TransaksiServiceImpl implements TransaksiService {
                 if (detail.getId() == null) {
                     detail.setId(p.getNoRef() + i++);
                 }
-                System.out.println(detail.getId());
-                System.out.println(p.getNoRef());
             }
         }
         //update barang
+        //<editor-fold defaultstate="collapsed" desc="Update Barang">
         for (PembelianDetail detail : p.getPembelianDetails()) {
             
             Barang b = barangDao.barangBerdasarkanId(detail.getBarang().getPlu());
@@ -132,45 +128,12 @@ public class TransaksiServiceImpl implements TransaksiService {
             }
             
         }
-        //updateSaldoStok(produkMasuk);
+        //</editor-fold>
         pembelianDao.merge(p);
         simpanStokPembelian(p);
         simpanHutang();
     }
     
-    private void simpanStokPembelian(Pembelian p) {
-        Integer stokToko = 0;
-        Integer stokGudang = 0;
-        for (PembelianDetail detail : p.getPembelianDetails()) {
-            Barang b = barangDao.barangBerdasarkanId(detail.getBarang().getPlu());
-            List<PembelianDetail> PD = pembelianDao.cariBarang(detail.getBarang());
-            for (PembelianDetail PD1 : PD) {
-                if("Toko".equals(PD1.getPembelian().getLokasi())){
-                    stokToko = stokToko + (PD1.getKuantitas() * PD1.getIsiPembelian());
-                }else if("Gudang".equals(PD1.getPembelian().getLokasi())){
-                    stokGudang = stokGudang + (PD1.getKuantitas() * PD1.getIsiPembelian());
-                }
-            }
-            b.setStokPembelianToko(stokToko);
-            b.setStokPembelianGudang(stokGudang);
-            
-            barangDao.simpan(b);
-        }
-    }
-    private void simpanHutang(){
-        List<Supplier> suppliers = supplierDao.semua();
-        for(Supplier s : suppliers){
-            List<Pembelian> pembelians = pembelianDao.cariSupplier(s);
-            BigDecimal saldoHutang = new BigDecimal(0);
-            for(int i=0;i<pembelians.size();i++){
-                Pembelian p = pembelians.get(i);
-                saldoHutang = saldoHutang.add(p.getDaftarKredit().getSisaKredit());
-            }
-            s.setSaldoHutang(saldoHutang);
-            System.out.println(s.getNamaSupplier() + " = " +saldoHutang);
-            supplierDao.simpan(s);
-        }
-    }
     
     @Override
     public Pembelian cariPembelian(String id) {
@@ -202,25 +165,115 @@ public class TransaksiServiceImpl implements TransaksiService {
         return pembelianDao.cariBarang(barang);
     }
 //</editor-fold>
-
+    //<editor-fold defaultstate="collapsed" desc="Pelunasan Hutang">
     @Override
+    @Transactional(isolation=Isolation.SERIALIZABLE)
     public void simpan(PelunasanHutang p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PelunasanHutang pelunasanHutang = pelunasanHutangDao.cariId(p.getNoRef());
+        if(pelunasanHutang==null){
+            p.setNoRef(runningNumberTransaksiDao.ambilBerikutnyaDanSimpan(TransaksiRunningNumberEnum.HUTANG));
+            int i = 1;
+            for(PelunasanHutangDetail detail : p.getPelunasanHutangDetails()){
+                detail.setId(p.getNoRef() + i++);
+            }
+        } else {
+            int i = 1;
+            for (PelunasanHutangDetail detail : p.getPelunasanHutangDetails()) {
+                try {
+                    i++;
+                    if (detail.getId() == null) {
+                        detail.setId(p.getNoRef() + i++);
+                    }
+                } catch (Exception e) {
+                    i = i + 1;
+                    if (detail.getId() == null) {
+                        detail.setId(p.getNoRef() + i++);
+                    }
+                }
+                if (detail.getId() == null) {
+                    detail.setId(p.getNoRef() + i++);
+                }
+            }
+        }
+        pelunasanHutangDao.merge(p);
+        simpanHutang();
     }
-
+    @Override
+    @Transactional
+    public void hapus(PelunasanHutang p) {
+        pelunasanHutangDao.hapus(p);
+        simpanHutang();
+    }
+    
     @Override
     public PelunasanHutang cariId(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return pelunasanHutangDao.cariId(id);
     }
-
+    
     @Override
     public List<PelunasanHutang> semua() {
         return pelunasanHutangDao.semua();
     }
-
+    @Override
+    public List<PelunasanHutang> cariSupplier(Supplier s) {
+        return pelunasanHutangDao.cariSupplier(s);
+    }
+    
     @Override
     public List<PelunasanHutangDetail> cariDetail(PelunasanHutang p) {
         return pelunasanHutangDao.cariDetail(p);
+    }
+    
+    @Override
+    public List<PelunasanHutangDetail> cariPembelian(Pembelian pembelian) {
+        return pelunasanHutangDao.cariPembelian(pembelian);
+    }
+//</editor-fold>
+
+    
+    private void simpanHutang(){
+        List<Supplier> suppliers = supplierDao.semua();
+        for(Supplier s : suppliers){
+            List<Pembelian> pembelians = pembelianDao.cariSupplier(s);
+            List<PelunasanHutang> hutangs = pelunasanHutangDao.cariSupplier(s);
+            
+            BigDecimal hutangPembelian = new BigDecimal(0);
+            BigDecimal pembayaranHutang = new BigDecimal(0);
+            
+            for(int i=0;i<pembelians.size();i++){
+                Pembelian p = pembelians.get(i);
+                hutangPembelian = hutangPembelian.add(p.getDaftarKredit().getSisaKredit());
+            }
+            
+            for(int i=0;i<hutangs.size();i++){
+                PelunasanHutang pH = hutangs.get(i);
+                pembayaranHutang = pembayaranHutang.add(pH.getJlhBayar());
+            }
+            s.setSaldoHutang(hutangPembelian.subtract(pembayaranHutang));
+            System.out.println(s.getNamaSupplier() + " = " +hutangPembelian);
+            
+            supplierDao.simpan(s);
+        }
+    }
+    
+    private void simpanStokPembelian(Pembelian p) {
+        Integer stokToko = 0;
+        Integer stokGudang = 0;
+        for (PembelianDetail detail : p.getPembelianDetails()) {
+            Barang b = barangDao.barangBerdasarkanId(detail.getBarang().getPlu());
+            List<PembelianDetail> PD = pembelianDao.cariBarang(detail.getBarang());
+            for (PembelianDetail PD1 : PD) {
+                if("Toko".equals(PD1.getPembelian().getLokasi())){
+                    stokToko = stokToko + (PD1.getKuantitas() * PD1.getIsiPembelian());
+                }else if("Gudang".equals(PD1.getPembelian().getLokasi())){
+                    stokGudang = stokGudang + (PD1.getKuantitas() * PD1.getIsiPembelian());
+                }
+            }
+            b.setStokPembelianToko(stokToko);
+            b.setStokPembelianGudang(stokGudang);
+            
+            barangDao.simpan(b);
+        }
     }
 
 }

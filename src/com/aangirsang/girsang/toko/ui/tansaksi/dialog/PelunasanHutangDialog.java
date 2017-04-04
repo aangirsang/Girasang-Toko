@@ -14,7 +14,6 @@ import com.aangirsang.girsang.toko.ui.master.supplier.PilihSupplierDialog;
 import com.aangirsang.girsang.toko.ui.utama.FrameUtama;
 import com.aangirsang.girsang.toko.util.BigDecimalRenderer;
 import com.aangirsang.girsang.toko.util.DateRenderer;
-import com.aangirsang.girsang.toko.util.IntegerRenderer;
 import com.aangirsang.girsang.toko.util.POSTableCellRenderer;
 import com.aangirsang.girsang.toko.util.TextComponentUtils;
 import java.awt.event.WindowAdapter;
@@ -57,6 +56,8 @@ public class PelunasanHutangDialog extends javax.swing.JDialog {
         pelunasanHutang = new PelunasanHutang();
         if(p==null){
             clearAll();
+        } else{
+            loadModelToForm(p);
         }
         setTitle(Title);
 
@@ -77,6 +78,65 @@ public class PelunasanHutangDialog extends javax.swing.JDialog {
         lblKeterangan.setText("Total Pembayaran Hutang = Rp."+TextComponentUtils.formatNumber(totalBayar)+
                 " Sisa Hutang = Rp."+TextComponentUtils.formatNumber(hutangAkhir));
     }
+    private boolean validateSimpan() {
+        if(totalBayar==new BigDecimal(0)){
+            JOptionPane.showMessageDialog(FrameUtama.getInstance(),
+                     "Tidak Ada Pembyaran",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+    private void loadModelToForm(PelunasanHutang p){
+        txtNoRef.setText(p.getNoRef());
+        jdcTanggal.setDate(p.getTanggal());
+        txtKodeSupplier.setText(p.getSupplier().getId());
+        txtNamaSupplier.setText(p.getSupplier().getNamaSupplier());
+        txtKwitansi.setText(p.getNoKwitansi());
+        
+        daftarPelunasanHutangDetail = FrameUtama.getTransaksiService().cariDetail(p);
+        table.setModel(new TabelModel(daftarPelunasanHutangDetail));
+        
+        supplier = new Supplier();
+        supplier = p.getSupplier();
+        
+        kalkulasiHutang(daftarPelunasanHutangDetail);
+    }
+    private void tampilDetails(Supplier s){
+        daftarPelunasanHutangDetail = new ArrayList<>();
+        if (s != null) {
+            txtKodeSupplier.setText(s.getId());
+            txtNamaSupplier.setText(s.getNamaSupplier());
+            List<Pembelian> hutangPembelian = FrameUtama.getTransaksiService().hutangPembelian(s);
+
+            BigDecimal totalHutang = new BigDecimal(0);
+            BigDecimal totalPembayaran;
+            for(Pembelian beli : hutangPembelian){
+                List<PelunasanHutangDetail> pelunasanHutangs = FrameUtama.getTransaksiService().cariPembelian(beli);
+                totalPembayaran = new BigDecimal(0);
+                for(PelunasanHutangDetail detail : pelunasanHutangs){
+                    totalPembayaran = totalPembayaran.add(detail.getPembayaran());
+                }
+                totalHutang = beli.getDaftarKredit().getSisaKredit().subtract(totalPembayaran);
+                double d = totalHutang.doubleValue();
+                if(totalHutang.doubleValue() >0){
+                    
+                pelunasanHutangDetail = new PelunasanHutangDetail();
+                    pembelian = beli;
+                    pelunasanHutangDetail.setPelunasanHutang(pelunasanHutang);
+                    pelunasanHutangDetail.setPembelian(pembelian);
+                    pelunasanHutangDetail.setSisaHutang(totalHutang);
+                    pelunasanHutangDetail.setPembayaran(new BigDecimal(0));
+                    pelunasanHutangDetail.setHutangAkhir(pelunasanHutangDetail.getSisaHutang().
+                            subtract(pelunasanHutangDetail.getPembayaran()));
+
+                    daftarPelunasanHutangDetail.add(pelunasanHutangDetail);
+                }
+            }
+            table.setModel(new TabelModel(daftarPelunasanHutangDetail));
+            kalkulasiHutang(daftarPelunasanHutangDetail);
+        }
+    }
     private void loadFormToModel(){
         pelunasanHutang.setNoRef(txtNoRef.getText());
         pelunasanHutang.setTanggal(new Date());
@@ -84,6 +144,8 @@ public class PelunasanHutangDialog extends javax.swing.JDialog {
         pelunasanHutang.setSupplier(supplier);
         pelunasanHutang.setJlhBayar(totalBayar);
         pelunasanHutang.setPembuat(pembuat);
+        pelunasanHutang.setPelunasanHutangDetails(daftarPelunasanHutangDetail);
+        
     }
     private void kalkulasiHutang(List<PelunasanHutangDetail> ps){
         totalBayar = new BigDecimal(0); 
@@ -253,6 +315,11 @@ public class PelunasanHutangDialog extends javax.swing.JDialog {
         });
 
         jButton3.setText(org.openide.util.NbBundle.getMessage(PelunasanHutangDialog.class, "PelunasanHutangDialog.jButton3.text")); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         txtNoRef.setBackground(new java.awt.Color(255, 255, 204));
         txtNoRef.setText(org.openide.util.NbBundle.getMessage(PelunasanHutangDialog.class, "PelunasanHutangDialog.txtNoRef.text")); // NOI18N
@@ -371,36 +438,24 @@ public class PelunasanHutangDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         String judul = "Pilih Supplier Pembelian";
         Supplier s = (Supplier) new PilihSupplierDialog().showDialog(judul);
-        if (s != null) {
-            txtKodeSupplier.setText(s.getId());
-            txtNamaSupplier.setText(s.getNamaSupplier());
-            supplier = new Supplier();
-            supplier = FrameUtama.getMasterService().supplierBerdasarkanId(s.getId());
-            
-            pembelian = new Pembelian();
-            loadFormToModel();
-            pembelians = FrameUtama.getTransaksiService().hutangPembelian(supplier);
-            for(int i=0;i<pembelians.size();i++){
-                pelunasanHutangDetail = new PelunasanHutangDetail();
-                pembelian = pembelians.get(i);
-                pelunasanHutangDetail.setPelunasanHutang(pelunasanHutang);
-                pelunasanHutangDetail.setPembelian(pembelian);
-                pelunasanHutangDetail.setSisaHutang(pembelian.getDaftarKredit().getSisaKredit());
-                pelunasanHutangDetail.setPembayaran(new BigDecimal(0));
-                pelunasanHutangDetail.setHutangAkhir(pelunasanHutangDetail.getSisaHutang().
-                        subtract(pelunasanHutangDetail.getPembayaran()));
-                
-                daftarPelunasanHutangDetail.add(pelunasanHutangDetail);
-            }
-            table.setModel(new TabelModel(daftarPelunasanHutangDetail));
-            kalkulasiHutang(daftarPelunasanHutangDetail);
-        }
+        tampilDetails(s);
+        supplier = new Supplier();
+        supplier = FrameUtama.getMasterService().supplierBerdasarkanId(s.getId());
     }//GEN-LAST:event_btnCariActionPerformed
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         pelunasanHutang = null;
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        if(validateSimpan()){
+            pelunasanHutang = new PelunasanHutang();
+            loadFormToModel();
+            dispose();
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCari;

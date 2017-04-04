@@ -188,6 +188,7 @@ public class TextComponentUtils {
 
     private static class IntegerMasking implements KeyListener {
 
+        @Override
         public void keyTyped(KeyEvent evt) {
             JTextField source = (JTextField) evt.getSource();
             if(Locale.getDefault() == Locale.US){
@@ -208,9 +209,11 @@ public class TextComponentUtils {
             }
         }
 
+        @Override
         public void keyPressed(KeyEvent e) {
         }
 
+        @Override
         public void keyReleased(KeyEvent evt) {
             if(evt.getKeyCode() == KeyEvent.VK_LEFT
                     || evt.getKeyCode() == KeyEvent.VK_RIGHT){

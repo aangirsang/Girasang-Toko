@@ -5,7 +5,12 @@
  */
 package latihan;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import javax.swing.JFormattedTextField;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.NumberFormatter;
 
 /**
  *
@@ -18,8 +23,11 @@ public class LatihanJtable extends javax.swing.JFrame {
      */
     public LatihanJtable() {
         initComponents();
+        jFormattedTextField1.setText("0");
+        txtBigDecimal.setText("0");
     }
-    private class TabelModel extends AbstractTableModel{
+
+    private class TabelModel extends AbstractTableModel {
 
         @Override
         public int getRowCount() {
@@ -35,7 +43,7 @@ public class LatihanJtable extends javax.swing.JFrame {
         public Object getValueAt(int i, int i1) {
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
-        
+
     }
 
     /**
@@ -49,6 +57,8 @@ public class LatihanJtable extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblLatihan = new javax.swing.JTable();
+        txtBigDecimal = new javax.swing.JTextField();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,25 +77,59 @@ public class LatihanJtable extends javax.swing.JFrame {
             tblLatihan.getColumnModel().getColumn(2).setHeaderValue(org.openide.util.NbBundle.getMessage(LatihanJtable.class, "LatihanJtable.tblLatihan.columnModel.title2")); // NOI18N
         }
 
+        txtBigDecimal.setText(org.openide.util.NbBundle.getMessage(LatihanJtable.class, "LatihanJtable.txtBigDecimal.text")); // NOI18N
+        txtBigDecimal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBigDecimalKeyReleased(evt);
+            }
+        });
+
+        jFormattedTextField1.setText(org.openide.util.NbBundle.getMessage(LatihanJtable.class, "LatihanJtable.jFormattedTextField1.text")); // NOI18N
+        jFormattedTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jFormattedTextField1KeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtBigDecimal, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBigDecimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtBigDecimalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBigDecimalKeyReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtBigDecimalKeyReleased
+
+    private void jFormattedTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextField1KeyReleased
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jFormattedTextField1KeyReleased
 
     /**
      * @param args the command line arguments
@@ -123,7 +167,9 @@ public class LatihanJtable extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblLatihan;
+    private javax.swing.JTextField txtBigDecimal;
     // End of variables declaration//GEN-END:variables
 }

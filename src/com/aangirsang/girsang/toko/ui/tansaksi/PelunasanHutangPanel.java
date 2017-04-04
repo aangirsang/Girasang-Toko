@@ -443,13 +443,14 @@ public class PelunasanHutangPanel extends javax.swing.JPanel {
         });
 
         toolbar.getBtnHapus().addActionListener((ActionEvent ae) -> {
-            /*if (pembelian == null) {
-            JOptionPane.showMessageDialog(null, "Data Barang Belum Terpilih");
+            if ("".equals(idSelect)) {
+                JOptionPane.showMessageDialog(null, "Data Pembelian Belum Terpilih");
             } else {
-            FrameUtama.getMasterService().hapus(pembelian);
-            isiTabelKategori();
-            JOptionPane.showMessageDialog(null, "Hapus Data Berhasil");
-            }*/
+                cariSelect();
+                FrameUtama.getTransaksiService().hapus(pelunasanHutang);
+                isiTabelKategori();
+                JOptionPane.showMessageDialog(null, "Hapus Data Berhasil");
+            }
         });
         toolbar.getBtnFilter().addActionListener((ActionEvent ae) -> {
             /*List <Barang> list = new FilterBarang().showDialog();
