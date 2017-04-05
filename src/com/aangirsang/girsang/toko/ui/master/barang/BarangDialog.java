@@ -360,8 +360,6 @@ public class BarangDialog extends javax.swing.JDialog {
         barang.setStokPenjualanToko(stokPenjualanToko);
         barang.setStokPenjualanGudang(stokPenjualanGudang);
         
-        System.out.println(barang.getStokPembelianToko());
-        System.out.println(barang.getStokPembelianGudang());
         hargaSatuan();
     }
     private class HistoryTabelModel extends AbstractTableModel {

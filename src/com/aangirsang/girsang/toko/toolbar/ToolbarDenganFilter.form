@@ -17,7 +17,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="toolBar" pref="702" max="32767" attributes="0"/>
+              <Component id="toolBar" pref="757" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
@@ -35,7 +35,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="2" attributes="0">
-                  <Component id="toolBar" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="toolBar" alignment="2" max="-2" attributes="0"/>
                   <Group type="102" alignment="2" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnCari" min="-2" max="-2" attributes="0"/>
@@ -57,7 +57,11 @@
           <Border info="null"/>
         </Property>
         <Property name="floatable" type="boolean" value="false"/>
-        <Property name="rollover" type="boolean" value="true"/>
+        <Property name="borderPainted" type="boolean" value="false"/>
+        <Property name="doubleBuffered" type="boolean" value="true"/>
+        <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+          <Insets value="[1, 1, 1, 1]"/>
+        </Property>
       </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>

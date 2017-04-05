@@ -36,7 +36,6 @@ public class RunningNumberTransaksiDao {
         String strTanggal =  new SimpleDateFormat("yyMMdd").format(tanggal);
         String tahun = new SimpleDateFormat("yyyy").format(tanggal);
         RunningNumber r = (RunningNumber) sessionFactory.getCurrentSession().get(RunningNumber.class, id.getId()+tahun);
-        System.out.println(id.getId());
         if(r==null){
             r = new RunningNumber();
             r.setId(id.getId() + tahun);

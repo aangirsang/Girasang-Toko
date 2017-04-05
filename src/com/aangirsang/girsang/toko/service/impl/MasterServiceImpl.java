@@ -201,7 +201,6 @@ public class MasterServiceImpl implements MasterService{
         b.setIsiPembelian(hPPBarang.getIsi());
         
         barangDao.simpan(b);
-        System.out.println(b.getNamaBarang());
         hPPDao.simpan(hPPBarang);
         
     }

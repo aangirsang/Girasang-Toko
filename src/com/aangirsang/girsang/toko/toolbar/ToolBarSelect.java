@@ -29,10 +29,6 @@ public class ToolBarSelect extends javax.swing.JPanel {
         return btnBaru;
     }
 
-    public JButton getBtnCari() {
-        return btnCari;
-    }
-
     public JButton getBtnEdit() {
         return btnEdit;
     }
@@ -50,7 +46,7 @@ public class ToolBarSelect extends javax.swing.JPanel {
     }
 
     public JToolBar getToolBar() {
-        return toolBar;
+        return toolbar;
     }
 
     public JTextField getTxtCari() {
@@ -67,22 +63,24 @@ public class ToolBarSelect extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        toolBar = new javax.swing.JToolBar();
+        toolbar = new javax.swing.JToolBar();
         btnPilih = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         btnBaru = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         btnHapus = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JToolBar.Separator();
-        btnRefresh = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
+        btnRefresh = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         btnKeluar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         txtCari = new javax.swing.JTextField();
-        btnCari = new javax.swing.JButton();
 
-        toolBar.setBorder(null);
-        toolBar.setFloatable(false);
-        toolBar.setRollover(true);
+        toolbar.setFloatable(false);
+        toolbar.setAutoscrolls(true);
+        toolbar.setBorderPainted(false);
+        toolbar.setDoubleBuffered(true);
+        toolbar.setMargin(new java.awt.Insets(1, 1, 1, 1));
 
         btnPilih.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/app-download-icon-32.png"))); // NOI18N
         btnPilih.setText("Pilih");
@@ -92,8 +90,8 @@ public class ToolBarSelect extends javax.swing.JPanel {
         btnPilih.setMinimumSize(new java.awt.Dimension(55, 57));
         btnPilih.setPreferredSize(new java.awt.Dimension(55, 57));
         btnPilih.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        toolBar.add(btnPilih);
-        toolBar.add(jSeparator3);
+        toolbar.add(btnPilih);
+        toolbar.add(jSeparator3);
 
         btnBaru.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/app-icon-32.png"))); // NOI18N
         btnBaru.setText("Baru");
@@ -103,7 +101,7 @@ public class ToolBarSelect extends javax.swing.JPanel {
         btnBaru.setMinimumSize(new java.awt.Dimension(55, 57));
         btnBaru.setPreferredSize(new java.awt.Dimension(55, 57));
         btnBaru.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        toolBar.add(btnBaru);
+        toolbar.add(btnBaru);
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/app-edit-icon-32.png"))); // NOI18N
         btnEdit.setText("Edit");
@@ -113,7 +111,7 @@ public class ToolBarSelect extends javax.swing.JPanel {
         btnEdit.setMinimumSize(new java.awt.Dimension(55, 57));
         btnEdit.setPreferredSize(new java.awt.Dimension(55, 57));
         btnEdit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        toolBar.add(btnEdit);
+        toolbar.add(btnEdit);
 
         btnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/app-delete-icon-32.png"))); // NOI18N
         btnHapus.setText("Hapus");
@@ -123,8 +121,8 @@ public class ToolBarSelect extends javax.swing.JPanel {
         btnHapus.setMinimumSize(new java.awt.Dimension(55, 57));
         btnHapus.setPreferredSize(new java.awt.Dimension(55, 57));
         btnHapus.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        toolBar.add(btnHapus);
-        toolBar.add(jSeparator1);
+        toolbar.add(btnHapus);
+        toolbar.add(jSeparator2);
 
         btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/database_refresh.png"))); // NOI18N
         btnRefresh.setText("Refresh");
@@ -134,8 +132,8 @@ public class ToolBarSelect extends javax.swing.JPanel {
         btnRefresh.setMinimumSize(new java.awt.Dimension(55, 57));
         btnRefresh.setPreferredSize(new java.awt.Dimension(55, 57));
         btnRefresh.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        toolBar.add(btnRefresh);
-        toolBar.add(jSeparator2);
+        toolbar.add(btnRefresh);
+        toolbar.add(jSeparator1);
 
         btnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/logout-icon-32.png"))); // NOI18N
         btnKeluar.setText("Tutup");
@@ -145,48 +143,50 @@ public class ToolBarSelect extends javax.swing.JPanel {
         btnKeluar.setMinimumSize(new java.awt.Dimension(55, 57));
         btnKeluar.setPreferredSize(new java.awt.Dimension(55, 57));
         btnKeluar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        toolBar.add(btnKeluar);
+        toolbar.add(btnKeluar);
+
+        jButton1.setFocusable(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolbar.add(jButton1);
 
         txtCari.setText("jTextField1");
-
-        btnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/find-icon16.png"))); // NOI18N
+        txtCari.setAutoscrolls(false);
+        txtCari.setMaximumSize(new java.awt.Dimension(200, 20));
+        txtCari.setMinimumSize(new java.awt.Dimension(200, 20));
+        txtCari.setPreferredSize(new java.awt.Dimension(200, 20));
+        toolbar.add(txtCari);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, 714, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCari)))
+                .addComponent(toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBaru;
-    private javax.swing.JButton btnCari;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnKeluar;
     private javax.swing.JButton btnPilih;
     private javax.swing.JButton btnRefresh;
+    private javax.swing.JButton jButton1;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
-    private javax.swing.JToolBar toolBar;
+    private javax.swing.JToolBar toolbar;
     private javax.swing.JTextField txtCari;
     // End of variables declaration//GEN-END:variables
 }

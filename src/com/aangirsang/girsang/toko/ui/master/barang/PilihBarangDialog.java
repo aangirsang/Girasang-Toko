@@ -314,7 +314,6 @@ public class PilihBarangDialog extends javax.swing.JDialog {
             } else {
                 cariSelect();
                 Barang s = new BarangDialog().showDialog(barang, title);
-                System.out.println(barang.getPlu());
                 barang = new Barang();
                 if (s != null) {
                     loadFormToModel(s);

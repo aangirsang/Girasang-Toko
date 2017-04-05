@@ -88,7 +88,9 @@ public class ToolbarDenganFilter extends javax.swing.JPanel {
 
         toolBar.setBorder(null);
         toolBar.setFloatable(false);
-        toolBar.setRollover(true);
+        toolBar.setBorderPainted(false);
+        toolBar.setDoubleBuffered(true);
+        toolBar.setMargin(new java.awt.Insets(1, 1, 1, 1));
 
         btnBaru.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/app-icon-32.png"))); // NOI18N
         btnBaru.setText("Baru");
@@ -164,7 +166,7 @@ public class ToolbarDenganFilter extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE)
+                .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 757, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
@@ -178,7 +180,7 @@ public class ToolbarDenganFilter extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnCari)

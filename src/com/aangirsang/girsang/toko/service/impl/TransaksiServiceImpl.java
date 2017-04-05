@@ -107,7 +107,6 @@ public class TransaksiServiceImpl implements TransaksiService {
                 Double isi = Double.valueOf(detail.getIsiPembelian());//harga beli di bagi isi
                 Double hargaSatuan = hargaBeli / isi;
                 BigDecimal hS = new BigDecimal(hargaSatuan, MathContext.DECIMAL64);
-                System.out.println(b.getNamaBarang() + " : " + hargaBeli + " / " + isi + " = " + hargaSatuan);
                 b.setSatuanPembelian(detail.getSatuanPembelian());
                 b.setHargaBeli(BigDecimal.valueOf(hargaSatuan));
                 b.setIsiPembelian(detail.getIsiPembelian());
@@ -123,8 +122,6 @@ public class TransaksiServiceImpl implements TransaksiService {
                 
                 barangDao.simpan(b);
                 hPPDao.simpan(hPPBarang);
-                System.out.println("Stok Pembelian Toko" + b.getStokPembelianToko());
-                System.out.println("Stok Pembelian Gudang" + b.getStokPembelianGudang());
             }
             
         }
@@ -250,7 +247,6 @@ public class TransaksiServiceImpl implements TransaksiService {
                 pembayaranHutang = pembayaranHutang.add(pH.getJlhBayar());
             }
             s.setSaldoHutang(hutangPembelian.subtract(pembayaranHutang));
-            System.out.println(s.getNamaSupplier() + " = " +hutangPembelian);
             
             supplierDao.simpan(s);
         }
