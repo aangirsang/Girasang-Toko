@@ -52,5 +52,7 @@ Contributor(s):
     <mapping class="com.aangirsang.girsang.toko.model.transaksi.PelunasanHutang"/>
     <mapping class="com.aangirsang.girsang.toko.model.transaksi.PelunasanHutangDetail"/>
     <mapping class="com.aangirsang.girsang.toko.model.master.HPPBarang"/>
+    <mapping class="com.aangirsang.girsang.toko.model.security.Pengguna"/>
+    <mapping class="com.aangirsang.girsang.toko.model.security.TingkatAkses"/>
   </session-factory>
 </hibernate-configuration>

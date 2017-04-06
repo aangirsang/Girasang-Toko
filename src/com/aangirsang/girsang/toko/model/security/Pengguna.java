@@ -30,8 +30,8 @@ public class Pengguna implements Serializable{
     @Column(name="NAMA_LENGKAP", length=30, nullable=false)
     private String namaLengkap;
     
-    @ManyToOne(optional=false)
-    @JoinColumn(name="TINGKATAKSES",referencedColumnName="ID")
+    @ManyToOne
+    @JoinColumn(name="TINGKATAKSES")
     private TingkatAkses tingkatAkses;
     
     @Column(name="PASSWORD", length=50, nullable=false)

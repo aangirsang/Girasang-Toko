@@ -46,14 +46,7 @@ public class GenerateDatabase {
                     Dialect.getDialect(cfg.getProperties()));
             SchemaExport export = new SchemaExport(cfg, conn);
             export.create(true, true);
-            String filename = "Database.sql";
-            
-            StringReader reader = new StringReader(filename);
-        try {
-            RunScript.execute(conn, reader);
-        } finally {
             conn.close();
-        }
             
         }
         ctx.registerShutdownHook();
