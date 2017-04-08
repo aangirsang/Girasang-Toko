@@ -74,6 +74,7 @@ public class ToolBarSelect extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JToolBar.Separator();
         btnKeluar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jToolBar1 = new javax.swing.JToolBar();
         txtCari = new javax.swing.JTextField();
 
         toolbar.setFloatable(false);
@@ -150,28 +151,37 @@ public class ToolBarSelect extends javax.swing.JPanel {
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         toolbar.add(jButton1);
 
+        jToolBar1.setFloatable(false);
+
         txtCari.setText("jTextField1");
         txtCari.setAutoscrolls(false);
-        txtCari.setMaximumSize(new java.awt.Dimension(200, 20));
-        txtCari.setMinimumSize(new java.awt.Dimension(200, 20));
-        txtCari.setPreferredSize(new java.awt.Dimension(200, 20));
-        toolbar.add(txtCari);
+        txtCari.setMaximumSize(new java.awt.Dimension(200, 25));
+        txtCari.setMinimumSize(new java.awt.Dimension(200, 25));
+        txtCari.setPreferredSize(new java.awt.Dimension(200, 25));
+        jToolBar1.add(txtCari);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, 714, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 49, Short.MAX_VALUE))
+                .addComponent(toolbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(toolbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jToolBar1, toolbar});
+
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -186,6 +196,7 @@ public class ToolBarSelect extends javax.swing.JPanel {
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JToolBar toolbar;
     private javax.swing.JTextField txtCari;
     // End of variables declaration//GEN-END:variables

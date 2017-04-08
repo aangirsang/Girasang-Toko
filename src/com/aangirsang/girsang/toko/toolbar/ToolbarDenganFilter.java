@@ -27,10 +27,6 @@ public class ToolbarDenganFilter extends javax.swing.JPanel {
         return btnBaru;
     }
 
-    public JButton getBtnCari() {
-        return btnCari;
-    }
-
     public JButton getBtnEdit() {
         return btnEdit;
     }
@@ -59,10 +55,6 @@ public class ToolbarDenganFilter extends javax.swing.JPanel {
         return txtCari;
     }
     
-    public JLabel getlblKet(){
-        return lblKet;
-    }
-
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -82,11 +74,9 @@ public class ToolbarDenganFilter extends javax.swing.JPanel {
         btnRefresh = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         btnKeluar = new javax.swing.JButton();
+        jToolBar1 = new javax.swing.JToolBar();
         txtCari = new javax.swing.JTextField();
-        btnCari = new javax.swing.JButton();
-        lblKet = new javax.swing.JLabel();
 
-        toolBar.setBorder(null);
         toolBar.setFloatable(false);
         toolBar.setBorderPainted(false);
         toolBar.setDoubleBuffered(true);
@@ -154,47 +144,37 @@ public class ToolbarDenganFilter extends javax.swing.JPanel {
         btnKeluar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         toolBar.add(btnKeluar);
 
+        jToolBar1.setFloatable(false);
+
         txtCari.setText("jTextField1");
-
-        btnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/find-icon16.png"))); // NOI18N
-
-        lblKet.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
-        lblKet.setText("jLabel1");
+        txtCari.setAutoscrolls(false);
+        txtCari.setMaximumSize(new java.awt.Dimension(200, 25));
+        txtCari.setMinimumSize(new java.awt.Dimension(200, 25));
+        txtCari.setPreferredSize(new java.awt.Dimension(200, 25));
+        jToolBar1.add(txtCari);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 757, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblKet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnCari)
-                            .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(2, 2, 2)
-                        .addComponent(lblKet)))
-                .addGap(0, 0, 0))
+                .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBaru;
-    private javax.swing.JButton btnCari;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnFilter;
     private javax.swing.JButton btnHapus;
@@ -202,7 +182,7 @@ public class ToolbarDenganFilter extends javax.swing.JPanel {
     private javax.swing.JButton btnRefresh;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
-    private javax.swing.JLabel lblKet;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JToolBar toolBar;
     private javax.swing.JTextField txtCari;
     // End of variables declaration//GEN-END:variables

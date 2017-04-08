@@ -99,7 +99,6 @@ public class PembelianPanel extends javax.swing.JPanel {
         tblPembelian.setModel(new PembelianTabelModel(pembelians));
         toolbar.getTxtCari().setText("");
         ukuranTabelBarang();
-        toolbar.getlblKet().setText("");
         lblJumlahData.setText(pembelians.size() + " Data Pembelian");
         idSelect = "";
     }
@@ -432,7 +431,6 @@ public class PembelianPanel extends javax.swing.JPanel {
                     tblPembelian.setRowSorter(sorter);
                     ukuranTabelBarang();
                     int jml = pembelians.size();
-                    toolbar.getlblKet().setText("Jumlah Pencarian = " + String.valueOf(jml));
                 }
             }
 

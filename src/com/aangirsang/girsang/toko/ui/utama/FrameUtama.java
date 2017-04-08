@@ -9,6 +9,7 @@ package com.aangirsang.girsang.toko.ui.utama;
 import com.aangirsang.girsang.toko.popup.PopUpMenuMaster;
 import com.aangirsang.girsang.toko.popup.PopUpMenuTransaksi;
 import com.aangirsang.girsang.toko.service.MasterService;
+import com.aangirsang.girsang.toko.service.SecurityService;
 import com.aangirsang.girsang.toko.service.TransaksiService;
 import com.toedter.calendar.JDateChooser;
 import java.text.SimpleDateFormat;
@@ -34,6 +35,7 @@ public class FrameUtama extends javax.swing.JFrame {
     private static FrameUtama instance;
     private static MasterService masterService;
     private static TransaksiService transaksiService;
+    private static SecurityService securityService;
 
     public static FrameUtama getInstance() {
         return instance;
@@ -47,6 +49,10 @@ public class FrameUtama extends javax.swing.JFrame {
         return transaksiService;
     }
 
+    public static SecurityService getSecurityService() {
+        return securityService;
+    }
+    
     public static void jam(JDateChooser jdc) {
         Thread t = new Thread(() -> {
             while(true){
@@ -84,8 +90,8 @@ public class FrameUtama extends javax.swing.JFrame {
 
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
-        btnTransaksi = new javax.swing.JButton();
         btnMaster = new javax.swing.JButton();
+        btnTransaksi = new javax.swing.JButton();
         tabbedPane = new javax.swing.JTabbedPane();
         panelHome = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -105,14 +111,6 @@ public class FrameUtama extends javax.swing.JFrame {
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton1);
 
-        btnTransaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/Mutasi 32.png"))); // NOI18N
-        btnTransaksi.setText("Transaksi");
-        btnTransaksi.setFocusable(false);
-        btnTransaksi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnTransaksi.setPreferredSize(new java.awt.Dimension(55, 65));
-        btnTransaksi.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnTransaksi);
-
         btnMaster.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/shop.png"))); // NOI18N
         btnMaster.setText("Master");
         btnMaster.setFocusable(false);
@@ -122,6 +120,14 @@ public class FrameUtama extends javax.swing.JFrame {
         btnMaster.setPreferredSize(new java.awt.Dimension(55, 65));
         btnMaster.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(btnMaster);
+
+        btnTransaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/Mutasi 32.png"))); // NOI18N
+        btnTransaksi.setText("Transaksi");
+        btnTransaksi.setFocusable(false);
+        btnTransaksi.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnTransaksi.setPreferredSize(new java.awt.Dimension(55, 65));
+        btnTransaksi.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnTransaksi);
 
         javax.swing.GroupLayout panelHomeLayout = new javax.swing.GroupLayout(panelHome);
         panelHome.setLayout(panelHomeLayout);
@@ -193,6 +199,7 @@ public class FrameUtama extends javax.swing.JFrame {
 
             masterService = (MasterService) ctx.getBean("MasterService");
             transaksiService = (TransaksiService) ctx.getBean("TransaksiService");
+            securityService = (SecurityService) ctx.getBean("SecurityService");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Terjadi Masalah Pada Database","Error",JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();

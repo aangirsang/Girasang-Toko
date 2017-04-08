@@ -79,7 +79,6 @@ public class GolonganBarangPanel extends javax.swing.JPanel {
         tbGolonganBarang.setModel(new kategoriTabelModel(golonganBarangs));
         toolbarTanpaFilter1.getTxtCari().setText("");
         ukuranTabelBarang();
-        toolbarTanpaFilter1.getlblKet().setText("");
         lblJumlahData.setText(golonganBarangs.size() + " Data Golongan Barang");
         idSelect = "";
     }
@@ -169,7 +168,6 @@ public class GolonganBarangPanel extends javax.swing.JPanel {
                     tbGolonganBarang.setRowSorter(sorter);
                     ukuranTabelBarang();
                     int jml = golonganBarangs.size();
-                    toolbarTanpaFilter1.getlblKet().setText("Jumlah Pencarian = " + String.valueOf(jml));
                 }
             }
 

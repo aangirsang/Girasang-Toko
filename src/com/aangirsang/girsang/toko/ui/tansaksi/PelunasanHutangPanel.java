@@ -99,7 +99,6 @@ public class PelunasanHutangPanel extends javax.swing.JPanel {
         tblPelunasan.setModel(new PembelianTabelModel(daftarPelunasan));
         toolbar.getTxtCari().setText("");
         ukuranTabelBarang();
-        toolbar.getlblKet().setText("");
         lblJumlahData.setText(daftarPelunasan.size() + " Data Pembelian");
         idSelect = "";
     }

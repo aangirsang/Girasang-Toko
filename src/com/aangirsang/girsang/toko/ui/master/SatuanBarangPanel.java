@@ -80,7 +80,6 @@ public class SatuanBarangPanel extends javax.swing.JPanel {
         tblKategori.setModel(new kategoriTabelModel(satuanBarangs));
         toolbarTanpaFilter1.getTxtCari().setText("");
         ukuranTabelBarang();
-        toolbarTanpaFilter1.getlblKet().setText("");
         lblJumlahData.setText(satuanBarangs.size() + " Data Satuan Barang");
     }
 
@@ -184,7 +183,6 @@ public class SatuanBarangPanel extends javax.swing.JPanel {
                     tblKategori.setRowSorter(sorter);
                     ukuranTabelBarang();
                     int jml = satuanBarangs.size();
-                    toolbarTanpaFilter1.getlblKet().setText("Jumlah Pencarian = " + String.valueOf(jml));
                 }
             }
 

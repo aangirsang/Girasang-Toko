@@ -95,7 +95,6 @@ public class BarangPanel extends javax.swing.JPanel {
         tblBarang.setModel(new BarangTabelModel(barangs));
         toolbar.getTxtCari().setText("");
         ukuranTabelBarang();
-        toolbar.getlblKet().setText("");
         lblJumlahData.setText(barangs.size() + " Data Barang");
         idSelect = "";
     }
@@ -341,7 +340,6 @@ public class BarangPanel extends javax.swing.JPanel {
                     tblBarang.setRowSorter(sorter);
                     ukuranTabelBarang();
                     int jml = barangs.size();
-                    toolbar.getlblKet().setText("Jumlah Pencarian = " + String.valueOf(jml));
                 }
             }
 

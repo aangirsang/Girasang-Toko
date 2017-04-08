@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.aangirsang.girsang.toko.ui.tansaksi;
+package com.aangirsang.girsang.toko.ui.security;
 
 import com.aangirsang.girsang.toko.model.master.Barang;
 import com.aangirsang.girsang.toko.model.master.Supplier;
+import com.aangirsang.girsang.toko.model.security.Pengguna;
 import com.aangirsang.girsang.toko.model.transaksi.Pembelian;
 import com.aangirsang.girsang.toko.toolbar.ToolbarDenganFilter;
 import com.aangirsang.girsang.toko.ui.tansaksi.dialog.PembelianDialog;
@@ -46,11 +47,10 @@ import org.apache.poi.ss.util.CellRangeAddress;
  *
  * @author ITSUSAHBRO
  */
-public class PenjualanPanel extends javax.swing.JPanel {
+public class PenggunaPanel extends javax.swing.JPanel {
 
-    private List<Pembelian> pembelians;
-    private Pembelian pembelian;
-    private Supplier supplier;
+    private List<Pengguna> penggunas;
+    private Pengguna pengguna;
 
     int IndexTab = 0;
     int aktifPanel = 0;
@@ -60,54 +60,46 @@ public class PenjualanPanel extends javax.swing.JPanel {
     public int getIndexTab() {
         return IndexTab;
     }
-
     public void setIndexTab(int IndexTab) {
         this.IndexTab = IndexTab;
     }
-
     public int getAktifPanel() {
         return aktifPanel;
     }
-
     public void setAktifPanel(int aktifPanel) {
         this.aktifPanel = aktifPanel;
     }
-
     public ToolbarDenganFilter getToolbarDenganFilter1() {
         return toolbar;
     }
 
-    /**
-     * Creates new form KategoriPanel
-     */
-    public PenjualanPanel() {
+    public PenggunaPanel() {
         initComponents();
         initListener();
-        tblPenjualan.setDefaultRenderer(BigDecimal.class, new BigDecimalRenderer());
-        tblPenjualan.setDefaultRenderer(Date.class, new DateRenderer());
-        tblPenjualan.setDefaultRenderer(Integer.class, new IntegerRenderer());
+        tabel.setDefaultRenderer(BigDecimal.class, new BigDecimalRenderer());
+        tabel.setDefaultRenderer(Date.class, new DateRenderer());
+        tabel.setDefaultRenderer(Integer.class, new IntegerRenderer());
         isiTabelKategori();
     }
-
-    private void ukuranTabelBarang() {
-        tblPenjualan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        tblPenjualan.getColumnModel().getColumn(0).setPreferredWidth(200);//Tanggal
-        tblPenjualan.getColumnModel().getColumn(1).setPreferredWidth(100);//No. Ref
-        tblPenjualan.getColumnModel().getColumn(2).setPreferredWidth(100);//No. Faktur
-        tblPenjualan.getColumnModel().getColumn(3).setPreferredWidth(350);//Supplier
-        tblPenjualan.getColumnModel().getColumn(4).setPreferredWidth(50);//Kredit
-        tblPenjualan.getColumnModel().getColumn(5).setPreferredWidth(100);//Tgl. Tempo
-        tblPenjualan.getColumnModel().getColumn(6).setPreferredWidth(100);//Jlh. Pembelian
-        tblPenjualan.getColumnModel().getColumn(7).setPreferredWidth(300);//Pembuat
+    private void ukuranTabel() {
+        tabel.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tabel.getColumnModel().getColumn(0).setPreferredWidth(200);//Tanggal
+        tabel.getColumnModel().getColumn(1).setPreferredWidth(100);//No. Ref
+        tabel.getColumnModel().getColumn(2).setPreferredWidth(100);//No. Faktur
+        tabel.getColumnModel().getColumn(3).setPreferredWidth(350);//Supplier
+        tabel.getColumnModel().getColumn(4).setPreferredWidth(50);//Kredit
+        tabel.getColumnModel().getColumn(5).setPreferredWidth(100);//Tgl. Tempo
+        tabel.getColumnModel().getColumn(6).setPreferredWidth(100);//Jlh. Pembelian
+        tabel.getColumnModel().getColumn(7).setPreferredWidth(300);//Pembuat
     }
     private void isiTabelKategori() {
-        pembelians = FrameUtama.getTransaksiService().semuaPembelian();
-        RowSorter<TableModel> sorter = new TableRowSorter<>(new PembelianTabelModel(pembelians));
-        tblPenjualan.setRowSorter(sorter);
-        tblPenjualan.setModel(new PembelianTabelModel(pembelians));
+        penggunas = FrameUtama.getSecurityService().semuaPengguna();
+        RowSorter<TableModel> sorter = new TableRowSorter<>(new TabelModel(penggunas));
+        tabel.setRowSorter(sorter);
+        tabel.setModel(new TabelModel(penggunas));
         toolbar.getTxtCari().setText("");
-        ukuranTabelBarang();
-        lblJumlahData.setText(pembelians.size() + " Data Pembelian");
+        ukuranTabel();
+        lblJumlahData.setText(penggunas.size() + " Data Pembelian");
         idSelect = "";
     }
     private void exportExcel(List<Barang> dataList) throws IOException {
@@ -209,30 +201,21 @@ public class PenjualanPanel extends javax.swing.JPanel {
             }
         }
     }
-    private void loadFormToModel(Pembelian p) {
-        pembelian.setNoRef(p.getNoRef());
-        pembelian.setTanggal(p.getTanggal());
-        pembelian.setNoFaktur(p.getNoFaktur());
-        pembelian.setSupplier(p.getSupplier());
-        pembelian.setKredit(p.getKredit());
-        pembelian.setDaftarKredit(p.getDaftarKredit());
-        pembelian.setTotal(p.getTotal());
-        pembelian.setPembuat(p.getPembuat());
-        pembelian.setPembelianDetails(p.getPembelianDetails());
-        pembelian.setLokasi(p.getLokasi());
+    private void loadFormToModel(Pengguna p) {
+        pengguna = p;
     }
     private void cariSelect() {
-        pembelian = new Pembelian();
-        pembelian = FrameUtama.getTransaksiService().cariPembelian(idSelect);
+        pengguna = new Pengguna();
+        pengguna = FrameUtama.getSecurityService().cariIdPengguna(idSelect);
     }
-    private class PembelianTabelModel extends AbstractTableModel {
-        private final List<Pembelian> daftarPembelian;
-        public PembelianTabelModel(List<Pembelian> daftarPembelian) {
-            this.daftarPembelian = daftarPembelian;
+    private class TabelModel extends AbstractTableModel {
+        private final List<Pengguna> daftarPengguna;
+        public TabelModel(List<Pengguna> daftarPengguna) {
+            this.daftarPengguna = daftarPengguna;
         }
         @Override
         public int getRowCount() {
-            return daftarPembelian.size();
+            return daftarPengguna.size();
         }
         @Override
         public int getColumnCount() {
@@ -242,14 +225,14 @@ public class PenjualanPanel extends javax.swing.JPanel {
         @Override
         public String getColumnName(int col) {
             switch (col) {
-                case 0:return "Tanggal";
-                case 1:return "No. Ref";
-                case 2:return "No. Faktur";
-                case 3:return "Supplier";
-                case 4:return "Kredit";
-                case 5:return "Tgl. Tempo";
-                case 6:return "Jlh. Pembelian";
-                case 7:return "Pembuat";
+                case 0:return "ID Pengguna";
+                case 1:return "Username";
+                case 2:return "Nama Lengkap";
+                case 3:return "Tingkat Akses";
+                case 4:return "Alamat";
+                case 5:return "Kontak HP";
+                case 6:return "Kontak Telepon";
+                case 7:return "Status";
                 default:return "";
             }
 
@@ -257,31 +240,16 @@ public class PenjualanPanel extends javax.swing.JPanel {
 
         @Override
         public Object getValueAt(int rowIndex, int colIndex) {
-            Pembelian p = pembelians.get(rowIndex);
+            Pengguna p = penggunas.get(rowIndex);
             switch (colIndex) {
-                case 0:return p.getTanggal();
-                case 1:return p.getNoRef();
-                case 2:
-                    if(p.getNoFaktur()!=""){
-                        return p.getNoFaktur();
-                    }else{
-                        return "-";
-                    }
-                case 3:
-                    if(p.getSupplier()!=null){
-                        return p.getSupplier().getNamaSupplier();
-                    }else{
-                        return "-";
-                    }
-                case 4:return p.getKredit();
-                case 5:
-                if(p.getKredit()==true){
-                    return p.getDaftarKredit().getTanggalTempo();
-                }else{
-                    return "-";
-                }
-                case 6:return p.getTotal();
-                case 7:return p.getPembuat();
+                case 0:return p.getIdPengguna();
+                case 1:return p.getUserName();
+                case 2:return p.getNamaLengkap();
+                case 3:return p.getTingkatAkses().getNamaTingkatAkses();
+                case 4:return p.getAlamat();
+                case 5:return p.getHp();
+                case 6:return p.getTelepon();
+                case 7:return p.getStatus();
                 default:return "";
             }
         }
@@ -289,21 +257,116 @@ public class PenjualanPanel extends javax.swing.JPanel {
         @Override
         public Class<?> getColumnClass(int columnIndex) {
             switch (columnIndex) {
-                case 0:return Date.class;
-                case 4:return Boolean.class;
-                case 6:return BigDecimal.class;
+                case 7:return BigDecimal.class;
                 default:return String.class;
             }
         }
     }
+    
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabel = new javax.swing.JTable();
+        lblJumlahData = new javax.swing.JLabel();
+        toolbar = new com.aangirsang.girsang.toko.toolbar.ToolbarDenganFilter();
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/User 64.png"))); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabel2.setText("Daftar Data Pengguna");
+
+        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
+        jLabel3.setText("Disini anda bisa menambah, mengedit atau menghapus data Pengguna");
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        tabel.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tabel);
+
+        lblJumlahData.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        lblJumlahData.setText("jLabel4");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(toolbar, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblJumlahData, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addGap(5, 5, 5))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblJumlahData)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(5, 5, 5))
+        );
+    }// </editor-fold>//GEN-END:initComponents
 
     private void initListener() {
-        tblPenjualan.getSelectionModel().addListSelectionListener((ListSelectionEvent lse) -> {
-            if (tblPenjualan.getSelectedRow() >= 0) {
-                idSelect = tblPenjualan.getValueAt(tblPenjualan.getSelectedRow(), 1).toString();
+        tabel.getSelectionModel().addListSelectionListener((ListSelectionEvent lse) -> {
+            if (tabel.getSelectedRow() >= 0) {
+                idSelect = tabel.getValueAt(tabel.getSelectedRow(), 1).toString();
             }
         });
-        tblPenjualan.addMouseListener(new MouseAdapter() {
+        tabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent me) {
                 if (me.getClickCount() == 2) {
@@ -312,7 +375,7 @@ public class PenjualanPanel extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(null, "Data Pembelian Belum Terpilih");
                     } else {
                         cariSelect();
-                        Pembelian p = new PembelianDialog().showDialog(pembelian,pembelian.getSupplier(), title);
+                        Pengguna p = new PembelianDialog().showDialog(pembelian,pembelian.getSupplier(), title);
                         pembelian = new Pembelian();
                         if (p != null) {
                             loadFormToModel(p);
@@ -331,12 +394,12 @@ public class PenjualanPanel extends javax.swing.JPanel {
                 if ("".equals(toolbar.getTxtCari().getText())) {
                     isiTabelKategori();
                 } else {
-                    pembelians = (List<Pembelian>) FrameUtama.getTransaksiService().cariPembelian(toolbar.getTxtCari().getText());
-                    tblPenjualan.setModel(new PembelianTabelModel(pembelians));
-                    RowSorter<TableModel> sorter = new TableRowSorter<>(new PembelianTabelModel(pembelians));
-                    tblPenjualan.setRowSorter(sorter);
-                    ukuranTabelBarang();
-                    int jml = pembelians.size();
+                    penggunas = (List<Pembelian>) FrameUtama.getTransaksiService().cariPembelian(toolbar.getTxtCari().getText());
+                    tabel.setModel(new TabelModel(penggunas));
+                    RowSorter<TableModel> sorter = new TableRowSorter<>(new TabelModel(penggunas));
+                    tabel.setRowSorter(sorter);
+                    ukuranTabel();
+                    int jml = penggunas.size();
                 }
             }
 
@@ -404,108 +467,6 @@ public class PenjualanPanel extends javax.swing.JPanel {
         });
     }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblPenjualan = new javax.swing.JTable();
-        lblJumlahData = new javax.swing.JLabel();
-        toolbar = new com.aangirsang.girsang.toko.toolbar.ToolbarDenganFilter();
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/Cash register-64x64.png"))); // NOI18N
-
-        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        jLabel2.setText("Daftar Transaksi Penjualan");
-
-        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
-        jLabel3.setText("Disini anda bisa menambah, mengedit atau menghapus data Transaksi Pembelian");
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        tblPenjualan.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Tanggal", "No. Ref", "Pelanggan", "Kredit", "Tgl. Tempo", "Jumlah Penjualan", "Pembulatan", "Total", "Kasir"
-            }
-        ));
-        jScrollPane1.setViewportView(tblPenjualan);
-        if (tblPenjualan.getColumnModel().getColumnCount() > 0) {
-            tblPenjualan.getColumnModel().getColumn(0).setResizable(false);
-            tblPenjualan.getColumnModel().getColumn(1).setResizable(false);
-        }
-
-        lblJumlahData.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
-        lblJumlahData.setText("jLabel4");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(toolbar, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblJumlahData, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
-                .addGap(5, 5, 5))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblJumlahData)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(5, 5, 5))
-        );
-    }// </editor-fold>//GEN-END:initComponents
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -513,7 +474,7 @@ public class PenjualanPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblJumlahData;
-    private javax.swing.JTable tblPenjualan;
+    private javax.swing.JTable tabel;
     private com.aangirsang.girsang.toko.toolbar.ToolbarDenganFilter toolbar;
     // End of variables declaration//GEN-END:variables
 }

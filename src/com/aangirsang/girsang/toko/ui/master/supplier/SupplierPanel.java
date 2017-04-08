@@ -88,7 +88,6 @@ public class SupplierPanel extends javax.swing.JPanel {
         tblSupplier.setModel(new kategoriTabelModel(suppliers));
         toolbarTanpaFilter1.getTxtCari().setText("");
         ukuranTabelProduk();
-        toolbarTanpaFilter1.getlblKet().setText("");
         lblJumlahData.setText(suppliers.size() + " Data Supplier");
     }
 
@@ -202,7 +201,6 @@ public class SupplierPanel extends javax.swing.JPanel {
                     tblSupplier.setRowSorter(sorter);
                     ukuranTabelProduk();
                     int jml = suppliers.size();
-                    toolbarTanpaFilter1.getlblKet().setText("Jumlah Pencarian = " + String.valueOf(jml));
                 }
             }
 
