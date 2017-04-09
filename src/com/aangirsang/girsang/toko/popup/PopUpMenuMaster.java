@@ -9,6 +9,7 @@ import com.aangirsang.girsang.toko.ui.master.barang.BarangPanel;
 import com.aangirsang.girsang.toko.ui.master.GolonganBarangPanel;
 import com.aangirsang.girsang.toko.ui.master.SatuanBarangPanel;
 import com.aangirsang.girsang.toko.ui.master.supplier.SupplierPanel;
+import com.aangirsang.girsang.toko.ui.security.PenggunaPanel;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.AbstractButton;
@@ -23,7 +24,7 @@ import javax.swing.JTabbedPane;
  */
 public class PopUpMenuMaster extends AbstractButton {
 
-    /*SatuanPanel satuanPanel = new SatuanPanel();*/
+    PenggunaPanel penggunaPanel = new PenggunaPanel();
     GolonganBarangPanel golonganBarangPanel = new GolonganBarangPanel();
     SatuanBarangPanel satuanBarangPanel = new SatuanBarangPanel();
     SupplierPanel supplierPanel = new SupplierPanel();
@@ -107,6 +108,26 @@ public class PopUpMenuMaster extends AbstractButton {
                     supplierPanel.getToolbarTanpaFilter1().getBtnKeluar().addActionListener((ae1) -> {
                         TP.remove(supplierPanel);
                         supplierPanel.setAktifPanel(supplierPanel.getAktifPanel() - 1);
+                        TP.setSelectedIndex(0);
+                    });
+                }
+            }
+        }));
+        popupMenuMaster.add(new JMenuItem(new AbstractAction("Pengguna") {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                penggunaPanel.setName("Daftar Pengguna");
+                if (penggunaPanel.getAktifPanel() == 1) {
+                    TP.setSelectedIndex(penggunaPanel.getIndexTab());
+                } else {
+                    penggunaPanel.setAktifPanel(penggunaPanel.getAktifPanel() + 1);
+                    TP.addTab(penggunaPanel.getName(), penggunaPanel);
+                    penggunaPanel.setIndexTab(TP.getTabCount() - 1);
+                    TP.setSelectedIndex(penggunaPanel.getIndexTab());
+                    
+                    penggunaPanel.getToolbarDenganFilter().getBtnKeluar().addActionListener((ae1) -> {
+                        TP.remove(penggunaPanel);
+                        penggunaPanel.setAktifPanel(penggunaPanel.getAktifPanel() - 1);
                         TP.setSelectedIndex(0);
                     });
                 }

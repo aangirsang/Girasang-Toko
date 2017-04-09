@@ -28,7 +28,7 @@ import org.hibernate.annotations.Cascade;
  * @author GIRSANG PC
  */
 @Entity
-@Table(name="TR_PELUNASAN_HUTANG")
+@Table(name="PELUNASANHUTANG")
 public class PelunasanHutang implements Serializable{
     @Id
     @Column(name="NO_REF",length=15)

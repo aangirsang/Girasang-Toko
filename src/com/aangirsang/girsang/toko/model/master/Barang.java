@@ -24,7 +24,7 @@ import javax.persistence.Table;
  * @author GIRSANG PC
  */
 @Entity
-@Table(name="MST_BARANG")
+@Table(name="BARANG")
 public class Barang implements Serializable{
     @Id
     @Column(name="PLU",length=8)
@@ -40,7 +40,7 @@ public class Barang implements Serializable{
     private String barcode2;
     
     @ManyToOne(optional=false)
-    @JoinColumn(name="GOLONGAN",referencedColumnName="ID")
+    @JoinColumn(name="GOLONGAN",referencedColumnName="ID_GOLONGANBARANG")
     private GolonganBarang golonganBarang;
     
     @Column(name="SATUAN",length=20)

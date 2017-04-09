@@ -22,7 +22,7 @@ import javax.persistence.TemporalType;
  * @author GIRSANG PC
  */
 @Entity
-@Table(name="MST_HPP_BARANG")
+@Table(name="HPP")
 public class HPPBarang implements Serializable{
     @Id
     @Column(name="ID_HPP",length=8)

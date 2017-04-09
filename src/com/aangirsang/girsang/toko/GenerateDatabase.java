@@ -5,16 +5,9 @@
  */
 package com.aangirsang.girsang.toko;
 
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.StringReader;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
 import javax.sql.DataSource;
-import org.h2.engine.Database;
-import org.h2.tools.RunScript;
-import org.h2.tools.Script;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.dialect.Dialect;

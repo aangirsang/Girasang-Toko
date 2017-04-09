@@ -8,8 +8,6 @@ package com.aangirsang.girsang.toko.model.master;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -18,13 +16,13 @@ import javax.persistence.Table;
  * @author GIRSANG PC
  */
 @Entity
-@Table(name="MST_SATUAN_BARANG")
+@Table(name="SATUANUMUM")
 public class SatuanBarang implements Serializable{
     @Id
-    @Column(name="ID",length=6)
+    @Column(name="ID_SATUANUMUM",length=6)
     private String id;
     
-    @Column(name="SATUAN_BARANG",length=50)
+    @Column(name="NAMA_SATUANUMUM",length=50)
     private String satuanBarang;
 
     public String getId() {

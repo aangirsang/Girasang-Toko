@@ -69,13 +69,12 @@ public class PenggunaPanel extends javax.swing.JPanel {
     public void setAktifPanel(int aktifPanel) {
         this.aktifPanel = aktifPanel;
     }
-    public ToolbarDenganFilter getToolbarDenganFilter1() {
+    public ToolbarDenganFilter getToolbarDenganFilter() {
         return toolbar;
     }
 
     public PenggunaPanel() {
         initComponents();
-        initListener();
         tabel.setDefaultRenderer(BigDecimal.class, new BigDecimalRenderer());
         tabel.setDefaultRenderer(Date.class, new DateRenderer());
         tabel.setDefaultRenderer(Integer.class, new IntegerRenderer());
@@ -360,112 +359,7 @@ public class PenggunaPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void initListener() {
-        tabel.getSelectionModel().addListSelectionListener((ListSelectionEvent lse) -> {
-            if (tabel.getSelectedRow() >= 0) {
-                idSelect = tabel.getValueAt(tabel.getSelectedRow(), 1).toString();
-            }
-        });
-        tabel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent me) {
-                if (me.getClickCount() == 2) {
-                    title = "Edit Data Pembelian";
-                    if ("".equals(idSelect)) {
-                        JOptionPane.showMessageDialog(null, "Data Pembelian Belum Terpilih");
-                    } else {
-                        cariSelect();
-                        Pengguna p = new PembelianDialog().showDialog(pembelian,pembelian.getSupplier(), title);
-                        pembelian = new Pembelian();
-                        if (p != null) {
-                            loadFormToModel(p);
-                            FrameUtama.getTransaksiService().simpan(pembelian);
-                            isiTabelKategori();
-                            JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
-                            title = null;
-                        }
-                    }
-                }
-            }
-        });
-        toolbar.getTxtCari().addKeyListener(new KeyListener() {
-            @Override
-            public void keyReleased(KeyEvent ke) {
-                if ("".equals(toolbar.getTxtCari().getText())) {
-                    isiTabelKategori();
-                } else {
-                    penggunas = (List<Pembelian>) FrameUtama.getTransaksiService().cariPembelian(toolbar.getTxtCari().getText());
-                    tabel.setModel(new TabelModel(penggunas));
-                    RowSorter<TableModel> sorter = new TableRowSorter<>(new TabelModel(penggunas));
-                    tabel.setRowSorter(sorter);
-                    ukuranTabel();
-                    int jml = penggunas.size();
-                }
-            }
-
-            @Override
-            public void keyTyped(KeyEvent ke) {
-            }
-
-            @Override
-            public void keyPressed(KeyEvent ke) {
-            }
-        });
-
-        toolbar.getBtnRefresh().addActionListener((ActionEvent ae) -> {
-            isiTabelKategori();
-        });
-
-        toolbar.getBtnBaru().addActionListener((ActionEvent ae) -> {
-            isiTabelKategori();
-            pembelian = null;
-            supplier = null;
-            title = "Tambah Data Barang";
-            Pembelian p = new PembelianDialog().showDialog(pembelian, supplier, title);
-            pembelian = new Pembelian();
-            if (p != null) {
-                loadFormToModel(p);
-                pembelian.setNoRef("");
-                FrameUtama.getTransaksiService().simpan(pembelian);
-                isiTabelKategori();
-                JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
-                title = null;
-            }
-            pembelian = null;
-        });
-
-        toolbar.getBtnEdit().addActionListener((ActionEvent ae) -> {
-            title = "Edit Data Barang";
-            if ("".equals(idSelect)) {
-                        JOptionPane.showMessageDialog(null, "Data Pembelian Belum Terpilih");
-                    } else {
-                        cariSelect();
-                        Pembelian p = new PembelianDialog().showDialog(pembelian, pembelian.getSupplier(), title);
-                        pembelian = new Pembelian();
-                        if (p != null) {
-                            loadFormToModel(p);
-                            FrameUtama.getTransaksiService().simpan(pembelian);
-                            isiTabelKategori();
-                            JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
-                            title = null;
-                        }
-                    }
-        });
-
-        toolbar.getBtnHapus().addActionListener((ActionEvent ae) -> {
-            /*if (pembelian == null) {
-            JOptionPane.showMessageDialog(null, "Data Barang Belum Terpilih");
-            } else {
-            FrameUtama.getMasterService().hapus(pembelian);
-            isiTabelKategori();
-            JOptionPane.showMessageDialog(null, "Hapus Data Berhasil");
-            }*/
-        });
-        toolbar.getBtnFilter().addActionListener((ActionEvent ae) -> {
-            /*List <Barang> list = new FilterBarang().showDialog();
-            System.out.println("Fiter Barang");*/
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

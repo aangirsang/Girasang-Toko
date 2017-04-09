@@ -35,7 +35,6 @@ public class GolonganBarangPanel extends javax.swing.JPanel {
     int IndexTab = 0;
     int aktifPanel = 0;
     String title, idSelect = "";
-    ToolbarTanpaFilter toolBar = new ToolbarTanpaFilter();
 
     public int getIndexTab() {
         return IndexTab;
@@ -54,7 +53,7 @@ public class GolonganBarangPanel extends javax.swing.JPanel {
     }
 
     public ToolbarTanpaFilter getToolbarTanpaFilter1() {
-        return toolbarTanpaFilter1;
+        return toolbar;
     }
 
     /**
@@ -77,7 +76,7 @@ public class GolonganBarangPanel extends javax.swing.JPanel {
         RowSorter<TableModel> sorter = new TableRowSorter<>(new kategoriTabelModel(golonganBarangs));
         tbGolonganBarang.setRowSorter(sorter);
         tbGolonganBarang.setModel(new kategoriTabelModel(golonganBarangs));
-        toolbarTanpaFilter1.getTxtCari().setText("");
+        toolbar.getTxtCari().setText("");
         ukuranTabelBarang();
         lblJumlahData.setText(golonganBarangs.size() + " Data Golongan Barang");
         idSelect = "";
@@ -156,13 +155,13 @@ public class GolonganBarangPanel extends javax.swing.JPanel {
                 }
             }
         });
-        toolbarTanpaFilter1.getTxtCari().addKeyListener(new KeyListener() {
+        toolbar.getTxtCari().addKeyListener(new KeyListener() {
             @Override
             public void keyReleased(KeyEvent ke) {
-                if ("".equals(toolbarTanpaFilter1.getTxtCari().getText())) {
+                if ("".equals(toolbar.getTxtCari().getText())) {
                     isiTabelKategori();
                 } else {
-                    golonganBarangs = FrameUtama.getMasterService().cariNamaGolonganBarang(toolbarTanpaFilter1.getTxtCari().getText());
+                    golonganBarangs = FrameUtama.getMasterService().cariNamaGolonganBarang(toolbar.getTxtCari().getText());
                     tbGolonganBarang.setModel(new kategoriTabelModel(golonganBarangs));
                     RowSorter<TableModel> sorter = new TableRowSorter<>(new kategoriTabelModel(golonganBarangs));
                     tbGolonganBarang.setRowSorter(sorter);
@@ -180,11 +179,11 @@ public class GolonganBarangPanel extends javax.swing.JPanel {
             }
         });
 
-        toolbarTanpaFilter1.getBtnRefresh().addActionListener((ActionEvent ae) -> {
+        toolbar.getBtnRefresh().addActionListener((ActionEvent ae) -> {
             isiTabelKategori();
         });
 
-        toolbarTanpaFilter1.getBtnBaru().addActionListener((ActionEvent ae) -> {
+        toolbar.getBtnBaru().addActionListener((ActionEvent ae) -> {
             isiTabelKategori();
             golonganBarang = null;
             title = "Tambah Data Golongan";
@@ -201,7 +200,7 @@ public class GolonganBarangPanel extends javax.swing.JPanel {
             golonganBarang = null;
         });
 
-        toolbarTanpaFilter1.getBtnEdit().addActionListener((ActionEvent ae) -> {
+        toolbar.getBtnEdit().addActionListener((ActionEvent ae) -> {
             title = "Edit Data Golongan";
             if ("".equals(idSelect)) {
                 JOptionPane.showMessageDialog(null, "Data Kategori Belum Terpilih");
@@ -221,7 +220,7 @@ public class GolonganBarangPanel extends javax.swing.JPanel {
             }
         });
 
-        toolbarTanpaFilter1.getBtnHapus().addActionListener((ActionEvent ae) -> {
+        toolbar.getBtnHapus().addActionListener((ActionEvent ae) -> {
             if (golonganBarang == null) {
                 JOptionPane.showMessageDialog(null, "Data Kategori Belum Terpilih");
             } else {
@@ -247,8 +246,8 @@ public class GolonganBarangPanel extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbGolonganBarang = new javax.swing.JTable();
-        toolbarTanpaFilter1 = new com.aangirsang.girsang.toko.toolbar.ToolbarTanpaFilter();
         lblJumlahData = new javax.swing.JLabel();
+        toolbar = new com.aangirsang.girsang.toko.toolbar.ToolbarTanpaFilter();
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/GolonganBarang 63X63.png"))); // NOI18N
 
@@ -282,23 +281,18 @@ public class GolonganBarangPanel extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(toolbarTanpaFilter1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addGap(5, 5, 5))))
+                .addComponent(jScrollPane1)
+                .addGap(5, 5, 5))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblJumlahData, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(toolbar, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(toolbarTanpaFilter1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -345,6 +339,6 @@ public class GolonganBarangPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblJumlahData;
     private javax.swing.JTable tbGolonganBarang;
-    private com.aangirsang.girsang.toko.toolbar.ToolbarTanpaFilter toolbarTanpaFilter1;
+    private com.aangirsang.girsang.toko.toolbar.ToolbarTanpaFilter toolbar;
     // End of variables declaration//GEN-END:variables
 }

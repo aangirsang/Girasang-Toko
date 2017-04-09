@@ -28,7 +28,7 @@ import org.hibernate.annotations.Cascade;
  * @author ITSUSAHBRO
  */
 @Entity
-@Table(name="TR_PEMBELIAN")
+@Table(name="PEMBELIAN")
 public class Pembelian implements Serializable{
     @Id
     @Column(name="NO_REF",length=15)

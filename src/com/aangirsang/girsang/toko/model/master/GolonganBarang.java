@@ -16,13 +16,13 @@ import javax.persistence.Table;
  * @author GIRSANG PC
  */
 @Entity
-@Table(name="MST_GOLONGAN_BARANG")
+@Table(name="GOLONGANBARANG")
 public class GolonganBarang implements Serializable{
     @Id
-    @Column(name="ID",length=6)
+    @Column(name="ID_GOLONGANBARANG",length=6)
     private String id;
     
-    @Column(name="GOLONGAN_BARANG",length=50)
+    @Column(name="NAMA_GOLONGANBARANG",length=50)
     private String golonganBarang;
 
     public String getId() {

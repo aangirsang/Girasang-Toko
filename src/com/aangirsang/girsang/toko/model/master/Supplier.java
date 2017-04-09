@@ -19,10 +19,10 @@ import javax.persistence.Table;
  * @author GIRSANG PC
  */
 @Entity
-@Table(name="MST_SUPPLIER")
+@Table(name="SUPPLIER")
 public class Supplier implements Serializable{
     @Id
-    @Column(name="ID",length=6)
+    @Column(name="ID_SUPPLIER",length=6)
     private String id;
     
     @Column(name="NAMA_SUPPLIER",length=30)

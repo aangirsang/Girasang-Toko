@@ -20,7 +20,7 @@ import javax.persistence.Table;
  * @author ITSUSAHBRO
  */
 @Entity
-@Table(name="TR_PEMBELIAN_DETAIL")
+@Table(name="DETAILPEMBELIAN")
 public class PembelianDetail implements Serializable{
     @Id
     @Column(name="ID",length=20)
