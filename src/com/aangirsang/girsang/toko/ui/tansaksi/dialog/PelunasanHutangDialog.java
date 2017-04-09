@@ -143,7 +143,7 @@ public class PelunasanHutangDialog extends javax.swing.JDialog {
         pelunasanHutang.setNoKwitansi(txtKwitansi.getText());
         pelunasanHutang.setSupplier(supplier);
         pelunasanHutang.setJlhBayar(totalBayar);
-        pelunasanHutang.setPembuat(pembuat);
+        pelunasanHutang.setPembuat(FrameUtama.getPenggunaAktif());
         pelunasanHutang.setPelunasanHutangDetails(daftarPelunasanHutangDetail);
         
     }

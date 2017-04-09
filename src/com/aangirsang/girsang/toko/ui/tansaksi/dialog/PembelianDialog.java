@@ -197,6 +197,7 @@ public class PembelianDialog extends javax.swing.JDialog {
         pembelian.setPembelianDetails(pembelianDetails);
         pembelian.setTotal(TextComponentUtils
                 .parseNumberToBigDecimal(txtTotal.getText()));
+        pembelian.setPembuat(FrameUtama.getPenggunaAktif());
     }
     private void loadModelToForm(Pembelian p, Supplier s){
         txtNoRef.setText(p.getNoRef());

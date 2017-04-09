@@ -47,7 +47,7 @@ import org.apache.poi.ss.util.CellRangeAddress;
  *
  * @author ITSUSAHBRO
  */
-public class PenggunaPanel extends javax.swing.JPanel {
+public class TingkatAksesPanel extends javax.swing.JPanel {
 
     private List<Pengguna> penggunas;
     private Pengguna pengguna;
@@ -73,7 +73,7 @@ public class PenggunaPanel extends javax.swing.JPanel {
         return toolbar;
     }
 
-    public PenggunaPanel() {
+    public TingkatAksesPanel() {
         initComponents();
         tabel.setDefaultRenderer(BigDecimal.class, new BigDecimalRenderer());
         tabel.setDefaultRenderer(Date.class, new DateRenderer());

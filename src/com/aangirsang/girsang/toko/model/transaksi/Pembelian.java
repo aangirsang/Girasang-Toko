@@ -6,6 +6,7 @@
 package com.aangirsang.girsang.toko.model.transaksi;
 
 import com.aangirsang.girsang.toko.model.master.Supplier;
+import com.aangirsang.girsang.toko.model.security.Pengguna;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -53,8 +54,9 @@ public class Pembelian implements Serializable{
     @Column(name = "TOTAL")
     private BigDecimal total = BigDecimal.ZERO;
     
-    @Column(name="PEMBUAT")
-    private String pembuat;
+    @ManyToOne
+    @JoinColumn(name="PEMBUAT")
+    private Pengguna pembuat;
     
     @Column(name="LOKASI")
     private String lokasi;
@@ -127,11 +129,11 @@ public class Pembelian implements Serializable{
         this.total = total;
     }
 
-    public String getPembuat() {
+    public Pengguna getPembuat() {
         return pembuat;
     }
 
-    public void setPembuat(String pembuat) {
+    public void setPembuat(Pengguna pembuat) {
         this.pembuat = pembuat;
     }
 

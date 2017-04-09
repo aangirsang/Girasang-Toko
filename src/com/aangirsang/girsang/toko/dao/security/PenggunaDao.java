@@ -35,8 +35,7 @@ public class PenggunaDao extends BaseDaoHibernate<Pengguna>{
     @Override
     public List<Pengguna> semua(){
         return sessionFactory.getCurrentSession().createQuery(
-                "From Pengguna p Order By p.tingkatAkses "
-                        + "And Order By p.namaLengkap asc")
+                "From Pengguna p Order By p.namaLengkap asc")
                 .list();
     }
     public List<Pengguna> cariNamaLengkap(String namaLengkap){

@@ -6,6 +6,7 @@
 package com.aangirsang.girsang.toko.ui.utama;
 
 
+import com.aangirsang.girsang.toko.model.security.Pengguna;
 import com.aangirsang.girsang.toko.popup.PopUpMenuMaster;
 import com.aangirsang.girsang.toko.popup.PopUpMenuTransaksi;
 import com.aangirsang.girsang.toko.service.MasterService;
@@ -36,6 +37,7 @@ public class FrameUtama extends javax.swing.JFrame {
     private static MasterService masterService;
     private static TransaksiService transaksiService;
     private static SecurityService securityService;
+    private static Pengguna penggunaAktif;
 
     public static FrameUtama getInstance() {
         return instance;
@@ -51,6 +53,10 @@ public class FrameUtama extends javax.swing.JFrame {
 
     public static SecurityService getSecurityService() {
         return securityService;
+    }
+
+    public static Pengguna getPenggunaAktif() {
+        return penggunaAktif;
     }
     
     public static void jam(JDateChooser jdc) {
