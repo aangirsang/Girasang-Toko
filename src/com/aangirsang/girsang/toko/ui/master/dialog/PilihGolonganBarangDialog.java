@@ -5,6 +5,7 @@
  */
 package com.aangirsang.girsang.toko.ui.master.dialog;
 
+import com.aangirsang.girsang.toko.Launcher;
 import com.aangirsang.girsang.toko.model.master.GolonganBarang;
 import com.aangirsang.girsang.toko.toolbar.ToolBarSelect;
 import com.aangirsang.girsang.toko.ui.utama.FrameUtama;
@@ -58,7 +59,7 @@ public class PilihGolonganBarangDialog extends javax.swing.JDialog {
     }
 
     private void isiTabelKategori() {
-        golonganBarangs = FrameUtama.getMasterService().semuaGolonganBarang();
+        golonganBarangs = Launcher.getMasterService().semuaGolonganBarang();
         tblGolonganBarang.setModel(new kategoriTabelModel(golonganBarangs));
         toolBarSelect1.getTxtCari().setText("");
         tblGolonganBarang.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -119,7 +120,7 @@ public class PilihGolonganBarangDialog extends javax.swing.JDialog {
                     if (id == null) {
                         JOptionPane.showMessageDialog(null, "Kategori Belum Dipilih");
                     } else {
-                        golonganBarang = FrameUtama.getMasterService().golonganBarangBerdasarkanId(id);
+                        golonganBarang = Launcher.getMasterService().golonganBarangBerdasarkanId(id);
                         dispose();
 
                     }
@@ -132,7 +133,7 @@ public class PilihGolonganBarangDialog extends javax.swing.JDialog {
                 if ("".equals(toolBarSelect1.getTxtCari().getText())) {
                     isiTabelKategori();
                 } else {
-                    golonganBarangs = FrameUtama.getMasterService().cariNamaGolonganBarang(toolBarSelect1.getTxtCari().getText());
+                    golonganBarangs = Launcher.getMasterService().cariNamaGolonganBarang(toolBarSelect1.getTxtCari().getText());
                     tblGolonganBarang.setModel(new kategoriTabelModel(golonganBarangs));
                     tblGolonganBarang.getColumnModel().getColumn(0).setPreferredWidth(220);
                     tblGolonganBarang.getColumnModel().getColumn(1).setPreferredWidth(520);
@@ -156,7 +157,7 @@ public class PilihGolonganBarangDialog extends javax.swing.JDialog {
             if (id == null) {
                 JOptionPane.showMessageDialog(null, "Kategori Belum Dipilih");
             } else {
-                golonganBarang = FrameUtama.getMasterService().golonganBarangBerdasarkanId(id);
+                golonganBarang = Launcher.getMasterService().golonganBarangBerdasarkanId(id);
                 dispose();
 
             }
@@ -171,7 +172,7 @@ public class PilihGolonganBarangDialog extends javax.swing.JDialog {
                 golonganBarang.setId(g.getId());
                 golonganBarang.setGolonganBarang(g.getGolonganBarang());
 
-                FrameUtama.getMasterService().simpan(golonganBarang);
+                Launcher.getMasterService().simpan(golonganBarang);
                 isiTabelKategori();
             }
         });
@@ -180,7 +181,7 @@ public class PilihGolonganBarangDialog extends javax.swing.JDialog {
             if (id == null) {
                 JOptionPane.showMessageDialog(null, "Data Kategori Belum Terpilih");
             } else {
-                golonganBarang = FrameUtama.getMasterService().golonganBarangBerdasarkanId(id);
+                golonganBarang = Launcher.getMasterService().golonganBarangBerdasarkanId(id);
                 String judul = "Penambahan Data";
                 GolonganBarang g = new GolonganBarangDialog().showDialog(golonganBarang, judul);
                 golonganBarang = new GolonganBarang();
@@ -188,7 +189,7 @@ public class PilihGolonganBarangDialog extends javax.swing.JDialog {
                     golonganBarang.setId(g.getId());
                     golonganBarang.setGolonganBarang(g.getGolonganBarang());
 
-                    FrameUtama.getMasterService().simpan(golonganBarang);
+                    Launcher.getMasterService().simpan(golonganBarang);
                     isiTabelKategori();
                     JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                 }
@@ -200,8 +201,8 @@ public class PilihGolonganBarangDialog extends javax.swing.JDialog {
             if (id == null) {
                 JOptionPane.showMessageDialog(null, "Data Kategori Belum Terpilih");
             } else {
-                golonganBarang = FrameUtama.getMasterService().golonganBarangBerdasarkanId(id);
-                FrameUtama.getMasterService().hapus(golonganBarang);
+                golonganBarang = Launcher.getMasterService().golonganBarangBerdasarkanId(id);
+                Launcher.getMasterService().hapus(golonganBarang);
                 isiTabelKategori();
                 JOptionPane.showMessageDialog(null, "Hapus Data Berhasil");
             }

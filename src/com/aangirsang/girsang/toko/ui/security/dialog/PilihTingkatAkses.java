@@ -5,6 +5,7 @@
  */
 package com.aangirsang.girsang.toko.ui.security.dialog;
 
+import com.aangirsang.girsang.toko.Launcher;
 import com.aangirsang.girsang.toko.model.security.TingkatAkses;
 import com.aangirsang.girsang.toko.ui.utama.FrameUtama;
 import java.awt.event.MouseAdapter;
@@ -51,7 +52,7 @@ public class PilihTingkatAkses extends javax.swing.JDialog {
         tabel.getColumnModel().getColumn(2).setPreferredWidth(350);//Keterangan
     }
     private void isiTabel() {
-        tingkatAkseses = FrameUtama.getSecurityService().semuaTingkatAkses();
+        tingkatAkseses = Launcher.getSecurityService().semuaTingkatAkses();
         RowSorter<TableModel> sorter = new TableRowSorter<>(new TabelModel(tingkatAkseses));
         tabel.setRowSorter(sorter);
         tabel.setModel(new TabelModel(tingkatAkseses));
@@ -61,7 +62,7 @@ public class PilihTingkatAkses extends javax.swing.JDialog {
     }
     private void cariSelect() {
         tingkatAkses = new TingkatAkses();
-        tingkatAkses = FrameUtama.getSecurityService().cariIdTingkatAkses(idSelect);
+        tingkatAkses = Launcher.getSecurityService().cariIdTingkatAkses(idSelect);
     }
     private class TabelModel extends AbstractTableModel {
         private final List<TingkatAkses> daftarTingkatAkses;
@@ -184,7 +185,7 @@ public class PilihTingkatAkses extends javax.swing.JDialog {
             if(t!=null){
                 loadFormToModel(t);
                 tingkatAkses.setId("");
-                FrameUtama.getSecurityService().simpan(tingkatAkses);
+                Launcher.getSecurityService().simpan(tingkatAkses);
                 isiTabel();
                 JOptionPane.showMessageDialog(FrameUtama.getInstance(),
                         "Penyimpanan Sukses",
@@ -202,7 +203,7 @@ public class PilihTingkatAkses extends javax.swing.JDialog {
                 tingkatAkses = new TingkatAkses();
                 if (t != null) {
                     loadFormToModel(t);
-                    FrameUtama.getSecurityService().simpan(t);
+                    Launcher.getSecurityService().simpan(t);
                     isiTabel();
                     JOptionPane.showMessageDialog(FrameUtama.getInstance(), 
                             "Penyimpanan Sukses",
@@ -216,7 +217,7 @@ public class PilihTingkatAkses extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null, "Data Tingkat Akses Belum Terpilih");
             } else {
                 cariSelect();
-                FrameUtama.getSecurityService().hapus(tingkatAkses);
+                Launcher.getSecurityService().hapus(tingkatAkses);
                 isiTabel();
                 JOptionPane.showMessageDialog(FrameUtama.getInstance(), 
                         "Hapus Sukses",

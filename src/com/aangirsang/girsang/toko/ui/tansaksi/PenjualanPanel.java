@@ -5,6 +5,7 @@
  */
 package com.aangirsang.girsang.toko.ui.tansaksi;
 
+import com.aangirsang.girsang.toko.Launcher;
 import com.aangirsang.girsang.toko.model.master.Barang;
 import com.aangirsang.girsang.toko.model.master.Supplier;
 import com.aangirsang.girsang.toko.model.transaksi.Pembelian;
@@ -101,7 +102,7 @@ public class PenjualanPanel extends javax.swing.JPanel {
         tblPenjualan.getColumnModel().getColumn(7).setPreferredWidth(300);//Pembuat
     }
     private void isiTabelKategori() {
-        pembelians = FrameUtama.getTransaksiService().semuaPembelian();
+        pembelians = Launcher.getTransaksiService().semuaPembelian();
         RowSorter<TableModel> sorter = new TableRowSorter<>(new PembelianTabelModel(pembelians));
         tblPenjualan.setRowSorter(sorter);
         tblPenjualan.setModel(new PembelianTabelModel(pembelians));
@@ -223,7 +224,7 @@ public class PenjualanPanel extends javax.swing.JPanel {
     }
     private void cariSelect() {
         pembelian = new Pembelian();
-        pembelian = FrameUtama.getTransaksiService().cariPembelian(idSelect);
+        pembelian = Launcher.getTransaksiService().cariPembelian(idSelect);
     }
     private class PembelianTabelModel extends AbstractTableModel {
         private final List<Pembelian> daftarPembelian;
@@ -316,7 +317,7 @@ public class PenjualanPanel extends javax.swing.JPanel {
                         pembelian = new Pembelian();
                         if (p != null) {
                             loadFormToModel(p);
-                            FrameUtama.getTransaksiService().simpan(pembelian);
+                            Launcher.getTransaksiService().simpan(pembelian);
                             isiTabelKategori();
                             JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                             title = null;
@@ -331,7 +332,7 @@ public class PenjualanPanel extends javax.swing.JPanel {
                 if ("".equals(toolbar.getTxtCari().getText())) {
                     isiTabelKategori();
                 } else {
-                    pembelians = (List<Pembelian>) FrameUtama.getTransaksiService().cariPembelian(toolbar.getTxtCari().getText());
+                    pembelians = (List<Pembelian>) Launcher.getTransaksiService().cariPembelian(toolbar.getTxtCari().getText());
                     tblPenjualan.setModel(new PembelianTabelModel(pembelians));
                     RowSorter<TableModel> sorter = new TableRowSorter<>(new PembelianTabelModel(pembelians));
                     tblPenjualan.setRowSorter(sorter);
@@ -363,7 +364,7 @@ public class PenjualanPanel extends javax.swing.JPanel {
             if (p != null) {
                 loadFormToModel(p);
                 pembelian.setNoRef("");
-                FrameUtama.getTransaksiService().simpan(pembelian);
+                Launcher.getTransaksiService().simpan(pembelian);
                 isiTabelKategori();
                 JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                 title = null;
@@ -381,7 +382,7 @@ public class PenjualanPanel extends javax.swing.JPanel {
                         pembelian = new Pembelian();
                         if (p != null) {
                             loadFormToModel(p);
-                            FrameUtama.getTransaksiService().simpan(pembelian);
+                            Launcher.getTransaksiService().simpan(pembelian);
                             isiTabelKategori();
                             JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                             title = null;

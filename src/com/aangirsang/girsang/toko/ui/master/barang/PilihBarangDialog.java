@@ -5,6 +5,7 @@
  */
 package com.aangirsang.girsang.toko.ui.master.barang;
 
+import com.aangirsang.girsang.toko.Launcher;
 import com.aangirsang.girsang.toko.model.master.Barang;
 import com.aangirsang.girsang.toko.ui.utama.FrameUtama;
 import com.aangirsang.girsang.toko.util.BigDecimalRenderer;
@@ -66,7 +67,7 @@ public class PilihBarangDialog extends javax.swing.JDialog {
         tblBarang.getColumnModel().getColumn(9).setPreferredWidth(90);//Status Jual
     }
     private void isiTabelBarang() {
-        barangs = FrameUtama.getMasterService().semuaBarang();
+        barangs = Launcher.getMasterService().semuaBarang();
         RowSorter<TableModel> sorter = new TableRowSorter<>(new BarangTabelModel(barangs));
         tblBarang.setRowSorter(sorter);
         tblBarang.setModel(new BarangTabelModel(barangs));
@@ -98,7 +99,7 @@ public class PilihBarangDialog extends javax.swing.JDialog {
     }
     private void cariSelect() {
         barang = new Barang();
-        barang = FrameUtama.getMasterService().barangBerdasarkanId(idSelect);
+        barang = Launcher.getMasterService().barangBerdasarkanId(idSelect);
     }
     private class BarangTabelModel extends AbstractTableModel {
 
@@ -268,7 +269,7 @@ public class PilihBarangDialog extends javax.swing.JDialog {
                 if ("".equals(toolbar.getTxtCari().getText())) {
                     isiTabelBarang();
                 } else {
-                    barangs = FrameUtama.getMasterService().cariNamaBarang(toolbar.getTxtCari().getText());
+                    barangs = Launcher.getMasterService().cariNamaBarang(toolbar.getTxtCari().getText());
                     tblBarang.setModel(new BarangTabelModel(barangs));
                     RowSorter<TableModel> sorter = new TableRowSorter<>(new BarangTabelModel(barangs));
                     tblBarang.setRowSorter(sorter);
@@ -299,7 +300,7 @@ public class PilihBarangDialog extends javax.swing.JDialog {
             if (s != null) {
                 loadFormToModel(s);
                 barang.setPlu("");
-                FrameUtama.getMasterService().simpan(barang);
+                Launcher.getMasterService().simpan(barang);
                 isiTabelBarang();
                 JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                 title = null;
@@ -317,7 +318,7 @@ public class PilihBarangDialog extends javax.swing.JDialog {
                 barang = new Barang();
                 if (s != null) {
                     loadFormToModel(s);
-                    FrameUtama.getMasterService().simpan(barang);
+                    Launcher.getMasterService().simpan(barang);
                     isiTabelBarang();
                     JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                     title = null;
@@ -329,7 +330,7 @@ public class PilihBarangDialog extends javax.swing.JDialog {
             if (barang == null) {
                 JOptionPane.showMessageDialog(null, "Data Barang Belum Terpilih");
             } else {
-                FrameUtama.getMasterService().hapus(barang);
+                Launcher.getMasterService().hapus(barang);
                 isiTabelBarang();
                 JOptionPane.showMessageDialog(null, "Hapus Data Berhasil");
             }

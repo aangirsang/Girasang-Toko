@@ -5,6 +5,7 @@
  */
 package com.aangirsang.girsang.toko.ui.tansaksi;
 
+import com.aangirsang.girsang.toko.Launcher;
 import com.aangirsang.girsang.toko.model.master.Barang;
 import com.aangirsang.girsang.toko.model.master.Supplier;
 import com.aangirsang.girsang.toko.model.transaksi.Pembelian;
@@ -93,7 +94,7 @@ public class PembelianPanel extends javax.swing.JPanel {
         tblPembelian.getColumnModel().getColumn(7).setPreferredWidth(300);//Pembuat
     }
     private void isiTabelKategori() {
-        pembelians = FrameUtama.getTransaksiService().semuaPembelian();
+        pembelians = Launcher.getTransaksiService().semuaPembelian();
         RowSorter<TableModel> sorter = new TableRowSorter<>(new PembelianTabelModel(pembelians));
         tblPembelian.setRowSorter(sorter);
         tblPembelian.setModel(new PembelianTabelModel(pembelians));
@@ -101,105 +102,6 @@ public class PembelianPanel extends javax.swing.JPanel {
         ukuranTabelBarang();
         lblJumlahData.setText(pembelians.size() + " Data Pembelian");
         idSelect = "";
-    }
-    private void exportExcel(List<Barang> dataList) throws IOException {
-        if (dataList != null && !dataList.isEmpty()) {
-            HSSFWorkbook workBook = new HSSFWorkbook();
-            HSSFSheet sheet = workBook.createSheet();
-            HSSFSheet worksheet = workBook.createSheet("Sheet 0");
-            // Nama Field
-            Row judul = sheet.createRow((short) 0);
-            Cell cell = judul.createCell((short) 0);
-            cell.setCellValue("This is a test of merging");
-            HSSFRow headingRow = sheet.createRow((short) 2);
-            headingRow.createCell((short) 0).setCellValue("ID");
-            headingRow.createCell((short) 1).setCellValue("BARCODE 1");
-            headingRow.createCell((short) 2).setCellValue("BARCODE 2");
-            headingRow.createCell((short) 3).setCellValue("NAMA BARANG");
-            headingRow.createCell((short) 4).setCellValue("GOLONGAN");
-            headingRow.createCell((short) 5).setCellValue("SAT. JUAL");
-            headingRow.createCell((short) 6).setCellValue("ST. TOKO");
-            headingRow.createCell((short) 7).setCellValue("ST. GUDANG");
-            headingRow.createCell((short) 8).setCellValue("SAT. BELI");
-            headingRow.createCell((short) 9).setCellValue("ISI PEM.");
-            headingRow.createCell((short) 10).setCellValue("HRG PEM.");
-            headingRow.createCell((short) 11).setCellValue("HRG NORMAL");
-            headingRow.createCell((short) 12).setCellValue("HRG MEMBER");
-            headingRow.createCell((short) 13).setCellValue("JUAL");
-            int panjang = headingRow.getLastCellNum() - 1;
-            short rowNo = 3;
-
-            sheet.addMergedRegion(new CellRangeAddress(
-                    0, //first row (0-based)
-                    0, //last row  (0-based)
-                    0, //first column (0-based)
-                    panjang //last column  (0-based)
-            ));
-            CellStyle styleData = workBook.createCellStyle();
-            styleData.setBorderBottom(CellStyle.BORDER_THIN);
-            styleData.setBorderRight(CellStyle.BORDER_THIN);
-            styleData.setBorderLeft(CellStyle.BORDER_THIN);
-            for (Barang b : dataList) {
-                HSSFRow row = sheet.createRow(rowNo);
-                String jual;
-                if (b.getJual() == true) {
-                    jual = "Jual";
-                } else {
-                    jual = "Tidak";
-                }
-                row.createCell((short) 0).setCellValue(b.getPlu());
-                row.createCell((short) 1).setCellValue(b.getBarcode1());
-                row.createCell((short) 2).setCellValue(b.getBarcode2());
-                row.createCell((short) 3).setCellValue(b.getNamaBarang());
-                row.createCell((short) 4).setCellValue(b.getGolonganBarang().getGolonganBarang());
-                row.createCell((short) 5).setCellValue(b.getSatuan());
-                row.createCell((short) 6).setCellValue(b.getStokToko());
-                row.createCell((short) 7).setCellValue(b.getStokGudang());
-                row.createCell((short) 8).setCellValue(b.getSatuanPembelian());
-                row.createCell((short) 9).setCellValue(b.getIsiPembelian());
-                row.createCell((short) 10).setCellValue(TextComponentUtils.formatNumber(b.getHargaBeli()));
-                row.createCell((short) 11).setCellValue(TextComponentUtils.formatNumber(b.getHargaNormal()));
-                row.createCell((short) 12).setCellValue(TextComponentUtils.formatNumber(b.getHargaMember()));
-                row.createCell((short) 13).setCellValue(jual);
-                for (int i = 0; i <= 13; i++) {
-                    row.getCell((short) i).setCellStyle(styleData);
-                }
-                rowNo++;
-            }
-            for (int i = 0; i <= 13; i++) {
-                sheet.autoSizeColumn(i);
-            }
-            Font font = workBook.createFont();
-            font.setBoldweight(Font.BOLDWEIGHT_BOLD);
-            //style judul
-            CellStyle styleTitle = workBook.createCellStyle();
-            styleTitle.setAlignment(CellStyle.ALIGN_CENTER_SELECTION);
-            styleTitle.setFont(font);
-            judul.getCell(0).setCellStyle(styleTitle);
-
-            //judul field
-            CellStyle styleHeading = workBook.createCellStyle();
-            styleHeading.setFont(font);
-            styleHeading.setAlignment(CellStyle.ALIGN_CENTER_SELECTION);
-            styleHeading.setBorderBottom(CellStyle.BORDER_THIN);
-            styleHeading.setBorderTop(CellStyle.BORDER_THIN);
-            styleHeading.setBorderRight(CellStyle.BORDER_THIN);
-            styleHeading.setBorderLeft(CellStyle.BORDER_THIN);
-            for (int i = 0; i < headingRow.getLastCellNum(); i++) {//For each cell in the row 
-                headingRow.getCell(i).setCellStyle(styleHeading);//Set the style
-            }
-            String file = "D:/Student_detais.xls";
-            try {
-                try (FileOutputStream fos = new FileOutputStream(file)) {
-                    workBook.write(fos);
-                }
-                JOptionPane.showMessageDialog(null, "Sukses");
-            } catch (FileNotFoundException e) {
-                System.out.println("Invalid directory or file not found");
-            } catch (IOException e) {
-                System.out.println("Error occurred while writting excel file to directory");
-            }
-        }
     }
     private void loadFormToModel(Pembelian p) {
         pembelian.setNoRef(p.getNoRef());
@@ -215,7 +117,7 @@ public class PembelianPanel extends javax.swing.JPanel {
     }
     private void cariSelect() {
         pembelian = new Pembelian();
-        pembelian = FrameUtama.getTransaksiService().cariPembelian(idSelect);
+        pembelian = Launcher.getTransaksiService().cariPembelian(idSelect);
     }
     private class PembelianTabelModel extends AbstractTableModel {
         private final List<Pembelian> daftarPembelian;
@@ -273,7 +175,7 @@ public class PembelianPanel extends javax.swing.JPanel {
                     return "-";
                 }
                 case 6:return p.getTotal();
-                case 7:return p.getPembuat();
+                case 7:return p.getPembuat().getNamaLengkap();
                 default:return "";
             }
         }
@@ -410,7 +312,7 @@ public class PembelianPanel extends javax.swing.JPanel {
                         pembelian = new Pembelian();
                         if (p != null) {
                             loadFormToModel(p);
-                            FrameUtama.getTransaksiService().simpan(pembelian);
+                            Launcher.getTransaksiService().simpan(pembelian);
                             isiTabelKategori();
                             JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                             title = null;
@@ -425,7 +327,7 @@ public class PembelianPanel extends javax.swing.JPanel {
                 if ("".equals(toolbar.getTxtCari().getText())) {
                     isiTabelKategori();
                 } else {
-                    pembelians = (List<Pembelian>) FrameUtama.getTransaksiService().cariPembelian(toolbar.getTxtCari().getText());
+                    pembelians = (List<Pembelian>) Launcher.getTransaksiService().cariPembelian(toolbar.getTxtCari().getText());
                     tblPembelian.setModel(new PembelianTabelModel(pembelians));
                     RowSorter<TableModel> sorter = new TableRowSorter<>(new PembelianTabelModel(pembelians));
                     tblPembelian.setRowSorter(sorter);
@@ -457,7 +359,7 @@ public class PembelianPanel extends javax.swing.JPanel {
             if (p != null) {
                 loadFormToModel(p);
                 pembelian.setNoRef("");
-                FrameUtama.getTransaksiService().simpan(pembelian);
+                Launcher.getTransaksiService().simpan(pembelian);
                 isiTabelKategori();
                 JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                 title = null;
@@ -475,7 +377,7 @@ public class PembelianPanel extends javax.swing.JPanel {
                         pembelian = new Pembelian();
                         if (p != null) {
                             loadFormToModel(p);
-                            FrameUtama.getTransaksiService().simpan(pembelian);
+                            Launcher.getTransaksiService().simpan(pembelian);
                             isiTabelKategori();
                             JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                             title = null;

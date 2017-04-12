@@ -5,6 +5,7 @@
  */
 package com.aangirsang.girsang.toko.ui.security.dialog;
 
+import com.aangirsang.girsang.toko.Launcher;
 import com.aangirsang.girsang.toko.model.master.constant.MasterRunningNumberEnum;
 import com.aangirsang.girsang.toko.model.security.Pengguna;
 import com.aangirsang.girsang.toko.model.security.TingkatAkses;
@@ -63,7 +64,7 @@ public class DialogPengguna extends javax.swing.JDialog {
     }
     
     private void clear(){
-        txtId.setText(FrameUtama.getMasterService().ambilBerikutnya(MasterRunningNumberEnum.PENGGUNA));
+        txtId.setText(Launcher.getMasterService().ambilBerikutnya(MasterRunningNumberEnum.PENGGUNA));
         txtUserName.setText("");
         txtNamaLengkap.setText("");
         txtPassword.setText("");
@@ -94,7 +95,7 @@ public class DialogPengguna extends javax.swing.JDialog {
     }
     private void isiComboTingkatAkses() {
         cboTingkatAkses.removeAllItems();
-        daftarTingkatAkses = FrameUtama.getSecurityService().semuaTingkatAkses();
+        daftarTingkatAkses = Launcher.getSecurityService().semuaTingkatAkses();
         for (int i = 0; i < daftarTingkatAkses.size(); i++) {
             cboTingkatAkses.addItem(daftarTingkatAkses.get(i).getNamaTingkatAkses());
         }

@@ -42,7 +42,7 @@ public class PopUpMenuTransaksi extends AbstractButton {
                     pembelianPanel.getToolbarDenganFilter1().getBtnKeluar().addActionListener((ae1) -> {
                         TP.remove(pembelianPanel);
                         pembelianPanel.setAktifPanel(pembelianPanel.getAktifPanel() - 1);
-                        TP.setSelectedIndex(0);
+                        TP.setSelectedIndex(pembelianPanel.getIndexTab() - 1);
                     });
                 }
             }
@@ -62,7 +62,7 @@ public class PopUpMenuTransaksi extends AbstractButton {
                     hutangPanel.getToolbarDenganFilter1().getBtnKeluar().addActionListener((ae1) -> {
                         TP.remove(hutangPanel);
                         hutangPanel.setAktifPanel(hutangPanel.getAktifPanel() - 1);
-                        TP.setSelectedIndex(0);
+                        TP.setSelectedIndex(hutangPanel.getIndexTab()-1);
                     });
                 }
             }

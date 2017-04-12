@@ -79,30 +79,46 @@ public class Barang implements Serializable{
     @Column(name="STOK_TOKO",nullable=false)
     private Integer stokToko=0;
     
-    @Column(name="TOTAL_KUANTITAS_PEMBELIAN_TOKO",nullable=false)
+    @Column(name="BELITOKO",nullable=false)
     private Integer stokPembelianToko=0;
     
-    @Column(name="TOTAL_KUANTITAS_PEMBELIAN_GUDANG",nullable=false)
+    @Column(name="BELIGUDANG",nullable=false)
     private Integer stokPembelianGudang=0;
     
-    @Column(name="TOTAL_KUANTITAS_PENJUALAN_TOKO",nullable=false)
+    @Column(name="JUALTOKO",nullable=false)
     private Integer stokPenjualanToko=0;
     
-    @Column(name="TOTAL_KUANTITAS_PENJUALAN_GUDANG",nullable=false)
+    @Column(name="JUALGUDANG",nullable=false)
     private Integer stokPenjualanGudang=0;
+    
+    @Column(name="RETURBELITOKO",nullable=false)
+    private Integer stokReturBeliToko=0;
+    
+    @Column(name="RETURBELIGUDANG",nullable=false)
+    private Integer stokReturBeliGudang=0;
+    
+    @Column(name="RETURJUALTOKO",nullable=false)
+    private Integer stokReturJualToko=0;
+    
+    @Column(name="RETURJUALGUDANG",nullable=false)
+    private Integer stokReturJualGudang=0;
     
     public Integer getKalkulasiStokToko(){
         return 
                 stokToko + 
                 stokPembelianToko - 
-                stokPenjualanToko;
+                stokReturBeliToko - 
+                stokPenjualanToko + 
+                stokReturJualToko;
     }
     
     public Integer getKalkulasiStokGudang(){
         return 
-                stokGudang +
-                stokPembelianGudang -
-                stokPenjualanGudang;
+                stokGudang + 
+                stokPembelianGudang - 
+                stokReturBeliGudang - 
+                stokPenjualanGudang + 
+                stokReturJualGudang;
     }
 
     public String getPlu() {
@@ -272,4 +288,37 @@ public class Barang implements Serializable{
     public void setStokPenjualanGudang(Integer stokPenjualanGudang) {
         this.stokPenjualanGudang = stokPenjualanGudang;
     }
+
+    public Integer getStokReturBeliToko() {
+        return stokReturBeliToko;
+    }
+
+    public void setStokReturBeliToko(Integer stokReturBeliToko) {
+        this.stokReturBeliToko = stokReturBeliToko;
+    }
+
+    public Integer getStokReturBeliGudang() {
+        return stokReturBeliGudang;
+    }
+
+    public void setStokReturBeliGudang(Integer stokReturBeliGudang) {
+        this.stokReturBeliGudang = stokReturBeliGudang;
+    }
+
+    public Integer getStokReturJualToko() {
+        return stokReturJualToko;
+    }
+
+    public void setStokReturJualToko(Integer stokReturJualToko) {
+        this.stokReturJualToko = stokReturJualToko;
+    }
+
+    public Integer getStokReturJualGudang() {
+        return stokReturJualGudang;
+    }
+
+    public void setStokReturJualGudang(Integer stokReturJualGudang) {
+        this.stokReturJualGudang = stokReturJualGudang;
+    }
+    
 }

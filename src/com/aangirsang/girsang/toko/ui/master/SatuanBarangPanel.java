@@ -5,6 +5,7 @@
  */
 package com.aangirsang.girsang.toko.ui.master;
 
+import com.aangirsang.girsang.toko.Launcher;
 import com.aangirsang.girsang.toko.model.master.SatuanBarang;
 import com.aangirsang.girsang.toko.toolbar.ToolbarTanpaFilter;
 import com.aangirsang.girsang.toko.ui.master.dialog.SatuanBarangDialog;
@@ -74,7 +75,7 @@ public class SatuanBarangPanel extends javax.swing.JPanel {
     }
 
     private void isiTabelKategori() {
-        satuanBarangs = FrameUtama.getMasterService().satuanBarangAsc();
+        satuanBarangs = Launcher.getMasterService().satuanBarangAsc();
         RowSorter<TableModel> sorter = new TableRowSorter<>(new kategoriTabelModel(satuanBarangs));
         tblKategori.setRowSorter(sorter);
         tblKategori.setModel(new kategoriTabelModel(satuanBarangs));
@@ -132,7 +133,7 @@ public class SatuanBarangPanel extends javax.swing.JPanel {
             case 1:
                 p.setSatuanBarang((String) aValue);
                 fireTableCellUpdated(rowIndex, 1); // Total may also have changed
-                FrameUtama.getMasterService().simpan(p);
+                Launcher.getMasterService().simpan(p);
                 break;
             }
         }
@@ -146,7 +147,7 @@ public class SatuanBarangPanel extends javax.swing.JPanel {
             if (tblKategori.getSelectedRow() >= 0) {
                 String id = tblKategori.getValueAt(tblKategori.getSelectedRow(), 0).toString();
                 satuanBarang = new SatuanBarang();
-                satuanBarang = FrameUtama.getMasterService().satuanBarangBerdasarkanId(id);
+                satuanBarang = Launcher.getMasterService().satuanBarangBerdasarkanId(id);
             }
         });
         tblKategori.addMouseListener(new MouseAdapter() {
@@ -162,7 +163,7 @@ public class SatuanBarangPanel extends javax.swing.JPanel {
                             satuanBarang.setId(k.getId());
                             satuanBarang.setSatuanBarang(k.getSatuanBarang());
 
-                            FrameUtama.getMasterService().simpan(satuanBarang);
+                            Launcher.getMasterService().simpan(satuanBarang);
                             isiTabelKategori();
                             JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                             title = null;
@@ -177,7 +178,7 @@ public class SatuanBarangPanel extends javax.swing.JPanel {
                 if ("".equals(toolbarTanpaFilter1.getTxtCari().getText())) {
                     isiTabelKategori();
                 } else {
-                    satuanBarangs = FrameUtama.getMasterService().cariNamaSatuanBarang(toolbarTanpaFilter1.getTxtCari().getText());
+                    satuanBarangs = Launcher.getMasterService().cariNamaSatuanBarang(toolbarTanpaFilter1.getTxtCari().getText());
                     tblKategori.setModel(new kategoriTabelModel(satuanBarangs));
                     RowSorter<TableModel> sorter = new TableRowSorter<>(new kategoriTabelModel(satuanBarangs));
                     tblKategori.setRowSorter(sorter);
@@ -208,7 +209,7 @@ public class SatuanBarangPanel extends javax.swing.JPanel {
             if (k != null) {
                 satuanBarang.setSatuanBarang(k.getSatuanBarang());
 
-                FrameUtama.getMasterService().simpan(satuanBarang);
+                Launcher.getMasterService().simpan(satuanBarang);
                 isiTabelKategori();
                 JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                 title = null;
@@ -227,7 +228,7 @@ public class SatuanBarangPanel extends javax.swing.JPanel {
                     satuanBarang.setId(k.getId());
                     satuanBarang.setSatuanBarang(k.getSatuanBarang());
 
-                    FrameUtama.getMasterService().simpan(satuanBarang);
+                    Launcher.getMasterService().simpan(satuanBarang);
                     isiTabelKategori();
                     JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                     title = null;
@@ -239,7 +240,7 @@ public class SatuanBarangPanel extends javax.swing.JPanel {
             if (satuanBarang == null) {
                 JOptionPane.showMessageDialog(null, "Data Kategori Belum Terpilih");
             } else {
-                FrameUtama.getMasterService().hapus(satuanBarang);
+                Launcher.getMasterService().hapus(satuanBarang);
                 isiTabelKategori();
                 JOptionPane.showMessageDialog(null, "Hapus Data Berhasil");
             }

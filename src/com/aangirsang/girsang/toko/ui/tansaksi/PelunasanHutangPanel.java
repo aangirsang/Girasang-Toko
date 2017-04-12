@@ -5,6 +5,7 @@
  */
 package com.aangirsang.girsang.toko.ui.tansaksi;
 
+import com.aangirsang.girsang.toko.Launcher;
 import com.aangirsang.girsang.toko.model.master.Barang;
 import com.aangirsang.girsang.toko.model.master.Supplier;
 import com.aangirsang.girsang.toko.model.transaksi.PelunasanHutang;
@@ -93,7 +94,7 @@ public class PelunasanHutangPanel extends javax.swing.JPanel {
         tblPelunasan.getColumnModel().getColumn(5).setPreferredWidth(300);//Pembuat
     }
     private void isiTabelKategori() {
-        daftarPelunasan = FrameUtama.getTransaksiService().semua();
+        daftarPelunasan = Launcher.getTransaksiService().semua();
         RowSorter<TableModel> sorter = new TableRowSorter<>(new PembelianTabelModel(daftarPelunasan));
         tblPelunasan.setRowSorter(sorter);
         tblPelunasan.setModel(new PembelianTabelModel(daftarPelunasan));
@@ -212,7 +213,7 @@ public class PelunasanHutangPanel extends javax.swing.JPanel {
     }
     private void cariSelect() {
         pelunasanHutang = new PelunasanHutang();
-        pelunasanHutang = FrameUtama.getTransaksiService().cariId(idSelect);
+        pelunasanHutang = Launcher.getTransaksiService().cariId(idSelect);
     }
     private class PembelianTabelModel extends AbstractTableModel {
         private final List<PelunasanHutang> daftarPelunasan;
@@ -256,7 +257,7 @@ public class PelunasanHutangPanel extends javax.swing.JPanel {
                         return "-";
                     }
                 case 4:return p.getJlhBayar();
-                case 5:return p.getPembuat();
+                case 5:return p.getPembuat().getNamaLengkap();
                 default:return "";
             }
         }
@@ -392,7 +393,7 @@ public class PelunasanHutangPanel extends javax.swing.JPanel {
                         pelunasanHutang = new PelunasanHutang();
                         if (p != null) {
                             loadFormToModel(p);
-                            FrameUtama.getTransaksiService().simpan(pelunasanHutang);
+                            Launcher.getTransaksiService().simpan(pelunasanHutang);
                             isiTabelKategori();
                             JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                             title = null;
@@ -415,7 +416,7 @@ public class PelunasanHutangPanel extends javax.swing.JPanel {
             if (p != null) {
                 loadFormToModel(p);
                 pelunasanHutang.setNoRef("");
-                FrameUtama.getTransaksiService().simpan(pelunasanHutang);
+                Launcher.getTransaksiService().simpan(pelunasanHutang);
                 isiTabelKategori();
                 JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                 title = null;
@@ -433,7 +434,7 @@ public class PelunasanHutangPanel extends javax.swing.JPanel {
                         pelunasanHutang = new PelunasanHutang();
                         if (p != null) {
                             loadFormToModel(p);
-                            FrameUtama.getTransaksiService().simpan(pelunasanHutang);
+                            Launcher.getTransaksiService().simpan(pelunasanHutang);
                             isiTabelKategori();
                             JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                             title = null;
@@ -446,7 +447,7 @@ public class PelunasanHutangPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Data Pembelian Belum Terpilih");
             } else {
                 cariSelect();
-                FrameUtama.getTransaksiService().hapus(pelunasanHutang);
+                Launcher.getTransaksiService().hapus(pelunasanHutang);
                 isiTabelKategori();
                 JOptionPane.showMessageDialog(null, "Hapus Data Berhasil");
             }

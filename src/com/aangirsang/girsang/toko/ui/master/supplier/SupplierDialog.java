@@ -5,6 +5,7 @@
  */
 package com.aangirsang.girsang.toko.ui.master.supplier;
 
+import com.aangirsang.girsang.toko.Launcher;
 import com.aangirsang.girsang.toko.model.master.Supplier;
 import com.aangirsang.girsang.toko.model.master.constant.MasterRunningNumberEnum;
 import com.aangirsang.girsang.toko.ui.utama.FrameUtama;
@@ -36,7 +37,7 @@ public class SupplierDialog extends javax.swing.JDialog {
         setTitle(Title);
         clear();
         if(s==null){
-            txtKodeSupplier.setText(FrameUtama.getMasterService().ambilBerikutnya(MasterRunningNumberEnum.SUPPLIER));
+            txtKodeSupplier.setText(Launcher.getMasterService().ambilBerikutnya(MasterRunningNumberEnum.SUPPLIER));
         }else {
             loadModelToForm(s);
         }

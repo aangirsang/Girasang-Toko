@@ -50,7 +50,7 @@ public class PopUpMenuMaster extends AbstractButton {
                     golonganBarangPanel.getToolbarTanpaFilter1().getBtnKeluar().addActionListener((ae1) -> {
                         TP.remove(golonganBarangPanel);
                         golonganBarangPanel.setAktifPanel(golonganBarangPanel.getAktifPanel() - 1);
-                        TP.setSelectedIndex(0);
+                        TP.setSelectedIndex(golonganBarangPanel.getIndexTab() -1);
                     });
                 }
             }
@@ -70,7 +70,7 @@ public class PopUpMenuMaster extends AbstractButton {
                     barangPanel.getToolbarDenganFilter1().getBtnKeluar().addActionListener((ae1) -> {
                         TP.remove(barangPanel);
                         barangPanel.setAktifPanel(barangPanel.getAktifPanel() - 1);
-                        TP.setSelectedIndex(0);
+                        TP.setSelectedIndex(barangPanel.getIndexTab()-1);
                     });
                 }
             }
@@ -90,7 +90,7 @@ public class PopUpMenuMaster extends AbstractButton {
                     satuanBarangPanel.getToolbarTanpaFilter1().getBtnKeluar().addActionListener((ae1) -> {
                         TP.remove(satuanBarangPanel);
                         satuanBarangPanel.setAktifPanel(satuanBarangPanel.getAktifPanel() - 1);
-                        TP.setSelectedIndex(0);
+                        TP.setSelectedIndex(satuanBarangPanel.getIndexTab()-1);
                     });
                 }
             }
@@ -110,7 +110,7 @@ public class PopUpMenuMaster extends AbstractButton {
                     supplierPanel.getToolbarTanpaFilter1().getBtnKeluar().addActionListener((ae1) -> {
                         TP.remove(supplierPanel);
                         supplierPanel.setAktifPanel(supplierPanel.getAktifPanel() - 1);
-                        TP.setSelectedIndex(0);
+                        TP.setSelectedIndex(supplierPanel.getIndexTab()-1);
                     });
                 }
             }
@@ -131,7 +131,7 @@ public class PopUpMenuMaster extends AbstractButton {
                     penggunaPanel.getToolbarDenganFilter().getBtnKeluar().addActionListener((ae1) -> {
                         TP.remove(penggunaPanel);
                         penggunaPanel.setAktifPanel(penggunaPanel.getAktifPanel() - 1);
-                        TP.setSelectedIndex(0);
+                        TP.setSelectedIndex(penggunaPanel.getIndexTab()-1);
                     });
                 }
             }
@@ -151,7 +151,7 @@ public class PopUpMenuMaster extends AbstractButton {
                     aksesPanel.getToolbar().getBtnKeluar().addActionListener((ae1) -> {
                         TP.remove(aksesPanel);
                         aksesPanel.setAktifPanel(aksesPanel.getAktifPanel() - 1);
-                        TP.setSelectedIndex(0);
+                        TP.setSelectedIndex(aksesPanel.getIndexTab()-1);
                     });
                 }
             }

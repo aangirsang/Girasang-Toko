@@ -5,6 +5,7 @@
  */
 package com.aangirsang.girsang.toko.ui.master.dialog;
 
+import com.aangirsang.girsang.toko.Launcher;
 import com.aangirsang.girsang.toko.model.master.SatuanBarang;
 import com.aangirsang.girsang.toko.model.master.constant.MasterRunningNumberEnum;
 import com.aangirsang.girsang.toko.ui.utama.FrameUtama;
@@ -42,9 +43,9 @@ public class SatuanBarangDialog extends javax.swing.JDialog {
         title = Title;
         if (k == null) {
             clear();
-            txtId.setText(FrameUtama.getMasterService().ambilBerikutnya(MasterRunningNumberEnum.SATUAN));
+            txtId.setText(Launcher.getMasterService().ambilBerikutnya(MasterRunningNumberEnum.SATUAN));
         } else {
-            satuanBarang = FrameUtama.getMasterService().satuanBarangBerdasarkanId(k.getId());
+            satuanBarang = Launcher.getMasterService().satuanBarangBerdasarkanId(k.getId());
             txtId.setText(String.valueOf(satuanBarang.getId()));
             txtSatuan.setText(satuanBarang.getSatuanBarang());
         }

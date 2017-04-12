@@ -5,6 +5,7 @@
  */
 package com.aangirsang.girsang.toko.ui.security.dialog;
 
+import com.aangirsang.girsang.toko.Launcher;
 import com.aangirsang.girsang.toko.model.master.constant.MasterRunningNumberEnum;
 import com.aangirsang.girsang.toko.model.security.TingkatAkses;
 import com.aangirsang.girsang.toko.ui.utama.FrameUtama;
@@ -48,7 +49,7 @@ public class DialogTingkatAkses extends javax.swing.JDialog {
     }
     
     private void clear(){
-        txtId.setText(FrameUtama.getMasterService().ambilBerikutnya(MasterRunningNumberEnum.TINGKATAKSES));
+        txtId.setText(Launcher.getMasterService().ambilBerikutnya(MasterRunningNumberEnum.TINGKATAKSES));
         txtAkses.setText("");
         txtKet.setText("");
     }

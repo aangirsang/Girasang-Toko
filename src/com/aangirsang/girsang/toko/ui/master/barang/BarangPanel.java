@@ -5,6 +5,7 @@
  */
 package com.aangirsang.girsang.toko.ui.master.barang;
 
+import com.aangirsang.girsang.toko.Launcher;
 import com.aangirsang.girsang.toko.model.master.Barang;
 import com.aangirsang.girsang.toko.toolbar.ToolbarDenganFilter;
 import com.aangirsang.girsang.toko.ui.utama.FrameUtama;
@@ -89,7 +90,7 @@ public class BarangPanel extends javax.swing.JPanel {
         tblBarang.getColumnModel().getColumn(9).setPreferredWidth(90);//Status Jual
     }
     private void isiTabelBarang() {
-        barangs = FrameUtama.getMasterService().semuaBarang();
+        barangs = Launcher.getMasterService().semuaBarang();
         RowSorter<TableModel> sorter = new TableRowSorter<>(new BarangTabelModel(barangs));
         tblBarang.setRowSorter(sorter);
         tblBarang.setModel(new BarangTabelModel(barangs));
@@ -225,7 +226,7 @@ public class BarangPanel extends javax.swing.JPanel {
     }
     private void cariSelect() {
         barang = new Barang();
-        barang = FrameUtama.getMasterService().barangBerdasarkanId(idSelect);
+        barang = Launcher.getMasterService().barangBerdasarkanId(idSelect);
     }
     private class BarangTabelModel extends AbstractTableModel {
 
@@ -319,7 +320,7 @@ public class BarangPanel extends javax.swing.JPanel {
                         barang = new Barang();
                         if (s != null) {
                             loadFormToModel(s);
-                            FrameUtama.getMasterService().simpan(barang);
+                            Launcher.getMasterService().simpan(barang);
                             isiTabelBarang();
                             JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                             title = null;
@@ -334,7 +335,7 @@ public class BarangPanel extends javax.swing.JPanel {
                 if ("".equals(toolbar.getTxtCari().getText())) {
                     isiTabelBarang();
                 } else {
-                    barangs = FrameUtama.getMasterService().cariNamaBarang(toolbar.getTxtCari().getText());
+                    barangs = Launcher.getMasterService().cariNamaBarang(toolbar.getTxtCari().getText());
                     tblBarang.setModel(new BarangTabelModel(barangs));
                     RowSorter<TableModel> sorter = new TableRowSorter<>(new BarangTabelModel(barangs));
                     tblBarang.setRowSorter(sorter);
@@ -365,7 +366,7 @@ public class BarangPanel extends javax.swing.JPanel {
             if (s != null) {
                 loadFormToModel(s);
                 barang.setPlu("");
-                FrameUtama.getMasterService().simpan(barang);
+                Launcher.getMasterService().simpan(barang);
                 isiTabelBarang();
                 JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                 title = null;
@@ -383,7 +384,7 @@ public class BarangPanel extends javax.swing.JPanel {
                 barang = new Barang();
                 if (s != null) {
                     loadFormToModel(s);
-                    FrameUtama.getMasterService().simpan(barang);
+                    Launcher.getMasterService().simpan(barang);
                     isiTabelBarang();
                     JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                     title = null;
@@ -395,7 +396,7 @@ public class BarangPanel extends javax.swing.JPanel {
             if (barang == null) {
                 JOptionPane.showMessageDialog(null, "Data Barang Belum Terpilih");
             } else {
-                FrameUtama.getMasterService().hapus(barang);
+                Launcher.getMasterService().hapus(barang);
                 isiTabelBarang();
                 JOptionPane.showMessageDialog(null, "Hapus Data Berhasil");
             }
@@ -518,7 +519,7 @@ public class BarangPanel extends javax.swing.JPanel {
 
     private void btnExcellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcellActionPerformed
         BarangPanel exporter = new BarangPanel();
-        barangs = FrameUtama.getMasterService().semuaBarang();
+        barangs = Launcher.getMasterService().semuaBarang();
         try {
             exporter.exportExcel(barangs);
         } catch (IOException ex) {

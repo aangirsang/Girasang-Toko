@@ -5,6 +5,7 @@
  */
 package com.aangirsang.girsang.toko.ui.security;
 
+import com.aangirsang.girsang.toko.Launcher;
 import com.aangirsang.girsang.toko.model.security.Pengguna;
 import com.aangirsang.girsang.toko.ui.utama.FrameUtama;
 import com.twmacinta.util.MD5;
@@ -19,6 +20,7 @@ public class LoginPanel extends javax.swing.JPanel {
     
     private List<Pengguna> penggunas;
     private Pengguna pengguna;
+
 
     int IndexTab = 0;
     int aktifPanel = 0;
@@ -49,7 +51,7 @@ public class LoginPanel extends javax.swing.JPanel {
         }else{
             String pass = new MD5(new String(txtPassword.getPassword())).asHex();
             pengguna = new Pengguna();
-            pengguna = FrameUtama.getSecurityService().cariUserNamePengguna(txtUsername.getText());
+            pengguna = Launcher.getSecurityService().cariUserNamePengguna(txtUsername.getText());
             if(pengguna==null){
                 JOptionPane.showMessageDialog(FrameUtama.getInstance(),
                         "Username Tidak Terdaftar",
@@ -138,8 +140,27 @@ public class LoginPanel extends javax.swing.JPanel {
         btnLogin.addActionListener((ae) -> {
             if(validateLogin()){
                 System.out.println("sukses");
+                System.out.println(pengguna.getNamaLengkap());
+                Launcher.setPenggunaAktif(pengguna);
+                
             }
         });
+        btnBatal.addActionListener((ae) -> {
+            System.exit(0);
+        });
+    }
+    public Pengguna tampilLogin(){
+        FrameUtama fu = new FrameUtama();
+        setName("Login");
+        if (this.getAktifPanel() == 1) {
+            fu.getTabbedPane().setSelectedIndex(getIndexTab());
+        } else {
+            setAktifPanel(getAktifPanel() + 1);
+            fu.getTabbedPane().addTab(getName(), this);
+            setIndexTab(fu.getTabbedPane().getTabCount() - 1);
+            fu.getTabbedPane().setSelectedIndex(getIndexTab());
+        }
+        return pengguna;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

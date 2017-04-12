@@ -5,10 +5,10 @@
  */
 package com.aangirsang.girsang.toko.ui.master;
 
+import com.aangirsang.girsang.toko.Launcher;
 import com.aangirsang.girsang.toko.model.master.GolonganBarang;
 import com.aangirsang.girsang.toko.toolbar.ToolbarTanpaFilter;
 import com.aangirsang.girsang.toko.ui.master.dialog.GolonganBarangDialog;
-import com.aangirsang.girsang.toko.ui.utama.FrameUtama;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -72,7 +72,7 @@ public class GolonganBarangPanel extends javax.swing.JPanel {
     }
 
     private void isiTabelKategori() {
-        golonganBarangs = FrameUtama.getMasterService().golonganBarangAsc();
+        golonganBarangs = Launcher.getMasterService().golonganBarangAsc();
         RowSorter<TableModel> sorter = new TableRowSorter<>(new kategoriTabelModel(golonganBarangs));
         tbGolonganBarang.setRowSorter(sorter);
         tbGolonganBarang.setModel(new kategoriTabelModel(golonganBarangs));
@@ -123,7 +123,7 @@ public class GolonganBarangPanel extends javax.swing.JPanel {
 
     private void cariSelect() {
         golonganBarang = new GolonganBarang();
-        golonganBarang = FrameUtama.getMasterService().golonganBarangBerdasarkanId(idSelect);
+        golonganBarang = Launcher.getMasterService().golonganBarangBerdasarkanId(idSelect);
     }
 
     private void initListener() {
@@ -146,7 +146,7 @@ public class GolonganBarangPanel extends javax.swing.JPanel {
                             golonganBarang.setId(g.getId());
                             golonganBarang.setGolonganBarang(g.getGolonganBarang());
 
-                            FrameUtama.getMasterService().simpan(golonganBarang);
+                            Launcher.getMasterService().simpan(golonganBarang);
                             isiTabelKategori();
                             JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                             title = null;
@@ -161,7 +161,7 @@ public class GolonganBarangPanel extends javax.swing.JPanel {
                 if ("".equals(toolbar.getTxtCari().getText())) {
                     isiTabelKategori();
                 } else {
-                    golonganBarangs = FrameUtama.getMasterService().cariNamaGolonganBarang(toolbar.getTxtCari().getText());
+                    golonganBarangs = Launcher.getMasterService().cariNamaGolonganBarang(toolbar.getTxtCari().getText());
                     tbGolonganBarang.setModel(new kategoriTabelModel(golonganBarangs));
                     RowSorter<TableModel> sorter = new TableRowSorter<>(new kategoriTabelModel(golonganBarangs));
                     tbGolonganBarang.setRowSorter(sorter);
@@ -192,7 +192,7 @@ public class GolonganBarangPanel extends javax.swing.JPanel {
             if (k != null) {
                 golonganBarang.setGolonganBarang(k.getGolonganBarang());
 
-                FrameUtama.getMasterService().simpan(golonganBarang);
+                Launcher.getMasterService().simpan(golonganBarang);
                 isiTabelKategori();
                 JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                 title = null;
@@ -212,7 +212,7 @@ public class GolonganBarangPanel extends javax.swing.JPanel {
                     golonganBarang.setId(g.getId());
                     golonganBarang.setGolonganBarang(g.getGolonganBarang());
 
-                    FrameUtama.getMasterService().simpan(golonganBarang);
+                    Launcher.getMasterService().simpan(golonganBarang);
                     isiTabelKategori();
                     JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                     title = null;
@@ -224,7 +224,7 @@ public class GolonganBarangPanel extends javax.swing.JPanel {
             if (golonganBarang == null) {
                 JOptionPane.showMessageDialog(null, "Data Kategori Belum Terpilih");
             } else {
-                FrameUtama.getMasterService().hapus(golonganBarang);
+                Launcher.getMasterService().hapus(golonganBarang);
                 isiTabelKategori();
                 JOptionPane.showMessageDialog(null, "Hapus Data Berhasil");
             }

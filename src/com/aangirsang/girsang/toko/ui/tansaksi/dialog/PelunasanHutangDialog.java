@@ -5,6 +5,7 @@
  */
 package com.aangirsang.girsang.toko.ui.tansaksi.dialog;
 
+import com.aangirsang.girsang.toko.Launcher;
 import com.aangirsang.girsang.toko.model.master.Supplier;
 import com.aangirsang.girsang.toko.model.transaksi.PelunasanHutang;
 import com.aangirsang.girsang.toko.model.transaksi.PelunasanHutangDetail;
@@ -66,7 +67,7 @@ public class PelunasanHutangDialog extends javax.swing.JDialog {
         return this.pelunasanHutang;
     }
     private void clearAll(){
-        txtNoRef.setText(FrameUtama.getTransaksiService().ambilBerikutnya(TransaksiRunningNumberEnum.HUTANG));
+        txtNoRef.setText(Launcher.getTransaksiService().ambilBerikutnya(TransaksiRunningNumberEnum.HUTANG));
         txtKodeSupplier.setText("");
         txtNamaSupplier.setText("");
         txtKwitansi.setText("");
@@ -94,7 +95,7 @@ public class PelunasanHutangDialog extends javax.swing.JDialog {
         txtNamaSupplier.setText(p.getSupplier().getNamaSupplier());
         txtKwitansi.setText(p.getNoKwitansi());
         
-        daftarPelunasanHutangDetail = FrameUtama.getTransaksiService().cariDetail(p);
+        daftarPelunasanHutangDetail = Launcher.getTransaksiService().cariDetail(p);
         table.setModel(new TabelModel(daftarPelunasanHutangDetail));
         
         supplier = new Supplier();
@@ -107,12 +108,12 @@ public class PelunasanHutangDialog extends javax.swing.JDialog {
         if (s != null) {
             txtKodeSupplier.setText(s.getId());
             txtNamaSupplier.setText(s.getNamaSupplier());
-            List<Pembelian> hutangPembelian = FrameUtama.getTransaksiService().hutangPembelian(s);
+            List<Pembelian> hutangPembelian = Launcher.getTransaksiService().hutangPembelian(s);
 
             BigDecimal totalHutang = new BigDecimal(0);
             BigDecimal totalPembayaran;
             for(Pembelian beli : hutangPembelian){
-                List<PelunasanHutangDetail> pelunasanHutangs = FrameUtama.getTransaksiService().cariPembelian(beli);
+                List<PelunasanHutangDetail> pelunasanHutangs = Launcher.getTransaksiService().cariPembelian(beli);
                 totalPembayaran = new BigDecimal(0);
                 for(PelunasanHutangDetail detail : pelunasanHutangs){
                     totalPembayaran = totalPembayaran.add(detail.getPembayaran());
@@ -143,7 +144,7 @@ public class PelunasanHutangDialog extends javax.swing.JDialog {
         pelunasanHutang.setNoKwitansi(txtKwitansi.getText());
         pelunasanHutang.setSupplier(supplier);
         pelunasanHutang.setJlhBayar(totalBayar);
-        pelunasanHutang.setPembuat(FrameUtama.getPenggunaAktif());
+        pelunasanHutang.setPembuat(Launcher.getPenggunaAktif());
         pelunasanHutang.setPelunasanHutangDetails(daftarPelunasanHutangDetail);
         
     }
@@ -440,7 +441,7 @@ public class PelunasanHutangDialog extends javax.swing.JDialog {
         Supplier s = (Supplier) new PilihSupplierDialog().showDialog(judul);
         tampilDetails(s);
         supplier = new Supplier();
-        supplier = FrameUtama.getMasterService().supplierBerdasarkanId(s.getId());
+        supplier = Launcher.getMasterService().supplierBerdasarkanId(s.getId());
     }//GEN-LAST:event_btnCariActionPerformed
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:

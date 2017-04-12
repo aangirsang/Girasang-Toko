@@ -5,6 +5,7 @@
  */
 package com.aangirsang.girsang.toko.ui.tansaksi.dialog;
 
+import com.aangirsang.girsang.toko.Launcher;
 import com.aangirsang.girsang.toko.model.master.Barang;
 import com.aangirsang.girsang.toko.model.master.Supplier;
 import com.aangirsang.girsang.toko.model.transaksi.Kredit;
@@ -82,7 +83,7 @@ public class PembelianDialog extends javax.swing.JDialog {
         return this.pembelian;
     }
     private void clearAll() {
-        txtNoRef.setText(FrameUtama.getTransaksiService()
+        txtNoRef.setText(Launcher.getTransaksiService()
                 .ambilBerikutnya(TransaksiRunningNumberEnum.PEMBELIAN));
         jdcTglPembelian.setDate(new Date());
         txtKodeSupplier.setText("");
@@ -197,7 +198,7 @@ public class PembelianDialog extends javax.swing.JDialog {
         pembelian.setPembelianDetails(pembelianDetails);
         pembelian.setTotal(TextComponentUtils
                 .parseNumberToBigDecimal(txtTotal.getText()));
-        pembelian.setPembuat(FrameUtama.getPenggunaAktif());
+        pembelian.setPembuat(Launcher.getPenggunaAktif());
     }
     private void loadModelToForm(Pembelian p, Supplier s){
         txtNoRef.setText(p.getNoRef());
@@ -212,7 +213,7 @@ public class PembelianDialog extends javax.swing.JDialog {
         }
         cboLokasi.setSelectedItem(p.getLokasi());
         pembelianDetail = new PembelianDetail();
-        pembelianDetails = FrameUtama.getTransaksiService().cariPembelianDetail(p);
+        pembelianDetails = Launcher.getTransaksiService().cariPembelianDetail(p);
         tblPembelianDetail.setModel(new PembelianDetailTabelModel(pembelianDetails));
         supplier = s;
         ukuranTabelBarang();
@@ -866,7 +867,7 @@ public class PembelianDialog extends javax.swing.JDialog {
             txtKodeSupplier.setText(s.getId());
             txtNamaSupplier.setText(s.getNamaSupplier());
             supplier = new Supplier();
-            supplier = FrameUtama.getMasterService().supplierBerdasarkanId(s.getId());
+            supplier = Launcher.getMasterService().supplierBerdasarkanId(s.getId());
         }
     }//GEN-LAST:event_btnCariActionPerformed
     private void btnDaftarBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaftarBarangActionPerformed
@@ -882,7 +883,7 @@ public class PembelianDialog extends javax.swing.JDialog {
                     .getIsiPembelian()));
             txtHargaBeli.setText(TextComponentUtils.formatNumber(hargaBeli));
             jspQty.requestFocus();
-            barang = FrameUtama.getMasterService().barangBerdasarkanId(b.getPlu());
+            barang = Launcher.getMasterService().barangBerdasarkanId(b.getPlu());
         }
     }//GEN-LAST:event_btnDaftarBarangActionPerformed
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed

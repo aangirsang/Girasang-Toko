@@ -5,6 +5,7 @@
  */
 package com.aangirsang.girsang.toko.ui.master.supplier;
 
+import com.aangirsang.girsang.toko.Launcher;
 import com.aangirsang.girsang.toko.model.master.Supplier;
 import com.aangirsang.girsang.toko.toolbar.ToolBarSelect;
 import com.aangirsang.girsang.toko.ui.master.supplier.SupplierPanel;
@@ -70,7 +71,7 @@ public class PilihSupplierDialog extends javax.swing.JDialog {
         tblSupplier.getColumnModel().getColumn(7).setPreferredWidth(100);//Kota
     }
     private void isiTabelKategori() {
-        suppliers = FrameUtama.getMasterService().semuaSupplier();
+        suppliers = Launcher.getMasterService().semuaSupplier();
         RowSorter<TableModel> sorter = new TableRowSorter<>(new SupplierTabelModel(suppliers));
         tblSupplier.setRowSorter(sorter);
         tblSupplier.setModel(new SupplierTabelModel(suppliers));
@@ -238,7 +239,7 @@ public class PilihSupplierDialog extends javax.swing.JDialog {
             if (tblSupplier.getSelectedRow() >= 0) {
                 String id = tblSupplier.getValueAt(tblSupplier.getSelectedRow(), 0).toString();
                 supplier = new Supplier();
-                supplier = FrameUtama.getMasterService().supplierBerdasarkanId(id);
+                supplier = Launcher.getMasterService().supplierBerdasarkanId(id);
             }
         });
         tblSupplier.addMouseListener(new MouseAdapter() {
@@ -258,7 +259,7 @@ public class PilihSupplierDialog extends javax.swing.JDialog {
                 if ("".equals(toolbar.getTxtCari().getText())) {
                     isiTabelKategori();
                 } else {
-                    suppliers = FrameUtama.getMasterService().cariNamaSupplier(toolbar.getTxtCari().getText());
+                    suppliers = Launcher.getMasterService().cariNamaSupplier(toolbar.getTxtCari().getText());
                     tblSupplier.setModel(new SupplierTabelModel(suppliers));
                     RowSorter<TableModel> sorter = new TableRowSorter<>(new SupplierTabelModel(suppliers));
                     tblSupplier.setRowSorter(sorter);
@@ -289,7 +290,7 @@ public class PilihSupplierDialog extends javax.swing.JDialog {
             if (s != null) {
                 loadFormToModel(s);
                 supplier.setId("");
-                FrameUtama.getMasterService().simpan(supplier);
+                Launcher.getMasterService().simpan(supplier);
                 isiTabelKategori();
                 JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                 title = null;
@@ -306,7 +307,7 @@ public class PilihSupplierDialog extends javax.swing.JDialog {
                 supplier = new Supplier();
                 if (s != null) {
                     loadFormToModel(s);
-                    FrameUtama.getMasterService().simpan(supplier);
+                    Launcher.getMasterService().simpan(supplier);
                     isiTabelKategori();
                     JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                     title = null;
@@ -318,7 +319,7 @@ public class PilihSupplierDialog extends javax.swing.JDialog {
             if (supplier == null) {
                 JOptionPane.showMessageDialog(null, "Data Supplier Belum Terpilih");
             } else {
-                FrameUtama.getMasterService().hapus(supplier);
+                Launcher.getMasterService().hapus(supplier);
                 isiTabelKategori();
                 JOptionPane.showMessageDialog(null, "Hapus Data Berhasil");
             }

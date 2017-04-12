@@ -5,6 +5,7 @@
  */
 package com.aangirsang.girsang.toko.ui.master.dialog;
 
+import com.aangirsang.girsang.toko.Launcher;
 import com.aangirsang.girsang.toko.model.master.GolonganBarang;
 import com.aangirsang.girsang.toko.model.master.constant.MasterRunningNumberEnum;
 import com.aangirsang.girsang.toko.ui.utama.FrameUtama;
@@ -42,9 +43,9 @@ public class GolonganBarangDialog extends javax.swing.JDialog {
         title = Title;
         if (k == null) {
             clear();
-            txtId.setText(FrameUtama.getMasterService().ambilBerikutnya(MasterRunningNumberEnum.GOLONGAN));
+            txtId.setText(Launcher.getMasterService().ambilBerikutnya(MasterRunningNumberEnum.GOLONGAN));
         } else {
-            golonganBarang = FrameUtama.getMasterService().golonganBarangBerdasarkanId(k.getId());
+            golonganBarang = Launcher.getMasterService().golonganBarangBerdasarkanId(k.getId());
             txtId.setText(String.valueOf(golonganBarang.getId()));
             txtGolongan.setText(golonganBarang.getGolonganBarang());
         }

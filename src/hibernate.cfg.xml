@@ -54,5 +54,7 @@ Contributor(s):
     <mapping class="com.aangirsang.girsang.toko.model.master.HPPBarang"/>
     <mapping class="com.aangirsang.girsang.toko.model.security.Pengguna"/>
     <mapping class="com.aangirsang.girsang.toko.model.security.TingkatAkses"/>
+    <mapping class="com.aangirsang.girsang.toko.model.transaksi.ReturPembelian"/>
+    <mapping class="com.aangirsang.girsang.toko.model.transaksi.ReturPembelianDetail"/>
   </session-factory>
 </hibernate-configuration>

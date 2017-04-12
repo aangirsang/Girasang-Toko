@@ -5,6 +5,7 @@
  */
 package com.aangirsang.girsang.toko.ui.master.barang;
 
+import com.aangirsang.girsang.toko.Launcher;
 import com.aangirsang.girsang.toko.model.master.Barang;
 import com.aangirsang.girsang.toko.model.master.GolonganBarang;
 import com.aangirsang.girsang.toko.model.master.HPPBarang;
@@ -91,7 +92,7 @@ public class BarangDialog extends javax.swing.JDialog {
         setTitle(Title);
         Clear();
         if (p == null) {
-            txtPLU.setText(FrameUtama.getMasterService().ambilBerikutnya(MasterRunningNumberEnum.BARANG));
+            txtPLU.setText(Launcher.getMasterService().ambilBerikutnya(MasterRunningNumberEnum.BARANG));
         } else {
             loadModelToForm(p);
             isiTabelHistory(p);
@@ -191,7 +192,7 @@ public class BarangDialog extends javax.swing.JDialog {
     private void isiComboGolongan() {
 
         cboGolongan.removeAllItems();
-        golonganBarangs = FrameUtama.getMasterService().semuaGolonganBarang();
+        golonganBarangs = Launcher.getMasterService().semuaGolonganBarang();
         for (int i = 0; i < golonganBarangs.size(); i++) {
             cboGolongan.addItem(golonganBarangs.get(i).getGolonganBarang());
         }
@@ -481,12 +482,12 @@ public class BarangDialog extends javax.swing.JDialog {
         }
     }
     private void isiTabelHistory(Barang barang) {
-        listHistory = FrameUtama.getTransaksiService().cariBarang(barang);
+        listHistory = Launcher.getTransaksiService().cariBarang(barang);
         tblHistoryPembelian.setModel(new HistoryTabelModel(listHistory));
         ukuranTabelHistory();
     }
     private void isiTabelHPP(Barang barang) {
-        listHPP = FrameUtama.getMasterService().hPPBarangs(barang);
+        listHPP = Launcher.getMasterService().hPPBarangs(barang);
         tblHPP.setModel(new HPPTabelModel(listHPP));
         //ukuranTabelHistory();
     }
@@ -1358,7 +1359,7 @@ public class BarangDialog extends javax.swing.JDialog {
                 hPPBarang.setHppSatuan(TextComponentUtils.parseNumberToBigDecimal(lblHPP.getText()));
                 hPPBarang.setTanggal(new Date());
                 
-                FrameUtama.getMasterService().simpan(hPPBarang);
+                Launcher.getMasterService().simpan(hPPBarang);
                 isiTabelHPP(barang);
                 
                 clearHPP();

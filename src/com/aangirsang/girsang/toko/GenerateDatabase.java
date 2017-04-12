@@ -34,13 +34,14 @@ public class GenerateDatabase {
 
         try (Connection conn = dataSource.getConnection()) {
             new SchemaExport(cfg, conn).create(true, true);
-            
+
             cfg.generateSchemaCreationScript(
                     Dialect.getDialect(cfg.getProperties()));
             SchemaExport export = new SchemaExport(cfg, conn);
             export.create(true, true);
-            conn.close();
             
+            conn.close();
+
         }
         ctx.registerShutdownHook();
 

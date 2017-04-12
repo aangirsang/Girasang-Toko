@@ -5,6 +5,7 @@
  */
 package com.aangirsang.girsang.toko.ui.master.supplier;
 
+import com.aangirsang.girsang.toko.Launcher;
 import com.aangirsang.girsang.toko.model.master.Supplier;
 import com.aangirsang.girsang.toko.toolbar.ToolbarTanpaFilter;
 import com.aangirsang.girsang.toko.ui.master.supplier.SupplierDialog;
@@ -82,7 +83,7 @@ public class SupplierPanel extends javax.swing.JPanel {
     }
 
     private void isiTabelKategori() {
-        suppliers = FrameUtama.getMasterService().semuaSupplier();
+        suppliers = Launcher.getMasterService().semuaSupplier();
         RowSorter<TableModel> sorter = new TableRowSorter<>(new kategoriTabelModel(suppliers));
         tblSupplier.setRowSorter(sorter);
         tblSupplier.setModel(new kategoriTabelModel(suppliers));
@@ -166,7 +167,7 @@ public class SupplierPanel extends javax.swing.JPanel {
             if (tblSupplier.getSelectedRow() >= 0) {
                 String id = tblSupplier.getValueAt(tblSupplier.getSelectedRow(), 0).toString();
                 supplier = new Supplier();
-                supplier = FrameUtama.getMasterService().supplierBerdasarkanId(id);
+                supplier = Launcher.getMasterService().supplierBerdasarkanId(id);
             }
         });
         tblSupplier.addMouseListener(new MouseAdapter() {
@@ -180,7 +181,7 @@ public class SupplierPanel extends javax.swing.JPanel {
                         supplier = new Supplier();
                         if (s != null) {
                             loadFormToModel(s);
-                            FrameUtama.getMasterService().simpan(supplier);
+                            Launcher.getMasterService().simpan(supplier);
                             isiTabelKategori();
                             JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                             title = null;
@@ -195,7 +196,7 @@ public class SupplierPanel extends javax.swing.JPanel {
                 if ("".equals(toolbarTanpaFilter1.getTxtCari().getText())) {
                     isiTabelKategori();
                 } else {
-                    suppliers = FrameUtama.getMasterService().cariNamaSupplier(toolbarTanpaFilter1.getTxtCari().getText());
+                    suppliers = Launcher.getMasterService().cariNamaSupplier(toolbarTanpaFilter1.getTxtCari().getText());
                     tblSupplier.setModel(new kategoriTabelModel(suppliers));
                     RowSorter<TableModel> sorter = new TableRowSorter<>(new kategoriTabelModel(suppliers));
                     tblSupplier.setRowSorter(sorter);
@@ -226,7 +227,7 @@ public class SupplierPanel extends javax.swing.JPanel {
             if (s != null) {
                 loadFormToModel(s);
                 supplier.setId("");
-                FrameUtama.getMasterService().simpan(supplier);
+                Launcher.getMasterService().simpan(supplier);
                 isiTabelKategori();
                 JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                 title = null;
@@ -243,7 +244,7 @@ public class SupplierPanel extends javax.swing.JPanel {
                 supplier = new Supplier();
                 if (s != null) {
                     loadFormToModel(s);
-                    FrameUtama.getMasterService().simpan(supplier);
+                    Launcher.getMasterService().simpan(supplier);
                     isiTabelKategori();
                     JOptionPane.showMessageDialog(null, "Penyimpanan Berhasil");
                     title = null;
@@ -255,7 +256,7 @@ public class SupplierPanel extends javax.swing.JPanel {
             if (supplier == null) {
                 JOptionPane.showMessageDialog(null, "Data Supplier Belum Terpilih");
             } else {
-                FrameUtama.getMasterService().hapus(supplier);
+                Launcher.getMasterService().hapus(supplier);
                 isiTabelKategori();
                 JOptionPane.showMessageDialog(null, "Hapus Data Berhasil");
             }

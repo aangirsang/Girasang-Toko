@@ -30,8 +30,9 @@ public class PenggunaDao extends BaseDaoHibernate<Pengguna>{
         return (Pengguna) sessionFactory.getCurrentSession().createQuery(
                 "From Pengguna p where p.userName=:userName and"
                         + " p.password=:password")
-                .setParameter("userName", userName)
-                .setParameter("password", password);
+                .setString("userName", userName)
+                .setString("password", password)
+                .uniqueResult();
     }
     @Override
     public List<Pengguna> semua(){

@@ -5,6 +5,7 @@
  */
 package com.aangirsang.girsang.toko.ui.security;
 
+import com.aangirsang.girsang.toko.Launcher;
 import com.aangirsang.girsang.toko.model.master.Barang;
 import com.aangirsang.girsang.toko.model.master.Supplier;
 import com.aangirsang.girsang.toko.model.security.Pengguna;
@@ -94,7 +95,7 @@ public class PenggunaPanel extends javax.swing.JPanel {
         tabel.getColumnModel().getColumn(7).setPreferredWidth(100);//status
     }
     private void isiTabelKategori() {
-        penggunas = FrameUtama.getSecurityService().semuaPengguna();
+        penggunas = Launcher.getSecurityService().semuaPengguna();
         RowSorter<TableModel> sorter = new TableRowSorter<>(new TabelModel(penggunas));
         tabel.setRowSorter(sorter);
         tabel.setModel(new TabelModel(penggunas));
@@ -207,7 +208,7 @@ public class PenggunaPanel extends javax.swing.JPanel {
     }
     private void cariSelect() {
         pengguna = new Pengguna();
-        pengguna = FrameUtama.getSecurityService().cariIdPengguna(idSelect);
+        pengguna = Launcher.getSecurityService().cariIdPengguna(idSelect);
     }
     private class TabelModel extends AbstractTableModel {
         private final List<Pengguna> daftarPengguna;
@@ -385,7 +386,7 @@ public class PenggunaPanel extends javax.swing.JPanel {
                         pengguna = new Pengguna();
                         if (p != null) {
                             loadFormToModel(p);
-                            FrameUtama.getSecurityService().simpan(p);
+                            Launcher.getSecurityService().simpan(p);
                             isiTabelKategori();
                             JOptionPane.showMessageDialog(FrameUtama.getInstance(), 
                                     "Penyimpanan Sukses",
@@ -404,7 +405,7 @@ public class PenggunaPanel extends javax.swing.JPanel {
             if(t!=null){
                 loadFormToModel(t);
                 pengguna.setIdPengguna("");
-                FrameUtama.getSecurityService().simpan(pengguna);
+                Launcher.getSecurityService().simpan(pengguna);
                 isiTabelKategori();
                 JOptionPane.showMessageDialog(FrameUtama.getInstance(),
                         "Penyimpanan Sukses",
@@ -422,7 +423,7 @@ public class PenggunaPanel extends javax.swing.JPanel {
                 pengguna = new Pengguna();
                 if (t != null) {
                     loadFormToModel(t);
-                    FrameUtama.getSecurityService().simpan(t);
+                    Launcher.getSecurityService().simpan(t);
                     isiTabelKategori();
                     JOptionPane.showMessageDialog(FrameUtama.getInstance(), 
                             "Penyimpanan Sukses",
@@ -436,7 +437,7 @@ public class PenggunaPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Data Tingkat Akses Belum Terpilih");
             } else {
                 cariSelect();
-                FrameUtama.getSecurityService().hapus(pengguna);
+                Launcher.getSecurityService().hapus(pengguna);
                 isiTabelKategori();
                 JOptionPane.showMessageDialog(FrameUtama.getInstance(), 
                         "Hapus Sukses",
