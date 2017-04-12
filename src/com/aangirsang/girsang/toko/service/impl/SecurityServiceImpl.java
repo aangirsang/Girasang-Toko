@@ -5,8 +5,10 @@
  */
 package com.aangirsang.girsang.toko.service.impl;
 
+import com.aangirsang.girsang.toko.dao.master.RunningNumberDao;
 import com.aangirsang.girsang.toko.dao.security.PenggunaDao;
 import com.aangirsang.girsang.toko.dao.security.TingkatAksesDao;
+import com.aangirsang.girsang.toko.model.master.constant.MasterRunningNumberEnum;
 import com.aangirsang.girsang.toko.model.security.Pengguna;
 import com.aangirsang.girsang.toko.model.security.TingkatAkses;
 import com.aangirsang.girsang.toko.service.SecurityService;
@@ -26,11 +28,13 @@ public class SecurityServiceImpl implements SecurityService{
     
     @Autowired PenggunaDao penggunaDao;
     @Autowired TingkatAksesDao tingkatAksesDao;
+    @Autowired RunningNumberDao runningNumberDao;
 
     //<editor-fold defaultstate="collapsed" desc="Pengguna">
     @Override
     @Transactional(isolation=Isolation.SERIALIZABLE)
     public void simpan(Pengguna p) {
+        if(p.getIdPengguna().equals(""))p.setIdPengguna(runningNumberDao.ambilBerikutnyaDanSimpan(MasterRunningNumberEnum.PENGGUNA));
         penggunaDao.simpan(p);
     }
     
@@ -74,6 +78,7 @@ public class SecurityServiceImpl implements SecurityService{
     @Override
     @Transactional(isolation=Isolation.SERIALIZABLE)
     public void simpan(TingkatAkses tA) {
+        if("".equals(tA.getId()))tA.setId(runningNumberDao.ambilBerikutnyaDanSimpan(MasterRunningNumberEnum.TINGKATAKSES));
         tingkatAksesDao.simpan(tA);
     }
     

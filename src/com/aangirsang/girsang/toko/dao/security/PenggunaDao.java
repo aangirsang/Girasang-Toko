@@ -22,8 +22,9 @@ public class PenggunaDao extends BaseDaoHibernate<Pengguna>{
     }
     public Pengguna cariUsername(String userName){
         return (Pengguna) sessionFactory.getCurrentSession().createQuery(
-                "From Pengguna p where p.userName=:userName")
-                .setParameter("userName", userName);
+                "from Pengguna p where p.userName=:userName")
+                .setString("userName", userName)
+                .uniqueResult();
     }
     public Pengguna login(String userName, String password){
         return (Pengguna) sessionFactory.getCurrentSession().createQuery(

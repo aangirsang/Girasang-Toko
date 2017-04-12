@@ -10,6 +10,7 @@ import com.aangirsang.girsang.toko.ui.master.GolonganBarangPanel;
 import com.aangirsang.girsang.toko.ui.master.SatuanBarangPanel;
 import com.aangirsang.girsang.toko.ui.master.supplier.SupplierPanel;
 import com.aangirsang.girsang.toko.ui.security.PenggunaPanel;
+import com.aangirsang.girsang.toko.ui.security.TingkatAksesPanel;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.AbstractButton;
@@ -24,6 +25,7 @@ import javax.swing.JTabbedPane;
  */
 public class PopUpMenuMaster extends AbstractButton {
 
+    TingkatAksesPanel aksesPanel = new TingkatAksesPanel();
     PenggunaPanel penggunaPanel = new PenggunaPanel();
     GolonganBarangPanel golonganBarangPanel = new GolonganBarangPanel();
     SatuanBarangPanel satuanBarangPanel = new SatuanBarangPanel();
@@ -113,6 +115,7 @@ public class PopUpMenuMaster extends AbstractButton {
                 }
             }
         }));
+        popupMenuMaster.add(new JPopupMenu.Separator());
         popupMenuMaster.add(new JMenuItem(new AbstractAction("Pengguna") {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -128,6 +131,26 @@ public class PopUpMenuMaster extends AbstractButton {
                     penggunaPanel.getToolbarDenganFilter().getBtnKeluar().addActionListener((ae1) -> {
                         TP.remove(penggunaPanel);
                         penggunaPanel.setAktifPanel(penggunaPanel.getAktifPanel() - 1);
+                        TP.setSelectedIndex(0);
+                    });
+                }
+            }
+        }));
+        popupMenuMaster.add(new JMenuItem(new AbstractAction("Tingkat Akses") {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                aksesPanel.setName("Daftar Tingkat Akses");
+                if (aksesPanel.getAktifPanel() == 1) {
+                    TP.setSelectedIndex(aksesPanel.getIndexTab());
+                } else {
+                    aksesPanel.setAktifPanel(aksesPanel.getAktifPanel() + 1);
+                    TP.addTab(aksesPanel.getName(), aksesPanel);
+                    aksesPanel.setIndexTab(TP.getTabCount() - 1);
+                    TP.setSelectedIndex(aksesPanel.getIndexTab());
+                    
+                    aksesPanel.getToolbar().getBtnKeluar().addActionListener((ae1) -> {
+                        TP.remove(aksesPanel);
+                        aksesPanel.setAktifPanel(aksesPanel.getAktifPanel() - 1);
                         TP.setSelectedIndex(0);
                     });
                 }

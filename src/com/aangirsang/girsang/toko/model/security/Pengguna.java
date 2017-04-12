@@ -5,7 +5,11 @@
  */
 package com.aangirsang.girsang.toko.model.security;
 
+import com.twmacinta.util.MD5;
 import java.io.Serializable;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -89,7 +93,8 @@ public class Pengguna implements Serializable{
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        String kataSandi = new MD5(password).asHex();
+        this.password = kataSandi;
     }
 
     public String getPasswordHint() {

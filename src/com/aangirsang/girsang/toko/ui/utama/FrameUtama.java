@@ -12,6 +12,7 @@ import com.aangirsang.girsang.toko.popup.PopUpMenuTransaksi;
 import com.aangirsang.girsang.toko.service.MasterService;
 import com.aangirsang.girsang.toko.service.SecurityService;
 import com.aangirsang.girsang.toko.service.TransaksiService;
+import com.aangirsang.girsang.toko.ui.security.LoginPanel;
 import com.toedter.calendar.JDateChooser;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -38,6 +39,8 @@ public class FrameUtama extends javax.swing.JFrame {
     private static TransaksiService transaksiService;
     private static SecurityService securityService;
     private static Pengguna penggunaAktif;
+    
+    LoginPanel loginPanel = new LoginPanel();
 
     public static FrameUtama getInstance() {
         return instance;
@@ -83,6 +86,7 @@ public class FrameUtama extends javax.swing.JFrame {
         JPopupMenu popUpMenuTransaksi = new JPopupMenu();
         PopUpMenuMaster MenuMaster = new PopUpMenuMaster(tabbedPane, popUpMenuMaster, btnMaster);
         PopUpMenuTransaksi MenuTransaksi = new PopUpMenuTransaksi(tabbedPane, popUpMenuTransaksi, btnTransaksi);
+        tampilLogin();
     }
 
     /**
@@ -237,6 +241,17 @@ public class FrameUtama extends javax.swing.JFrame {
             }
         });
         t.start();
+    }
+    private void tampilLogin(){
+        loginPanel.setName("Login");
+        if (loginPanel.getAktifPanel() == 1) {
+            tabbedPane.setSelectedIndex(loginPanel.getIndexTab());
+        } else {
+            loginPanel.setAktifPanel(loginPanel.getAktifPanel() + 1);
+            tabbedPane.addTab(loginPanel.getName(), loginPanel);
+            loginPanel.setIndexTab(tabbedPane.getTabCount() - 1);
+            tabbedPane.setSelectedIndex(loginPanel.getIndexTab());
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

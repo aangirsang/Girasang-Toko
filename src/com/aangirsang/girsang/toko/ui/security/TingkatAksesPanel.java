@@ -8,8 +8,11 @@ package com.aangirsang.girsang.toko.ui.security;
 import com.aangirsang.girsang.toko.model.master.Barang;
 import com.aangirsang.girsang.toko.model.master.Supplier;
 import com.aangirsang.girsang.toko.model.security.Pengguna;
+import com.aangirsang.girsang.toko.model.security.TingkatAkses;
 import com.aangirsang.girsang.toko.model.transaksi.Pembelian;
 import com.aangirsang.girsang.toko.toolbar.ToolbarDenganFilter;
+import com.aangirsang.girsang.toko.toolbar.ToolbarTanpaFilter;
+import com.aangirsang.girsang.toko.ui.security.dialog.DialogTingkatAkses;
 import com.aangirsang.girsang.toko.ui.tansaksi.dialog.PembelianDialog;
 import com.aangirsang.girsang.toko.ui.utama.FrameUtama;
 import com.aangirsang.girsang.toko.util.BigDecimalRenderer;
@@ -49,13 +52,12 @@ import org.apache.poi.ss.util.CellRangeAddress;
  */
 public class TingkatAksesPanel extends javax.swing.JPanel {
 
-    private List<Pengguna> penggunas;
-    private Pengguna pengguna;
+    private List<TingkatAkses> tingkatAkseses;
+    private TingkatAkses tingkatAkses;
 
     int IndexTab = 0;
     int aktifPanel = 0;
     String title, idSelect;
-    ToolbarDenganFilter toolBar = new ToolbarDenganFilter();
 
     public int getIndexTab() {
         return IndexTab;
@@ -69,12 +71,13 @@ public class TingkatAksesPanel extends javax.swing.JPanel {
     public void setAktifPanel(int aktifPanel) {
         this.aktifPanel = aktifPanel;
     }
-    public ToolbarDenganFilter getToolbarDenganFilter() {
+    public ToolbarTanpaFilter getToolbar() {
         return toolbar;
     }
 
     public TingkatAksesPanel() {
         initComponents();
+        initListener();
         tabel.setDefaultRenderer(BigDecimal.class, new BigDecimalRenderer());
         tabel.setDefaultRenderer(Date.class, new DateRenderer());
         tabel.setDefaultRenderer(Integer.class, new IntegerRenderer());
@@ -82,24 +85,66 @@ public class TingkatAksesPanel extends javax.swing.JPanel {
     }
     private void ukuranTabel() {
         tabel.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        tabel.getColumnModel().getColumn(0).setPreferredWidth(100);//ID Pengguna
-        tabel.getColumnModel().getColumn(1).setPreferredWidth(100);//Username
-        tabel.getColumnModel().getColumn(2).setPreferredWidth(350);//Nama Lengkap
-        tabel.getColumnModel().getColumn(3).setPreferredWidth(150);//Tingkat Akses
-        tabel.getColumnModel().getColumn(4).setPreferredWidth(350);//Alamat
-        tabel.getColumnModel().getColumn(5).setPreferredWidth(100);//Kontak HP
-        tabel.getColumnModel().getColumn(6).setPreferredWidth(100);//Kontak Telepon
-        tabel.getColumnModel().getColumn(7).setPreferredWidth(100);//status
+        tabel.getColumnModel().getColumn(0).setPreferredWidth(100);//ID Tingkat Akses
+        tabel.getColumnModel().getColumn(1).setPreferredWidth(150);//Nama Tingkat Akses
+        tabel.getColumnModel().getColumn(2).setPreferredWidth(350);//Keterangan
     }
     private void isiTabelKategori() {
-        penggunas = FrameUtama.getSecurityService().semuaPengguna();
-        RowSorter<TableModel> sorter = new TableRowSorter<>(new TabelModel(penggunas));
+        tingkatAkseses = FrameUtama.getSecurityService().semuaTingkatAkses();
+        RowSorter<TableModel> sorter = new TableRowSorter<>(new TabelModel(tingkatAkseses));
         tabel.setRowSorter(sorter);
-        tabel.setModel(new TabelModel(penggunas));
+        tabel.setModel(new TabelModel(tingkatAkseses));
         toolbar.getTxtCari().setText("");
         ukuranTabel();
-        lblJumlahData.setText(penggunas.size() + " Data Pembelian");
+        lblJumlahData.setText(tingkatAkseses.size() + " Data Pembelian");
         idSelect = "";
+    }
+    private void cariSelect() {
+        tingkatAkses = new TingkatAkses();
+        tingkatAkses = FrameUtama.getSecurityService().cariIdTingkatAkses(idSelect);
+    }
+    private class TabelModel extends AbstractTableModel {
+        private final List<TingkatAkses> daftarTingkatAkses;
+        public TabelModel(List<TingkatAkses> daftarTingkatAkses) {
+            this.daftarTingkatAkses = daftarTingkatAkses;
+        }
+        @Override
+        public int getRowCount() {
+            return daftarTingkatAkses.size();
+        }
+        @Override
+        public int getColumnCount() {
+            return 3;
+        }
+
+        @Override
+        public String getColumnName(int col) {
+            switch (col) {
+                case 0:return "ID Tingkat Akses";
+                case 1:return "Tingkat Akses";
+                case 2:return "Keterangan";
+                default:return "";
+            }
+
+        }
+
+        @Override
+        public Object getValueAt(int rowIndex, int colIndex) {
+            TingkatAkses t = tingkatAkseses.get(rowIndex);
+            switch (colIndex) {
+                case 0:return t.getId();
+                case 1:return t.getNamaTingkatAkses();
+                case 2:return t.getKetTingkatAkses();
+                default:return "";
+            }
+        }
+
+        @Override
+        public Class<?> getColumnClass(int columnIndex) {
+            switch (columnIndex) {
+                default:return String.class;
+            }
+        }
     }
     private void exportExcel(List<Barang> dataList) throws IOException {
         if (dataList != null && !dataList.isEmpty()) {
@@ -200,67 +245,11 @@ public class TingkatAksesPanel extends javax.swing.JPanel {
             }
         }
     }
-    private void loadFormToModel(Pengguna p) {
-        pengguna = p;
+    private void loadFormToModel(TingkatAkses t) {
+        tingkatAkses = t;
     }
-    private void cariSelect() {
-        pengguna = new Pengguna();
-        pengguna = FrameUtama.getSecurityService().cariIdPengguna(idSelect);
-    }
-    private class TabelModel extends AbstractTableModel {
-        private final List<Pengguna> daftarPengguna;
-        public TabelModel(List<Pengguna> daftarPengguna) {
-            this.daftarPengguna = daftarPengguna;
-        }
-        @Override
-        public int getRowCount() {
-            return daftarPengguna.size();
-        }
-        @Override
-        public int getColumnCount() {
-            return 8;
-        }
-
-        @Override
-        public String getColumnName(int col) {
-            switch (col) {
-                case 0:return "ID Pengguna";
-                case 1:return "Username";
-                case 2:return "Nama Lengkap";
-                case 3:return "Tingkat Akses";
-                case 4:return "Alamat";
-                case 5:return "Kontak HP";
-                case 6:return "Kontak Telepon";
-                case 7:return "Status";
-                default:return "";
-            }
-
-        }
-
-        @Override
-        public Object getValueAt(int rowIndex, int colIndex) {
-            Pengguna p = penggunas.get(rowIndex);
-            switch (colIndex) {
-                case 0:return p.getIdPengguna();
-                case 1:return p.getUserName();
-                case 2:return p.getNamaLengkap();
-                case 3:return p.getTingkatAkses().getNamaTingkatAkses();
-                case 4:return p.getAlamat();
-                case 5:return p.getHp();
-                case 6:return p.getTelepon();
-                case 7:return p.getStatus();
-                default:return "";
-            }
-        }
-
-        @Override
-        public Class<?> getColumnClass(int columnIndex) {
-            switch (columnIndex) {
-                case 7:return BigDecimal.class;
-                default:return String.class;
-            }
-        }
-    }
+    
+    
     
 
     /**
@@ -279,15 +268,15 @@ public class TingkatAksesPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabel = new javax.swing.JTable();
         lblJumlahData = new javax.swing.JLabel();
-        toolbar = new com.aangirsang.girsang.toko.toolbar.ToolbarDenganFilter();
+        toolbar = new com.aangirsang.girsang.toko.toolbar.ToolbarTanpaFilter();
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gambar/User 64.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Gambar/user Level 64.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
-        jLabel2.setText("Daftar Data Pengguna");
+        jLabel2.setText("Daftar Data Tingkat Akses Pengguna");
 
         jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 11)); // NOI18N
-        jLabel3.setText("Disini anda bisa menambah, mengedit atau menghapus data Pengguna");
+        jLabel3.setText("Disini anda bisa menambah, mengedit atau menghapus data tingkat Akses pengguna");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -308,15 +297,15 @@ public class TingkatAksesPanel extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(toolbar, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(lblJumlahData, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 421, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
                 .addGap(5, 5, 5))
+            .addComponent(toolbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -359,7 +348,84 @@ public class TingkatAksesPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void initListener(){
+        tabel.getSelectionModel().addListSelectionListener((ListSelectionEvent lse) -> {
+            if (tabel.getSelectedRow() >= 0) {
+                idSelect = tabel.getValueAt(tabel.getSelectedRow(), 0).toString();
+            }
+        });
+        tabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent me) {
+                if (me.getClickCount() == 2) {
+                    title = "Edit Data Tingkat Akses";
+                    if ("".equals(idSelect)) {
+                        JOptionPane.showMessageDialog(null, "Data Tingkat Akses Belum Terpilih");
+                    } else {
+                        cariSelect();
+                        TingkatAkses t = new DialogTingkatAkses().showDialog(tingkatAkses, title);
+                        tingkatAkses = new TingkatAkses();
+                        if (t != null) {
+                            loadFormToModel(t);
+                            FrameUtama.getSecurityService().simpan(t);
+                            isiTabelKategori();
+                            JOptionPane.showMessageDialog(FrameUtama.getInstance(), 
+                                    "Penyimpanan Sukses",
+                                    "Sukses", JOptionPane.INFORMATION_MESSAGE);
+                            title = null;
+                        }
+                    }
+                }
+            }
+        });
+        toolbar.getBtnBaru().addActionListener((ae) -> {
+            tingkatAkses = null;
+            title = "Tambah Data Tingkat Akses";
+            TingkatAkses t = new DialogTingkatAkses().showDialog(tingkatAkses, title);
+            tingkatAkses = new TingkatAkses();
+            if(t!=null){
+                loadFormToModel(t);
+                tingkatAkses.setId("");
+                FrameUtama.getSecurityService().simpan(tingkatAkses);
+                isiTabelKategori();
+                JOptionPane.showMessageDialog(FrameUtama.getInstance(),
+                        "Penyimpanan Sukses",
+                        "Sukses", JOptionPane.INFORMATION_MESSAGE);
+                title = null;
+            }
+        });
+        toolbar.getBtnEdit().addActionListener((ae) -> {
+            title = "Edit Data Tingkat Akses";
+            if ("".equals(idSelect)) {
+                JOptionPane.showMessageDialog(null, "Data Tingkat Akses Belum Terpilih");
+            } else {
+                cariSelect();
+                TingkatAkses t = new DialogTingkatAkses().showDialog(tingkatAkses, title);
+                tingkatAkses = new TingkatAkses();
+                if (t != null) {
+                    loadFormToModel(t);
+                    FrameUtama.getSecurityService().simpan(t);
+                    isiTabelKategori();
+                    JOptionPane.showMessageDialog(FrameUtama.getInstance(), 
+                            "Penyimpanan Sukses",
+                            "Sukses", JOptionPane.INFORMATION_MESSAGE);
+                    title = null;
+                }
+            }
+        });
+        toolbar.getBtnHapus().addActionListener((ae) -> {
+            if ("".equals(idSelect)) {
+                JOptionPane.showMessageDialog(null, "Data Tingkat Akses Belum Terpilih");
+            } else {
+                cariSelect();
+                FrameUtama.getSecurityService().hapus(tingkatAkses);
+                isiTabelKategori();
+                JOptionPane.showMessageDialog(FrameUtama.getInstance(), 
+                        "Hapus Sukses",
+                        "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -369,6 +435,6 @@ public class TingkatAksesPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblJumlahData;
     private javax.swing.JTable tabel;
-    private com.aangirsang.girsang.toko.toolbar.ToolbarDenganFilter toolbar;
+    private com.aangirsang.girsang.toko.toolbar.ToolbarTanpaFilter toolbar;
     // End of variables declaration//GEN-END:variables
 }

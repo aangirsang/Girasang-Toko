@@ -14,7 +14,9 @@ public enum MasterRunningNumberEnum {
     SATUAN("SAT", 3),
     SUPPLIER("SUP", 3),
     BARANG("PLU",5),
-    HPP("HPP",5);
+    HPP("HPP",5),
+    PENGGUNA("USER",3),
+    TINGKATAKSES("TA",3);
     private String id;
     private Integer digit;
 

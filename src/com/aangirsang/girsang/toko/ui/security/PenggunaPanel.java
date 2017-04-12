@@ -10,6 +10,7 @@ import com.aangirsang.girsang.toko.model.master.Supplier;
 import com.aangirsang.girsang.toko.model.security.Pengguna;
 import com.aangirsang.girsang.toko.model.transaksi.Pembelian;
 import com.aangirsang.girsang.toko.toolbar.ToolbarDenganFilter;
+import com.aangirsang.girsang.toko.ui.security.dialog.DialogPengguna;
 import com.aangirsang.girsang.toko.ui.tansaksi.dialog.PembelianDialog;
 import com.aangirsang.girsang.toko.ui.utama.FrameUtama;
 import com.aangirsang.girsang.toko.util.BigDecimalRenderer;
@@ -75,6 +76,7 @@ public class PenggunaPanel extends javax.swing.JPanel {
 
     public PenggunaPanel() {
         initComponents();
+        initListener();
         tabel.setDefaultRenderer(BigDecimal.class, new BigDecimalRenderer());
         tabel.setDefaultRenderer(Date.class, new DateRenderer());
         tabel.setDefaultRenderer(Integer.class, new IntegerRenderer());
@@ -86,7 +88,7 @@ public class PenggunaPanel extends javax.swing.JPanel {
         tabel.getColumnModel().getColumn(1).setPreferredWidth(100);//Username
         tabel.getColumnModel().getColumn(2).setPreferredWidth(350);//Nama Lengkap
         tabel.getColumnModel().getColumn(3).setPreferredWidth(150);//Tingkat Akses
-        tabel.getColumnModel().getColumn(4).setPreferredWidth(350);//Alamat
+        tabel.getColumnModel().getColumn(4).setPreferredWidth(330);//Alamat
         tabel.getColumnModel().getColumn(5).setPreferredWidth(100);//Kontak HP
         tabel.getColumnModel().getColumn(6).setPreferredWidth(100);//Kontak Telepon
         tabel.getColumnModel().getColumn(7).setPreferredWidth(100);//status
@@ -98,7 +100,7 @@ public class PenggunaPanel extends javax.swing.JPanel {
         tabel.setModel(new TabelModel(penggunas));
         toolbar.getTxtCari().setText("");
         ukuranTabel();
-        lblJumlahData.setText(penggunas.size() + " Data Pembelian");
+        lblJumlahData.setText(penggunas.size() + " Data Pengguna");
         idSelect = "";
     }
     private void exportExcel(List<Barang> dataList) throws IOException {
@@ -248,7 +250,12 @@ public class PenggunaPanel extends javax.swing.JPanel {
                 case 4:return p.getAlamat();
                 case 5:return p.getHp();
                 case 6:return p.getTelepon();
-                case 7:return p.getStatus();
+                case 7:
+                    String status = "Tidak Aktif";
+                    if(p.getStatus()==true){
+                        status = "Aktif";
+                    }
+                    return status;
                 default:return "";
             }
         }
@@ -359,7 +366,84 @@ public class PenggunaPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void initListener(){
+        tabel.getSelectionModel().addListSelectionListener((ListSelectionEvent lse) -> {
+            if (tabel.getSelectedRow() >= 0) {
+                idSelect = tabel.getValueAt(tabel.getSelectedRow(), 0).toString();
+            }
+        });
+        tabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent me) {
+                if (me.getClickCount() == 2) {
+                    title = "Edit Data Tingkat Akses";
+                    if ("".equals(idSelect)) {
+                        JOptionPane.showMessageDialog(null, "Data Tingkat Akses Belum Terpilih");
+                    } else {
+                        cariSelect();
+                        Pengguna p = new DialogPengguna().showDialog(pengguna, title);
+                        pengguna = new Pengguna();
+                        if (p != null) {
+                            loadFormToModel(p);
+                            FrameUtama.getSecurityService().simpan(p);
+                            isiTabelKategori();
+                            JOptionPane.showMessageDialog(FrameUtama.getInstance(), 
+                                    "Penyimpanan Sukses",
+                                    "Sukses", JOptionPane.INFORMATION_MESSAGE);
+                            title = null;
+                        }
+                    }
+                }
+            }
+        });
+        toolbar.getBtnBaru().addActionListener((ae) -> {
+            pengguna = null;
+            title = "Tambah Data Tingkat Akses";
+            Pengguna t = new DialogPengguna().showDialog(pengguna, title);
+            pengguna = new Pengguna();
+            if(t!=null){
+                loadFormToModel(t);
+                pengguna.setIdPengguna("");
+                FrameUtama.getSecurityService().simpan(pengguna);
+                isiTabelKategori();
+                JOptionPane.showMessageDialog(FrameUtama.getInstance(),
+                        "Penyimpanan Sukses",
+                        "Sukses", JOptionPane.INFORMATION_MESSAGE);
+                title = null;
+            }
+        });
+        toolbar.getBtnEdit().addActionListener((ae) -> {
+            title = "Edit Data Tingkat Akses";
+            if ("".equals(idSelect)) {
+                JOptionPane.showMessageDialog(null, "Data Tingkat Akses Belum Terpilih");
+            } else {
+                cariSelect();
+                Pengguna t = new DialogPengguna().showDialog(pengguna, title);
+                pengguna = new Pengguna();
+                if (t != null) {
+                    loadFormToModel(t);
+                    FrameUtama.getSecurityService().simpan(t);
+                    isiTabelKategori();
+                    JOptionPane.showMessageDialog(FrameUtama.getInstance(), 
+                            "Penyimpanan Sukses",
+                            "Sukses", JOptionPane.INFORMATION_MESSAGE);
+                    title = null;
+                }
+            }
+        });
+        toolbar.getBtnHapus().addActionListener((ae) -> {
+            if ("".equals(idSelect)) {
+                JOptionPane.showMessageDialog(null, "Data Tingkat Akses Belum Terpilih");
+            } else {
+                cariSelect();
+                FrameUtama.getSecurityService().hapus(pengguna);
+                isiTabelKategori();
+                JOptionPane.showMessageDialog(FrameUtama.getInstance(), 
+                        "Hapus Sukses",
+                        "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
